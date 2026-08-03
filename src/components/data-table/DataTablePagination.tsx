@@ -55,9 +55,9 @@ export default function DataTablePagination({
 
     return (
 
-        <div className="mt-5 rounded-xl border bg-card shadow-sm">
+        <div className="mt-2 rounded-xl border bg-card shadow-sm">
 
-            <div className="flex flex-col gap-4 px-5 py-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-4 px-5 py-2 lg:flex-row lg:items-center lg:justify-between">
 
                 {/* Left */}
 
