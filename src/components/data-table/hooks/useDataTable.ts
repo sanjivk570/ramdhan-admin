@@ -202,25 +202,59 @@ export function useDataTable({
         persistedState.visibility
     );
 
-    // const [visibility, setVisibility] =
-    // useState<VisibilityState>({});
-    // const STORAGE_KEY = `${storageKey}-visibility`;
-    // const [visibility, setVisibility] =
-    //     useState<VisibilityState>(() =>
-    //         getStorage(
-    //             STORAGE_KEY,
-    //             {}
-    //         )
-    //     );
-    // useEffect(() => {
-    //     setStorage(
-    //         STORAGE_KEY,
-    //         visibility
-    //     );
-    // }, [
-    //     visibility,
-    // ]);
+    const removeFilter = (key: string) => {
 
+        setPagination((prev) => ({
+
+            ...prev,
+
+            pageIndex: 0,
+
+        }));
+
+        setFilters((prev) => {
+
+            const updated = {
+
+                ...prev,
+
+            };
+
+            delete updated[key];
+
+            return updated;
+
+        });
+
+    };
+
+    const clearSorting = () => {
+
+        setSorting([]);
+
+        setPagination((prev) => ({
+
+            ...prev,
+
+            pageIndex: 0,
+
+        }));
+
+    };
+
+    const clearSearch = () => {
+
+        setSearch("");
+
+        setPagination((prev) => ({
+
+            ...prev,
+
+            pageIndex: 0,
+
+        }));
+
+    };
     
 
     const setFilter = (key: string, value: string) => {
@@ -229,10 +263,34 @@ export function useDataTable({
             pageIndex: 0,
         }));
 
-        setFilters((prev) => ({
-            ...prev,
-            [key]: value,
-        }));
+        // setFilters((prev) => ({
+        //     ...prev,
+        //     [key]: value,
+        // }));
+
+        setFilters((prev) => {
+
+            const newFilters = {
+                ...prev,
+            };
+
+            if (
+                value === "" ||
+                value === null
+            ) {
+
+                delete newFilters[key];
+
+            } else {
+
+                newFilters[key] = value;
+
+            }
+
+            return newFilters;
+
+        });
+
     };
 
     const query = useMemo(() => {
@@ -256,7 +314,6 @@ export function useDataTable({
     ]);
 
     useEffect(() => {
-
         setStorage(
 
             `${storageKey}-table-state`,
@@ -301,24 +358,27 @@ export function useDataTable({
         setVisibility({});
         setPagination({
             pageIndex: 0,
-            pageSize: 10,
+            //pageSize: 10,
+            pageSize: persistedState.pageSize,
         });
     }
 
     return {
         query,
-        debouncedSearch,
-        debouncedFilters,
+        search,
         setSearch,
         filters,
         setFilters,
         setFilter,
+        removeFilter,
+        clearSearch,
         sorting,
         setSorting,
+        clearSorting,
         pagination,
         setPagination,
-        resetFilters,
         visibility,
         setVisibility,
+        resetFilters,
     };
 }

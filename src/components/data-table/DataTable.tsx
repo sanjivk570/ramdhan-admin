@@ -1,238 +1,168 @@
-import React from "react";
-import {
-    flexRender,
-    getCoreRowModel,
-    useReactTable,
-    type RowData,
-} from "@tanstack/react-table";
+import type { RowData } from "@tanstack/react-table";
 
-import type { DataTableProps } from "./types";
+import type {
+    DataTableProps,
+} from "./types";
 
-import DataTableLoading from "./DataTableLoading";
+import { DataTableToolbar } from "./DataTableToolbar";
+import DataTableFilters from "./DataTableFilters";
+import DataTableGrid from "./DataTableGrid";
+import DataTablePagination from "./DataTablePagination";
 
-import DataTableEmpty from "./DataTableEmpty";
-import DataTableColumnVisibility from "./DataTableColumnVisibility";
+import ExportCsvButton from "@/components/export/ExportCsvButton";
+import DataTableActiveFilters from "./DataTableActiveFilters";
 
-export function DataTable<TData extends RowData>({
-    columns,
-    data,
+export function DataTable<T extends RowData>({
+    config,
+    table,
+    rows,
+    meta,
     loading = false,
-    pagination,
-    pageCount,
-    sorting,
-    onPaginationChange,
-    onSortingChange,
     emptyState,
-    visibility,
-    onVisibilityChange,
-}: DataTableProps<TData>) {
-
-    const table = useReactTable({
-
-        data,
-
-        columns,
-
-        getCoreRowModel:
-            getCoreRowModel(),
-
-        state: {
-
-            pagination,
-
-            sorting,
-            
-            columnVisibility: visibility,
-
-        },
-
-        manualPagination: true,
-
-        manualSorting: true,
-
-        pageCount,
-
-        onPaginationChange,
-
-        onSortingChange,
-
-        onColumnVisibilityChange: onVisibilityChange,
-
-    });
-    
+    children,
+}: DataTableProps<T>) {
 
     return (
-        <>
-        
-        {/* <div className="mb-4 flex justify-end">
 
-            <DataTableColumnVisibility
+        <div className="space-y-2">
 
-                table={table}
+            {/* Toolbar */}
 
-            />
+            <DataTableToolbar
 
-        </div> */}
+                search={table.search}
 
-        <div className="flex items-center justify-between border-b bg-muted/30 px-4 py-3">
+                setSearch={table.setSearch}
 
-            <div>
+                resetFilters={table.resetFilters}
 
-                <h3 className="text-sm font-semibold">
-                    Records
-                </h3>
+            >
 
-                <p className="text-xs text-muted-foreground">
-                    Showing filtered results
-                </p>
+                {config.exportColumns && (
 
-            </div>
+                    <ExportCsvButton
 
-            <DataTableColumnVisibility
-                table={table}
-            />
+                        filename={config.storageKey}
 
-        </div>
+                        columns={config.exportColumns}
 
-        <div className="overflow-hidden rounded-xl border bg-card shadow-sm">
+                        rows={rows}
 
-            <table className="w-full border-collapse">
-
-                <thead className="sticky top-0 z-10 bg-background">
-
-                {table
-                    .getHeaderGroups()
-                    .map(group => (
-
-                        <tr key={group.id}>
-
-                            {group.headers.map(header => (
-
-                                <th
-                                    key={header.id}
-                                    className="h-12 border-b bg-muted/40 px-4
-                                    text-left
-                                    text-sm
-                                    font-semibold
-                                    text-muted-foreground
-                                    uppercase
-                                    tracking-wide
-                                    whitespace-nowrap
-                                    "
-                                >
-                                    {header.isPlaceholder
-                                        ? null
-                                        : flexRender(
-                                              header.column.columnDef.header,
-                                              header.getContext()
-                                          )}
-                                </th>
-
-                            ))}
-
-                        </tr>
-
-                    ))}
-
-                </thead>
-
-                <tbody>
-
-                {/* {loading ? (
-
-                    <tr>
-
-                        <td
-                            colSpan={columns.length}
-                            className="p-6 text-center"
-                        >
-                            Loading...
-                        </td>
-
-                    </tr>
-
-                )  */}
-
-                {loading ? (
-                    <DataTableLoading
-                        columns={columns.length}
-                        rows={pagination.pageSize}
                     />
-                )
-
-                : table.getRowModel().rows.length === 0 ? (
-
-                    <tr>
-
-                        {/* <td
-                            colSpan={columns.length}
-                            className="p-6 text-center"
-                        >
-                            No records found.
-                        </td> */}
-
-                        <td colSpan={columns.length}>
-
-                            <DataTableEmpty
-
-                                {...emptyState}
-
-                            />
-
-                        </td>
-
-                    </tr>
-
-                ) : (
-
-                    table
-                        .getRowModel()
-                        .rows
-                        .map(row => (
-
-                            <tr
-                                key={row.id}
-                                className="
-                                    border-b
-                                    transition-colors
-                                    even:bg-muted/20
-                                    hover:bg-muted/40
-                                "
->
-
-                                {row
-                                    .getVisibleCells()
-                                    .map(cell => (
-
-                                        <td
-                                            key={cell.id}
-                                            className="
-                                            px-4
-                                            py-3
-                                            align-middle
-                                            text-sm
-                                            "
-                                        >
-                                            {flexRender(
-                                                cell.column.columnDef.cell,
-                                                cell.getContext()
-                                            )}
-                                        </td>
-
-                                    ))}
-
-                            </tr>
-
-                        ))
 
                 )}
 
-                </tbody>
+                {children}
 
-            </table>
+            </DataTableToolbar>
+
+            {/* <DataTableActiveFilters
+
+                search={table.search}
+
+                filters={table.filters}
+
+                labels={config.filterLabels}
+
+                onSearchClear={table.clearSearch}
+
+                onFilterRemove={table.removeFilter}
+
+                onClearAll={table.resetFilters}
+
+            /> */}
+
+            {/* Filters */}
+
+            {config.filters && config.filters.length > 0 && (
+
+                <DataTableFilters
+
+                    filters={config.filters}
+
+                    values={
+                        table.filters as Record<string, string>
+                    }
+
+                    onChange={table.setFilter}
+
+                />
+
+            )}
+
+            <DataTableActiveFilters
+                search={table.search}
+
+                filters={table.filters}
+
+                sorting={table.sorting}
+
+                filterConfig={config.filters ?? []}
+
+                onSearchClear={table.clearSearch}
+
+                onFilterRemove={table.removeFilter}
+
+                onSortClear={table.clearSorting}
+
+                onClearAll={table.resetFilters}
+            />
+
+            {/* Grid */}
+
+            <DataTableGrid
+
+                columns={config.columns}
+
+                data={rows}
+
+                loading={loading}
+
+                pagination={table.pagination}
+
+                pageCount={meta?.last_page ?? 0}
+
+                sorting={table.sorting}
+
+                visibility={table.visibility}
+
+                emptyState={emptyState}
+
+                onPaginationChange={table.setPagination}
+
+                onSortingChange={table.setSorting}
+
+                onVisibilityChange={table.setVisibility}
+
+            />
+
+            {/* Pagination */}
+
+            {meta && (
+                <DataTablePagination
+                    meta={meta}
+                    pageIndex={table.pagination.pageIndex}
+                    pageSize={table.pagination.pageSize}
+                    onPageChange={(pageIndex) =>
+                        table.setPagination((old) => ({
+                            ...old,
+                            pageIndex,
+                        }))
+                    }
+
+                    onPageSizeChange={(pageSize) =>
+                        table.setPagination({
+                            pageIndex: 0,
+                            pageSize,
+                        })
+
+                    }
+
+                />
+
+            )}
 
         </div>
-    </>
 
     );
 

@@ -1,159 +1,92 @@
-
-
-
-// import UserToolbar from "../components/UserToolbar";
-// import UserTable from "../components/UserTable";
-
-// import { DataTable, DataTableToolbar, useDataTable } from "@/components/data-table";
-// import { useUsers } from "@/features/users/hooks/useUsers";
-
-// import { Button } from "@/components/ui/button";
-
-// // import {
-// //     DataTableToolbar,
-// //     useDataTable,
-// // } from "@/components/data-table";
-
-// export default function UserListPage() {
-
-//     const table = useDataTable();
-
-//     const safeQuery = {
-//         ...table.query,
-//         sort_order: (table.query.sort_order === 'asc' || table.query.sort_order === 'desc')
-//             ? table.query.sort_order
-//             : undefined,
-//     };
-
-//     const {
-//         data,
-//         isLoading,
-//         refetch,
-//     } = useUsers(safeQuery);
-
-//     const toolbarProps = {
-//         table,
-//         onRefresh: refetch,
-//     } as any;
-
-//     const userTableProps = {
-//         table,
-//         users: data?.data ?? [],
-//         meta: data?.meta,
-//         loading: isLoading,
-//     } as any;
-
-//     return (
-//         <div className="space-y-6">
-
-//             {/* <UserToolbar
-//                 {...toolbarProps}
-//             /> */}
-
-//             {/* <DataTableToolbar
-//                 search={table.search}
-//                 setSearch={table.setSearch}
-//                 resetFilters={table.resetFilters}
-//                 onRefresh={refetch}
-//             >
-//                 <Button>
-//                     Create User
-//                 </Button>
-//             </DataTableToolbar>
-
-//             <UserTable
-//                 {...userTableProps}
-//             /> */}
-
-//             <DataTableToolbar
-//                 search={table.search}
-//                 setSearch={table.setSearch}
-//                 resetFilters={table.resetFilters}
-//                 onRefresh={() => refetch()}
-//             >
-//                 <Button>
-//                     Create User
-//                 </Button>
-//             </DataTableToolbar>
-
-//             <UserTable
-//                 table={table}
-//                 users={data?.data ?? []}
-//                 meta={data?.meta}
-//                 loading={isLoading}
-//             />
-
-//         </div>
-//     );
-// }
-
-
 import { Button } from "@/components/ui/button";
 
-import { DataTableToolbar, useDataTable, DataTableFilters } from "@/components/data-table";
+import {
+    DataTable,
+    useDataTable,
+} from "@/components/data-table";
 
-import UserTable from "../components/UserTable";
 import { useUsers } from "../hooks/useUsers";
 
-import { userFilters } from "../config/filters";
-
-import ExportCsvButton from "@/components/export/ExportCsvButton";
-
-import { userExportColumns } from "../config/user-export-columns";
+import { userTableConfig } from "../config/user-table-config";
 
 export default function UserListPage() {
 
-    // const table = useDataTable();
-
     const table = useDataTable({
+
         storageKey: "users",
+
     });
 
     const {
+
         data,
+
         isLoading,
-        refetch,
-    } = useUsers(table.query);
+
+    } = useUsers(table.query as any);
+
+    const meta = data?.meta
+        ? {
+
+            ...data.meta,
+
+            from:
+                (data.meta.current_page - 1) *
+                    data.meta.per_page +
+                1,
+
+            to: Math.min(
+
+                data.meta.current_page *
+                    data.meta.per_page,
+
+                data.meta.total,
+
+            ),
+
+        }
+        : undefined;
 
     return (
 
-        <div className="space-y-6">
+        <DataTable
 
-            <DataTableToolbar
-                search={table.search}
-                setSearch={table.setSearch}
-                resetFilters={table.resetFilters}
-                onRefresh={() => refetch()}
-            >
-                <ExportCsvButton
+            config={userTableConfig}
 
-                    filename="users"
+            table={table}
 
-                    columns={userExportColumns}
+            rows={data?.data ?? []}
 
-                    rows={data?.data ?? []}
+            meta={meta}
 
-                />
+            loading={isLoading}
 
-                <Button>
-                    Create User
-                </Button>
-            </DataTableToolbar>
+            emptyState={{
 
-            <DataTableFilters
-                filters={userFilters}
-                values={table.filters as Record<string, string>}
-                onChange={table.setFilter}
-            />
+                title: "No users found",
 
-            <UserTable
-                table={table}
-                users={data?.data ?? []}
-                meta={data?.meta}
-                loading={isLoading}
-            />
+                description:
+                    "Try another search or create a new user.",
 
-        </div>
+                actionLabel: "Create User",
+
+                onAction: () => {
+
+                    console.log("Create User");
+
+                },
+
+            }}
+
+        >
+
+            <Button>
+
+                Create User
+
+            </Button>
+
+        </DataTable>
 
     );
 
