@@ -5,6 +5,14 @@ import {
     ChevronsRight,
 } from "lucide-react";
 
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+
 import { Button } from "@/components/ui/button";
 
 import type { DataTableMeta } from "./types";
@@ -47,159 +55,162 @@ export default function DataTablePagination({
 
     return (
 
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-5 rounded-xl border bg-card shadow-sm">
 
-            <div>
+            <div className="flex flex-col gap-4 px-5 py-4 lg:flex-row lg:items-center lg:justify-between">
 
-                Showing
+                {/* Left */}
 
-                <strong> {meta.from} </strong>
+                <div className="text-sm text-muted-foreground">
 
-                -
+                    Showing{" "}
 
-                <strong> {meta.to} </strong>
+                    <span className="font-semibold text-foreground">
+                        {meta.from}
+                    </span>
 
-                of
+                    {" - "}
 
-                <strong> {meta.total} </strong>
+                    <span className="font-semibold text-foreground">
+                        {meta.to}
+                    </span>
 
-            </div>
+                    {" of "}
 
-            <div className="flex items-center gap-3">
+                    <span className="font-semibold text-foreground">
+                        {meta.total}
+                    </span>
 
-                <select
+                    {" records"}
 
-                    value={pageSize}
+                </div>
 
-                    onChange={(e) =>
-                        onPageSizeChange(
-                            Number(e.target.value)
-                        )
-                    }
+                {/* Right */}
 
-                    className="rounded border p-2"
+                <div className="flex flex-wrap items-center gap-4">
 
-                >
+                    {/* Page Size */}
 
-                    <option value={10}>10</option>
+                    <div className="flex items-center gap-2">
 
-                    <option value={25}>25</option>
+                        <span className="text-sm text-muted-foreground">
 
-                    <option value={50}>50</option>
+                            Rows
 
-                    <option value={100}>100</option>
+                        </span>
 
-                </select>
+                        <Select
+                            value={String(pageSize)}
+                            onValueChange={(value) =>
+                                onPageSizeChange(Number(value))
+                            }
+                        >
 
-                <Button
+                            <SelectTrigger className="w-20">
 
-                    variant="outline"
+                                <SelectValue />
 
-                    size="icon"
+                            </SelectTrigger>
 
-                    disabled={
-                        meta.current_page === 1
-                    }
+                            <SelectContent>
 
-                    onClick={() =>
-                        onPageChange(0)
-                    }
+                                <SelectItem value="10">
+                                    10
+                                </SelectItem>
 
-                >
+                                <SelectItem value="25">
+                                    25
+                                </SelectItem>
 
-                    <ChevronsLeft
-                        className="h-4 w-4"
-                    />
+                                <SelectItem value="50">
+                                    50
+                                </SelectItem>
 
-                </Button>
+                                <SelectItem value="100">
+                                    100
+                                </SelectItem>
 
-                <Button
+                            </SelectContent>
 
-                    variant="outline"
+                        </Select>
 
-                    size="icon"
+                    </div>
 
-                    disabled={
-                        meta.current_page === 1
-                    }
+                    {/* Page */}
 
-                    onClick={() =>
-                        onPageChange(pageIndex - 1)
-                    }
+                    <div className="text-sm">
 
-                >
+                        Page{" "}
 
-                    <ChevronLeft
-                        className="h-4 w-4"
-                    />
+                        <span className="font-semibold">
 
-                </Button>
+                            {meta.current_page}
 
-                <span>
+                        </span>
 
-                    Page
+                        {" of "}
 
-                    <strong>
+                        <span className="font-semibold">
 
-                        {" "}
+                            {meta.last_page}
 
-                        {meta.current_page}
+                        </span>
 
-                    </strong>
+                    </div>
 
-                    /
+                    {/* Buttons */}
 
-                    {meta.last_page}
+                    <div className="flex items-center gap-1">
 
-                </span>
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            disabled={meta.current_page === 1}
+                            onClick={() => onPageChange(0)}
+                        >
+                            <ChevronsLeft className="h-4 w-4" />
+                        </Button>
 
-                <Button
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            disabled={meta.current_page === 1}
+                            onClick={() =>
+                                onPageChange(pageIndex - 1)
+                            }
+                        >
+                            <ChevronLeft className="h-4 w-4" />
+                        </Button>
 
-                    variant="outline"
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            disabled={
+                                meta.current_page === meta.last_page
+                            }
+                            onClick={() =>
+                                onPageChange(pageIndex + 1)
+                            }
+                        >
+                            <ChevronRight className="h-4 w-4" />
+                        </Button>
 
-                    size="icon"
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            disabled={
+                                meta.current_page === meta.last_page
+                            }
+                            onClick={() =>
+                                onPageChange(meta.last_page - 1)
+                            }
+                        >
+                            <ChevronsRight className="h-4 w-4" />
+                        </Button>
 
-                    disabled={
-                        meta.current_page ===
-                        meta.last_page
-                    }
+                    </div>
 
-                    onClick={() =>
-                        onPageChange(pageIndex + 1)
-                    }
-
-                >
-
-                    <ChevronRight
-                        className="h-4 w-4"
-                    />
-
-                </Button>
-
-                <Button
-
-                    variant="outline"
-
-                    size="icon"
-
-                    disabled={
-                        meta.current_page ===
-                        meta.last_page
-                    }
-
-                    onClick={() =>
-                        onPageChange(
-                            meta.last_page - 1
-                        )
-                    }
-
-                >
-
-                    <ChevronsRight
-                        className="h-4 w-4"
-                    />
-
-                </Button>
+                </div>
 
             </div>
 

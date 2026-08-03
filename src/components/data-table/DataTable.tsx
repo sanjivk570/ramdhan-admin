@@ -1,3 +1,4 @@
+import React from "react";
 import {
     flexRender,
     getCoreRowModel,
@@ -63,7 +64,7 @@ export function DataTable<TData extends RowData>({
     return (
         <>
         
-        <div className="mb-4 flex justify-end">
+        {/* <div className="mb-4 flex justify-end">
 
             <DataTableColumnVisibility
 
@@ -71,13 +72,33 @@ export function DataTable<TData extends RowData>({
 
             />
 
+        </div> */}
+
+        <div className="flex items-center justify-between border-b bg-muted/30 px-4 py-3">
+
+            <div>
+
+                <h3 className="text-sm font-semibold">
+                    Records
+                </h3>
+
+                <p className="text-xs text-muted-foreground">
+                    Showing filtered results
+                </p>
+
+            </div>
+
+            <DataTableColumnVisibility
+                table={table}
+            />
+
         </div>
 
-        <div className="rounded-md border">
+        <div className="overflow-hidden rounded-xl border bg-card shadow-sm">
 
-            <table className="w-full">
+            <table className="w-full border-collapse">
 
-                <thead>
+                <thead className="sticky top-0 z-10 bg-background">
 
                 {table
                     .getHeaderGroups()
@@ -89,7 +110,15 @@ export function DataTable<TData extends RowData>({
 
                                 <th
                                     key={header.id}
-                                    className="border-b p-3 text-left"
+                                    className="h-12 border-b bg-muted/40 px-4
+                                    text-left
+                                    text-sm
+                                    font-semibold
+                                    text-muted-foreground
+                                    uppercase
+                                    tracking-wide
+                                    whitespace-nowrap
+                                    "
                                 >
                                     {header.isPlaceholder
                                         ? null
@@ -161,7 +190,15 @@ export function DataTable<TData extends RowData>({
                         .rows
                         .map(row => (
 
-                            <tr key={row.id}>
+                            <tr
+                                key={row.id}
+                                className="
+                                    border-b
+                                    transition-colors
+                                    even:bg-muted/20
+                                    hover:bg-muted/40
+                                "
+>
 
                                 {row
                                     .getVisibleCells()
@@ -169,7 +206,12 @@ export function DataTable<TData extends RowData>({
 
                                         <td
                                             key={cell.id}
-                                            className="border-b p-3"
+                                            className="
+                                            px-4
+                                            py-3
+                                            align-middle
+                                            text-sm
+                                            "
                                         >
                                             {flexRender(
                                                 cell.column.columnDef.cell,

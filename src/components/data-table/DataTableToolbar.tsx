@@ -5,6 +5,10 @@ import { useDebounce } from "use-debounce";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+    Card,
+    CardContent,
+} from "@/components/ui/card";
 
 interface DataTableToolbarProps {
 
@@ -41,46 +45,97 @@ export function DataTableToolbar({
 
     }, [debouncedSearch]);
 
+    // return (
+
+    //     <div className="flex flex-wrap items-center justify-between gap-4">
+
+    //         <div className="flex items-center gap-2">
+
+    //             <Input
+    //                 placeholder="Search..."
+    //                 className="w-72"
+    //                 value={search}
+    //                 onChange={(e) =>
+    //                     setSearch(e.target.value)
+    //                 }
+    //             />
+
+    //             <Button
+    //                 variant="outline"
+    //                 onClick={resetFilters}
+    //             >
+    //                 <RotateCcw className="mr-2 h-4 w-4" />
+
+    //                 Reset
+
+    //             </Button>
+
+    //             <Button
+    //                 variant="outline"
+    //                 onClick={onRefresh}
+    //             >
+    //                 <RefreshCw className="mr-2 h-4 w-4" />
+
+    //                 Refresh
+
+    //             </Button>
+
+    //         </div>
+
+    //         {children}
+
+    //     </div>
+
+    // );
+
     return (
 
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <Card className="shadow-sm">
 
-            <div className="flex items-center gap-2">
+            <CardContent className="p-4">
 
-                <Input
-                    placeholder="Search..."
-                    className="w-72"
-                    value={search}
-                    onChange={(e) =>
-                        setSearch(e.target.value)
-                    }
-                />
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
-                <Button
-                    variant="outline"
-                    onClick={resetFilters}
-                >
-                    <RotateCcw className="mr-2 h-4 w-4" />
+                    <div className="flex flex-1 flex-col gap-3 sm:flex-row">
 
-                    Reset
+                        <Input
+                            placeholder="Search users..."
+                            className="w-full sm:max-w-sm"
+                            value={search}
+                            onChange={(e) =>
+                                setSearch(e.target.value)
+                            }
+                        />
 
-                </Button>
+                        <Button
+                            variant="outline"
+                            onClick={resetFilters}
+                        >
+                            <RotateCcw className="mr-2 h-4 w-4" />
+                            Reset
+                        </Button>
 
-                <Button
-                    variant="outline"
-                    onClick={onRefresh}
-                >
-                    <RefreshCw className="mr-2 h-4 w-4" />
+                        <Button
+                            variant="outline"
+                            onClick={onRefresh}
+                        >
+                            <RefreshCw className="mr-2 h-4 w-4" />
+                            Refresh
+                        </Button>
 
-                    Refresh
+                    </div>
 
-                </Button>
+                    <div className="flex flex-wrap items-center gap-2">
 
-            </div>
+                        {children}
 
-            {children}
+                    </div>
 
-        </div>
+                </div>
+
+            </CardContent>
+
+        </Card>
 
     );
 
