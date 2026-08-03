@@ -1,0 +1,10 @@
+export const ROUTES = {
+    LOGIN: "/login",
+    FORGOT_PASSWORD: "/forgot-password",
+    RESET_PASSWORD: "/reset-password",
+    DASHBOARD: "/",
+    PROFILE: "/profile",
+    USERS: "/users",
+    ROLES: "/roles",
+    PERMISSIONS: "/permissions",
+} as const;
