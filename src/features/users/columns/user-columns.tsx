@@ -1,64 +1,3 @@
-// import type { ColumnDef } from "@tanstack/react-table";
-
-// export interface UserRow {
-//     uuid: string;
-//     first_name: string;
-//     email: string;
-// }
-
-// export const columns: ColumnDef<UserRow>[] = [
-//     {
-//         accessorKey: "first_name",
-//         header: "First Name",
-//     },
-//     {
-//         accessorKey: "email",
-//         header: "Email",
-//     },
-
-// ];
-
-// import type { ColumnDef } from "@tanstack/react-table";
-
-// import type { User } from "../types/user";
-
-// export const columns: ColumnDef<User>[] = [
-
-//     {
-//         accessorKey: "first_name",
-
-//         header: "First Name",
-//     },
-
-//     {
-//         accessorKey: "email",
-
-//         header: "Email",
-//     },
-
-//     {
-//         accessorKey: "mobile",
-
-//         header: "Mobile",
-//     },
-
-//     {
-//         accessorKey: "is_active",
-
-//         header: "Status",
-
-//         cell: ({ row }) => {
-
-//             return row.original.is_active
-//                 ? "Active"
-//                 : "Inactive";
-
-//         },
-//     },
-
-// ];
-
-
 import type { ColumnDef } from "@tanstack/react-table";
 
 import { Badge } from "@/components/ui/badge";
@@ -66,15 +5,16 @@ import { Badge } from "@/components/ui/badge";
 import type { User } from "../types/user";
 
 import { SortableHeader } from "@/components/data-table";
+import { formatDateTime } from "@/lib/date";
 
 export const columns: ColumnDef<User>[] = [
     {
         accessorKey: "first_name",
         meta: {
-
             title: "First Name",
-
         },
+        enableSorting: true,
+        enableHiding: true,
         header: ({ column }) => (
             <SortableHeader
                 column={column}
@@ -84,10 +24,27 @@ export const columns: ColumnDef<User>[] = [
 
     },
     {
+        accessorKey: "last_name",
+        meta: {
+            title: "Last Name",
+        },
+        enableSorting: true,
+        enableHiding: true,
+        header: ({ column }) => (
+            <SortableHeader
+                column={column}
+                title="Last Name"
+            />
+        ),
+
+    },
+    {
         accessorKey: "email",
         meta: {
             title: "Email",
         },
+        enableSorting: true,
+        enableHiding: true,
         header: ({ column }) => (
             <SortableHeader
                 column={column}
@@ -100,6 +57,8 @@ export const columns: ColumnDef<User>[] = [
         meta: {
             title: "Mobile",
         },
+        enableSorting: true,
+        enableHiding: true,
         header: ({ column }) => (
             <SortableHeader
                 column={column}
@@ -113,7 +72,8 @@ export const columns: ColumnDef<User>[] = [
             title: "Status",
         },
         header: "Status",
-
+        enableSorting: true,
+        enableHiding: true,
         cell: ({ row }) => (
             <Badge
                 variant={
@@ -136,6 +96,12 @@ export const columns: ColumnDef<User>[] = [
                 title="Created"
             />
         ),
+        enableSorting: true,
+        enableHiding: true,
+        cell: ({ row }) =>
+            formatDateTime(
+                row.original.created_at
+            ),
     },
 
     {

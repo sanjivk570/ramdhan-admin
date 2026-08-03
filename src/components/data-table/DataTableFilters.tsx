@@ -1,5 +1,6 @@
 import FilterText from "./FilterText";
 import FilterSelect from "./FilterSelect";
+import FilterDate from "./FilterDate";
 
 import type {
     DataTableFilter,
@@ -132,7 +133,7 @@ export default function DataTableFilters({
 
             {/* Body */}
 
-            <div className="grid grid-cols-1 gap-4 p-5 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-2 pt-2 pl-5 pr-5 sm:grid-cols-2 xl:grid-cols-4">
 
                 {filters.map((filter) => {
 
@@ -160,6 +161,39 @@ export default function DataTableFilters({
                                         filter.key,
                                         value
                                     )
+                                }
+
+                            />
+
+                        );
+
+                    }
+
+                    if (filter.type === "date") {
+
+                        return (
+
+                            <FilterDate
+
+                                key={filter.key}
+
+                                label={filter.label}
+
+                                value={
+                                    values[filter.key] ?? ""
+                                }
+
+                                placeholder={
+                                    filter.placeholder
+                                }
+
+                                onChange={(value) =>
+
+                                    onChange(
+                                        filter.key,
+                                        value
+                                    )
+
                                 }
 
                             />

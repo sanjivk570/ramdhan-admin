@@ -1,60 +1,28 @@
 import { X } from "lucide-react";
 import type { SortingState } from "@tanstack/react-table";
-
 import { Button } from "@/components/ui/button";
-
-import type {
-    DataTableFilter,
-} from "./types";
-
-// interface Props {
-//     search: string;
-//     filters: Record<string, unknown>;
-//     labels?: Record<string, string>;
-
-//     onSearchClear: () => void;
-//     onFilterRemove: (key: string) => void;
-//     onClearAll: () => void;
-// }
+import type { DataTableFilter, } from "./types";
 
 interface Props {
-
     search: string;
-
     filters: Record<string, unknown>;
-
     sorting: SortingState;
-
     filterConfig: DataTableFilter[];
-
     onSearchClear: () => void;
-
     onFilterRemove: (key: string) => void;
-
     onSortClear: () => void;
-
     onClearAll: () => void;
-
 }
 
 export default function DataTableActiveFilters({
-
     search,
-
     filters,
-
     sorting,
-
     filterConfig,
-
     onSearchClear,
-
     onFilterRemove,
-
     onSortClear,
-
     onClearAll,
-
 }: Props) {
 
     const activeFilters = Object.entries(filters).filter(
@@ -65,11 +33,8 @@ export default function DataTableActiveFilters({
     );
 
     const getFilterValue = (
-
         key: string,
-
         value: unknown
-
     ) => {
 
         const filter = filterConfig.find(
@@ -143,19 +108,6 @@ export default function DataTableActiveFilters({
                 </Button>
             )}
 
-            {/* {activeFilters.map(([key, value]) => (
-                <Button
-                    key={key}
-                    variant="secondary"
-                    size="sm"
-                    onClick={() => onFilterRemove(key)}
-                >
-                    {labels[key] ?? key} : {String(value)}
-
-                    <X className="ml-2 h-3 w-3" />
-                </Button>
-            ))} */}
-
             {activeFilters.map(([key, value]) => {
 
                 const filter = filterConfig.find(
@@ -204,33 +156,15 @@ export default function DataTableActiveFilters({
 
             {sorting.length > 0 && (
                 <Button
-
                     variant="secondary"
-
                     size="sm"
-
                     onClick={onSortClear}
-
                 >
-
-                    Sort :
-
-                    {" "}
-
-                    {sorting[0].id}
-
-                    {" "}
-
+                    Sort : {" "} {sorting[0].id} {" "}
                     (
-
-                    {sorting[0].desc
-
-                        ? "DESC"
-
+                    {sorting[0].desc ? "DESC"
                         : "ASC"}
-
                     )
-
                     <X className="ml-2 h-3 w-3" />
 
                 </Button>

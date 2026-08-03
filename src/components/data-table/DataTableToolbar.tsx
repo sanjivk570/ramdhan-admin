@@ -45,61 +45,18 @@ export function DataTableToolbar({
 
     }, [debouncedSearch]);
 
-    // return (
-
-    //     <div className="flex flex-wrap items-center justify-between gap-4">
-
-    //         <div className="flex items-center gap-2">
-
-    //             <Input
-    //                 placeholder="Search..."
-    //                 className="w-72"
-    //                 value={search}
-    //                 onChange={(e) =>
-    //                     setSearch(e.target.value)
-    //                 }
-    //             />
-
-    //             <Button
-    //                 variant="outline"
-    //                 onClick={resetFilters}
-    //             >
-    //                 <RotateCcw className="mr-2 h-4 w-4" />
-
-    //                 Reset
-
-    //             </Button>
-
-    //             <Button
-    //                 variant="outline"
-    //                 onClick={onRefresh}
-    //             >
-    //                 <RefreshCw className="mr-2 h-4 w-4" />
-
-    //                 Refresh
-
-    //             </Button>
-
-    //         </div>
-
-    //         {children}
-
-    //     </div>
-
-    // );
-
     return (
 
         <Card className="shadow-sm">
 
-            <CardContent className="p-4">
+            <CardContent className="pt-0 pb-0 bg-card">
 
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
                     <div className="flex flex-1 flex-col gap-3 sm:flex-row">
 
                         <Input
-                            placeholder="Search users..."
+                            placeholder="Search..."
                             className="w-full sm:max-w-sm"
                             value={search}
                             onChange={(e) =>

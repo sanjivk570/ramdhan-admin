@@ -2,7 +2,6 @@ export * from "./DataTable";
 export * from "./types";
 export * from "./DataTableToolbar";
 export * from "./hooks/useDataTable";
-//export * from "./DataTableColumnFilter";
 export { default as FilterText } from "./FilterText";
 export { default as FilterSelect } from "./FilterSelect";
 export { default as DataTableFilters } from "./DataTableFilters";

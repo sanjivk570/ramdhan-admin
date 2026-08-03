@@ -28,7 +28,7 @@ export interface DataTableFilter {
 
     label: string;
 
-    type: "text" | "select";
+    type: "text" | "select" | "date";
 
     placeholder?: string;
 

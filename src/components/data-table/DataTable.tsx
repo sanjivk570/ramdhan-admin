@@ -24,7 +24,7 @@ export function DataTable<T extends RowData>({
 
     return (
 
-        <div className="space-y-2">
+        <div className="space-y-1">
 
             {/* Toolbar */}
 
@@ -35,7 +35,6 @@ export function DataTable<T extends RowData>({
                 setSearch={table.setSearch}
 
                 resetFilters={table.resetFilters}
-
             >
 
                 {config.exportColumns && (
@@ -47,7 +46,6 @@ export function DataTable<T extends RowData>({
                         columns={config.exportColumns}
 
                         rows={rows}
-
                     />
 
                 )}
@@ -55,22 +53,6 @@ export function DataTable<T extends RowData>({
                 {children}
 
             </DataTableToolbar>
-
-            {/* <DataTableActiveFilters
-
-                search={table.search}
-
-                filters={table.filters}
-
-                labels={config.filterLabels}
-
-                onSearchClear={table.clearSearch}
-
-                onFilterRemove={table.removeFilter}
-
-                onClearAll={table.resetFilters}
-
-            /> */}
 
             {/* Filters */}
 
