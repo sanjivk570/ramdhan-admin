@@ -1,9 +1,6 @@
 import type { ColumnDef } from "@tanstack/react-table";
-
 import { Badge } from "@/components/ui/badge";
-
 import type { User } from "../types/user";
-
 import { SortableHeader } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";
 
@@ -20,8 +17,7 @@ export const columns: ColumnDef<User>[] = [
                 column={column}
                 title="First Name"
             />
-        ),
-
+        )
     },
     {
         accessorKey: "last_name",
