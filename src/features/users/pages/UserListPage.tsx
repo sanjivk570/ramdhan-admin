@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import { DataTable, useDataTable } from "@/components/data-table";
 import { useUsers } from "../hooks/useUsers";
 import { userTableConfig } from "../config/user-table-config";
+import { ROUTES } from "../../../app/router/route-paths";
+import { Link } from "react-router-dom";
+
 export default function UserListPage() {
     const table = useDataTable({
         storageKey: "users",
@@ -33,14 +36,16 @@ export default function UserListPage() {
             emptyState={{
                 title: "No users found",
                 description: "Try another search or create a new user.",
-                actionLabel: "Create Role",
+                actionLabel: "Create User",
                 onAction: () => {
-                    console.log("Create Role");
+                    console.log("Create User");
                 },
             }}
         >
             <Button>
-                Create User
+                <Link to={`${ROUTES.USERS}/create`}>
+                    Create User
+                </Link>
             </Button>
         </DataTable>
     );

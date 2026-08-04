@@ -8,6 +8,7 @@ import { router } from "@/app/router";
 import { queryClient } from "@/lib/query-client";
 import { Toaster } from "@/components/ui/sonner";
 
+
 import "./styles/app.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

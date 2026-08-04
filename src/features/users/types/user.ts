@@ -17,4 +17,35 @@ export interface UserListParams {
     search?: string;
     sort_by?: string;
     sort_order?: "asc" | "desc";
+    filters?: Record<string, unknown>;
+}
+
+/**
+ * Create User
+ */
+export interface CreateUserPayload {
+    first_name: string;
+    last_name?: string;
+    email: string;
+    mobile?: string;
+    country_code?: string;
+    password: string;
+    password_confirmation: string;
+    role: string;
+    is_active: boolean;
+}
+
+/**
+ * Update User
+ */
+export interface UpdateUserPayload {
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    mobile?: string;
+    country_code?: string;
+    password?: string;
+    password_confirmation?: string;
+    role?: string;
+    is_active?: boolean;
 }

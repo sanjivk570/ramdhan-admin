@@ -1,18 +1,23 @@
 // import { useQuery } from "@tanstack/react-query";
 
+// import { userService } from "../services/user.service";
+// import type { UserListParams } from "../types/user";
+
 // import { QUERY_KEYS } from "@/constants/query-keys";
 
-// import { roleService } from "../services/user.service";
-
-// export function useRoles() {
+// export function useUsers(params: UserListParams) {
 //     return useQuery({
-//         queryKey: QUERY_KEYS.USERS,
+//         // queryKey: ["users", params],
+//         //queryKey: ["users", params],
+//         queryKey: [QUERY_KEYS.USERS, params],
 
 //         queryFn: async () => {
-//             const response = await roleService.getAll();
+//             const response = await userService.list(params);
 
 //             return response.data;
 //         },
+
+//         placeholderData: (previousData) => previousData,
 //     });
 // }
 
@@ -25,16 +30,23 @@ import { QUERY_KEYS } from "@/constants/query-keys";
 
 export function useUsers(params: UserListParams) {
     return useQuery({
-        // queryKey: ["users", params],
-        //queryKey: ["users", params],
-        queryKey: [QUERY_KEYS.USERS, params],
+        queryKey: [
+            QUERY_KEYS.USERS,
+            params,
+        ],
 
         queryFn: async () => {
-            const response = await userService.list(params);
+            const response =
+                await userService.list(params);
 
             return response.data;
         },
 
-        placeholderData: (previousData) => previousData,
+        placeholderData: (previousData) =>
+            previousData,
+
+        staleTime: 30 * 1000,
+
+        refetchOnWindowFocus: false,
     });
 }
