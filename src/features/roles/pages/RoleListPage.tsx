@@ -1,14 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { DataTable, useDataTable } from "@/components/data-table";
-import { useUsers } from "../hooks/useUsers";
-import { userTableConfig } from "../config/user-table-config";
-export default function UserListPage() {
+import { useRoles } from "../hooks/useRoles";
+import { roleTableConfig } from "../config/role-table-config.ts";
+export default function RoleListPage() {
+
+    // return(
+    //     "sfsdf"
+    // )
     const table = useDataTable({
-        storageKey: "users",
+        storageKey: "roles",
     });
 
-    const {data, isLoading } = useUsers(table.query as any);
-
+    const {data, isLoading } = useRoles(table.query as any);
     const meta = data?.meta
         ? {
             ...data.meta,
@@ -25,14 +28,14 @@ export default function UserListPage() {
         : undefined;
     return (
         <DataTable
-            config={userTableConfig}
+            config={roleTableConfig}
             table={table}
             rows={data?.data ?? []}
             meta={meta}
             loading={isLoading}
             emptyState={{
-                title: "No users found",
-                description: "Try another search or create a new user.",
+                title: "No roles found",
+                description: "Try another search or create a new role.",
                 actionLabel: "Create Role",
                 onAction: () => {
                     console.log("Create Role");
@@ -40,7 +43,7 @@ export default function UserListPage() {
             }}
         >
             <Button>
-                Create User
+                Create Role
             </Button>
         </DataTable>
     );

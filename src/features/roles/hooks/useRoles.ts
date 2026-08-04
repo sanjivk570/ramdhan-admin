@@ -17,20 +17,18 @@
 // }
 
 import { useQuery } from "@tanstack/react-query";
-
-import { userService } from "../services/user.service";
-import type { UserListParams } from "../types/user";
-
+import { roleService } from "../services/role.service.ts";
+import type { RoleListParams } from "../types/./role.ts";
 import { QUERY_KEYS } from "@/constants/query-keys";
 
-export function useUsers(params: UserListParams) {
+export function useRoles(params: RoleListParams) {
     return useQuery({
         // queryKey: ["users", params],
         //queryKey: ["users", params],
-        queryKey: [QUERY_KEYS.USERS, params],
+        queryKey: [QUERY_KEYS.ROLES, params],
 
         queryFn: async () => {
-            const response = await userService.list(params);
+            const response = await roleService.list(params);
 
             return response.data;
         },
