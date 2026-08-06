@@ -1,10 +1,18 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import type { Role } from "../types/role";
-import { SortableHeader } from "@/components/data-table";
+import { SortableHeader, DataTableActions } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";
 
-export const columns: ColumnDef<Role>[] = [
+
+export interface RoleColumnActions {
+    onView: (role: Role) => void;
+    onEdit: (role: Role) => void;
+    onDelete: (role: Role) => void;
+}
+
+export function getRoleColumns({onView, onEdit, onDelete }: RoleColumnActions): ColumnDef<Role>[] { return [
+// export const columns: ColumnDef<Role>[] = [
     {
         accessorKey: "id",
         meta: {
@@ -114,23 +122,46 @@ export const columns: ColumnDef<Role>[] = [
             ),
     },
 
-    {
-        id: "actions",
-        header: "Actions",
-        meta: {
-            title: "Actions",
-        },
-        enableSorting: false,
-        enableHiding: false,
-        size: 120,
-        cell: ({ row }) => (
-            <button
-                className="rounded border px-2 py-1 text-sm"
-                onClick={() => console.log(row.original)}
-            >
-                View
-            </button>
-        ),
-    }
+    // {
+    //     id: "actions",
+    //     header: "Actions",
+    //     meta: {
+    //         title: "Actions",
+    //     },
+    //     enableSorting: false,
+    //     enableHiding: false,
+    //     size: 120,
+    //     cell: ({ row }) => (
+    //         <button
+    //             className="rounded border px-2 py-1 text-sm"
+    //             onClick={() => console.log(row.original)}
+    //         >
+    //             View
+    //         </button>
+    //     ),
+    // }
 
-];
+    { 
+        id: "actions", 
+        header: "Actions", 
+        meta: { 
+            title: "Actions", 
+        }, 
+        enableSorting: false, 
+        enableHiding: false, 
+        size: 60, 
+        cell: ({ row }) => 
+            { 
+                const role = row.original; 
+                return ( 
+                    <DataTableActions 
+                        onView={() => onView(role) } 
+                        onEdit={() => onEdit(role) } 
+                        onDelete={() => onDelete(role) }
+                        /> 
+                ); 
+            }, 
+    },
+
+]
+}

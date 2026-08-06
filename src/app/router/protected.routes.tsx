@@ -10,6 +10,9 @@ import UserDetailsPage from "@/features/users/pages/UserDetailsPage";
 
 //For Role section
 import RoleListPage from "@/features/roles/pages/RoleListPage";
+import CreateRolePage from "@/features/roles/pages/CreateRolePage";
+import RoleDetailsPage from "@/features/roles/pages/RoleDetailsPage";
+import EditRolePage from "@/features/roles/pages/EditRolePage";
 
 import { ROUTES } from "./route-paths";
 
@@ -42,5 +45,20 @@ export const protectedRoutes = [
     {
         path: ROUTES.ROLES,
         element: <RoleListPage />,
-    }
+    },
+
+    {
+        path: ROUTES.ROLES + "/create",
+        element: <CreateRolePage />,
+    },
+    
+    {
+        path: ROUTES.ROLES + "/:id/edit",
+        element: <EditRolePage />,
+    },
+
+    {
+        path: ROUTES.ROLES + "/:id",
+        element: <RoleDetailsPage />,
+    },
 ];

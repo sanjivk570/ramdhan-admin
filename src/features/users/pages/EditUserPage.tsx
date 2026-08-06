@@ -22,6 +22,8 @@ import { ROUTES } from "../../../app/router/route-paths";
 
 import { useRoles } from "@/features/roles/hooks/useRoles";
 
+import { notification } from "@/lib/notification";
+
 interface ApiErrorResponse {
     message?: string;
 
@@ -106,12 +108,31 @@ export default function EditUserPage() {
                 data.password_confirmation;
         }
 
-        await updateUser.mutateAsync({
-            uuid,
-            data: payload,
-        });
+        // await updateUser.mutateAsync({
+        //     uuid,
+        //     data: payload,
+        // });
 
-        navigate(ROUTES.USERS);
+        //navigate(ROUTES.USERS);
+
+        try {
+            await updateUser.mutateAsync({
+                uuid,
+                data: payload,
+            });
+            navigate(ROUTES.USERS);
+
+            notification.success(
+                "User Update successfully.",
+                "The user account has been updated."
+            );
+            
+        } catch {
+            notification.error(
+                "Unable to update user.",
+                "Please check the form and try again."
+            );
+        }
     };
 
     const error =

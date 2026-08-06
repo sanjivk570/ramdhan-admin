@@ -1,6 +1,6 @@
 import axiosClient from "@/api/axios";
 import { ENDPOINTS } from "@/api/endpoints";
-import type { Role, RoleListParams } from "../types/./role.ts";
+import type { Role, RoleListParams, CreateRolePayload, UpdateRolePayload } from "../types/./role.ts";
 import type { PaginatedResponse } from "@/types/api";
 
 export const roleService = {
@@ -13,47 +13,59 @@ export const roleService = {
         );
     },
 
-    details(uuid: string) {
+    details(id: number) {
         return axiosClient.get(
-            ENDPOINTS.users.details(uuid)
+            ENDPOINTS.roles.details(id)
         );
     },
 
-    create(data: unknown) {
+    create(data: CreateRolePayload) {
         return axiosClient.post(
-            ENDPOINTS.users.create,
+            ENDPOINTS.roles.create,
             data
         );
     },
 
-    update(uuid: string, data: unknown) {
+    update(
+        id: number,
+        data: UpdateRolePayload
+    ) {
+
         return axiosClient.put(
-            ENDPOINTS.users.update(uuid),
+            ENDPOINTS.roles.update(id),
             data
         );
+
     },
 
-    delete(uuid: string) {
+    delete(id: number) {
+
         return axiosClient.delete(
-            ENDPOINTS.users.delete(uuid)
+            ENDPOINTS.roles.delete(id)
         );
+
     },
 
-    restore(uuid: string) {
-        return axiosClient.patch(
-            ENDPOINTS.users.restore(uuid)
+    permissions(id: number) {
+
+        return axiosClient.get<string[]>(
+            ENDPOINTS.roles.permissions(id)
         );
+
     },
 
-    activate(uuid: string) {
-        return axiosClient.patch(
-            ENDPOINTS.users.activate(uuid)
+    updatePermissions(
+        id: number,
+        permissions: string[]
+    ) {
+
+        return axiosClient.put(
+            ENDPOINTS.roles.permissions(id),
+            {
+                permissions,
+            }
         );
+
     },
 
-    deactivate(uuid: string) {
-        return axiosClient.patch(
-            ENDPOINTS.users.deactivate(uuid)
-        );
-    },
 };

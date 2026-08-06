@@ -2,11 +2,14 @@ import { Button } from "@/components/ui/button";
 import { DataTable, useDataTable } from "@/components/data-table";
 import { useRoles } from "../hooks/useRoles";
 import { roleTableConfig } from "../config/role-table-config.ts";
+import { Link, useNavigate } from "react-router-dom";
+import { ROUTES } from "../../../app/router/route-paths";
+import type { Role } from "../types/role";
+
 export default function RoleListPage() {
 
-    // return(
-    //     "sfsdf"
-    // )
+    const navigate = useNavigate();
+
     const table = useDataTable({
         storageKey: "roles",
     });
@@ -28,7 +31,26 @@ export default function RoleListPage() {
         : undefined;
     return (
         <DataTable
-            config={roleTableConfig}
+            config={roleTableConfig({
+            
+                onView: (role) => {
+                    navigate(
+                        `${ROUTES.ROLES}/${role.id}`
+                    );
+                },
+
+                onEdit: (role) => {
+                    navigate(
+                        `${ROUTES.ROLES}/${role.id}/edit`
+                    );
+                },
+
+                onDelete: (role) => {
+                    console.log('on deelete');
+                    //setDeleteUser(role);
+                }
+
+            })}
             table={table}
             rows={data?.data ?? []}
             meta={meta}
@@ -43,7 +65,9 @@ export default function RoleListPage() {
             }}
         >
             <Button>
-                Create Role
+                <Link to={`${ROUTES.ROLES}/create`}>
+                        Create Role
+                    </Link>
             </Button>
         </DataTable>
     );

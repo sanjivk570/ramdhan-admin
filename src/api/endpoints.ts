@@ -21,6 +21,10 @@ export const ENDPOINTS = {
     roles: {
         list: "/roles",
         create: "/roles",
+        details: (id: number) => `/roles/${id}`,
+        update: (id: number) => `/roles/${id}`,
+        delete: (id: number) => `/roles/${id}`,
+        permissions: (id: number) => `/roles/${id}/permissions`,
     },
 
     permissions: {

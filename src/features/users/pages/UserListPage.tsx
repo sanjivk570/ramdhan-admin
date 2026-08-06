@@ -13,6 +13,7 @@ import type { User } from "../types/user";
 
 import { useDeleteUser } from "../hooks/useDeleteUser";
 import { useUpdateUserStatus } from "../hooks/useUpdateUserStatus";
+import { notification } from "@/lib/notification";
 
 export default function UserListPage() {
     const table = useDataTable({
@@ -54,9 +55,17 @@ export default function UserListPage() {
             deleteUser.uuid,
             {
                 onSuccess: () => {
-
+                    notification.success(
+                        "User deleted successfully.",
+                        "The user account has been deleted."
+                    );
                     setDeleteUser(null);
-
+                },
+                onError: () => {
+                    notification.error(
+                        "Unable to delete user.",
+                        "Please try again."
+                    );
                 },
             }
         );
@@ -78,7 +87,23 @@ export default function UserListPage() {
                 onSuccess: () => {
                     setStatusUser(null);
                     setStatusValue(null);
+
+                    notification.success(
+                        statusValue
+                            ? "User activated successfully."
+                            : "User deactivated successfully.",
+                        statusValue
+                            ? "The user account has been activated."
+                            : "The user account has been deactivated."
+                    );
                 },
+                onError: () => {
+                    notification.error(
+                        "Unable to update user status.",
+                        "Please try again."
+                    );
+                },
+                
             }
         );
     };
@@ -87,7 +112,7 @@ export default function UserListPage() {
     return (
         <>
             <DataTable
-            
+
                 config={userTableConfig({
 
                     onView: (user) => {
