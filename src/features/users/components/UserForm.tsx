@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     Controller,
     useForm,
 } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import {
     Eye,
     EyeOff,
@@ -23,7 +24,9 @@ import {
 
 import {
     userSchema,
+    editUserSchema,
     type UserFormData,
+    type EditUserFormData,
 } from "../validation/user.schema";
 
 interface UserRoleOption {
@@ -31,7 +34,23 @@ interface UserRoleOption {
     value: string;
 }
 
+interface UserFormDataValues {
+    first_name: string;
+    last_name?: string;
+    email: string;
+    mobile?: string;
+    country_code: string;
+    password?: string;
+    password_confirmation?: string;
+    role: string;
+    is_active: boolean;
+}
+
 interface UserFormProps {
+    mode?: "create" | "edit";
+
+    initialData?: Partial<UserFormDataValues>;
+
     loading?: boolean;
 
     roles?: UserRoleOption[];
@@ -46,13 +65,16 @@ interface UserFormProps {
     serverMessage?: string;
 
     onSubmit: (
-        data: UserFormData
+        data: UserFormData | EditUserFormData
     ) => void | Promise<void>;
 
     onCancel?: () => void;
 }
 
 export default function UserForm({
+    mode = "create",
+
+    initialData,
 
     loading = false,
 
@@ -70,6 +92,8 @@ export default function UserForm({
 
 }: UserFormProps) {
 
+    const isEdit = mode === "edit";
+
     const [
         showPassword,
         setShowPassword,
@@ -84,38 +108,76 @@ export default function UserForm({
         register,
         control,
         handleSubmit,
+        reset,
         formState: {
             errors,
         },
-    } = useForm<UserFormData>({
-
-        resolver:
-            zodResolver(userSchema),
+    } = useForm<UserFormDataValues>({
+        resolver: zodResolver(
+            isEdit
+                ? editUserSchema
+                : userSchema
+        ) as never,
 
         defaultValues: {
-
             first_name: "",
-
             last_name: "",
-
             email: "",
-
             mobile: "",
-
             country_code: "+91",
+            password: "",
+            password_confirmation: "",
+            role: "",
+            is_active: true,
+        },
+    });
+
+    /*
+     * IMPORTANT:
+     * API data async aata hai.
+     * Isliye defaultValues ke bajay reset()
+     * se form populate karna hai.
+     */
+    useEffect(() => {
+
+        if (!initialData) {
+            return;
+        }
+
+        reset({
+            first_name:
+                initialData.first_name ?? "",
+
+            last_name:
+                initialData.last_name ?? "",
+
+            email:
+                initialData.email ?? "",
+
+            mobile:
+                initialData.mobile ?? "",
+
+            country_code:
+                initialData.country_code ?? "+91",
 
             password: "",
 
             password_confirmation: "",
 
-            role: "",
+            role:
+                initialData.role ?? "",
 
-            is_active: 1,
+            is_active:
+                initialData.is_active ?? true,
+        });
 
-        },
+    }, [
+        initialData,
+        reset,
+    ]);
 
-    });
-
+    console.log("Initial Role:", initialData?.role);
+    console.log("Roles:", roles);
     const getServerError = (
         field: string
     ) => {
@@ -135,7 +197,9 @@ export default function UserForm({
     return (
 
         <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(
+                onSubmit as any
+            )}
             className="space-y-6"
         >
 
@@ -184,7 +248,10 @@ export default function UserForm({
                         text-sm
                         text-muted-foreground
                     ">
-                        Enter the user's basic account information.
+                        {isEdit
+                            ? "Update the user's account information."
+                            : "Enter the user's basic account information."
+                        }
                     </p>
 
                 </div>
@@ -217,27 +284,15 @@ export default function UserForm({
                         />
 
                         {errors.first_name && (
-
                             <p className="text-sm text-destructive">
-                                {
-                                    errors
-                                        .first_name
-                                        .message
-                                }
+                                {errors.first_name.message}
                             </p>
-
                         )}
 
-                        {getServerError(
-                            "first_name"
-                        ) && (
-
+                        {getServerError("first_name") && (
                             <p className="text-sm text-destructive">
-                                {getServerError(
-                                    "first_name"
-                                )}
+                                {getServerError("first_name")}
                             </p>
-
                         )}
 
                     </div>
@@ -260,27 +315,15 @@ export default function UserForm({
                         />
 
                         {errors.last_name && (
-
                             <p className="text-sm text-destructive">
-                                {
-                                    errors
-                                        .last_name
-                                        .message
-                                }
+                                {errors.last_name.message}
                             </p>
-
                         )}
 
-                        {getServerError(
-                            "last_name"
-                        ) && (
-
+                        {getServerError("last_name") && (
                             <p className="text-sm text-destructive">
-                                {getServerError(
-                                    "last_name"
-                                )}
+                                {getServerError("last_name")}
                             </p>
-
                         )}
 
                     </div>
@@ -307,27 +350,15 @@ export default function UserForm({
                         />
 
                         {errors.email && (
-
                             <p className="text-sm text-destructive">
-                                {
-                                    errors
-                                        .email
-                                        .message
-                                }
+                                {errors.email.message}
                             </p>
-
                         )}
 
-                        {getServerError(
-                            "email"
-                        ) && (
-
+                        {getServerError("email") && (
                             <p className="text-sm text-destructive">
-                                {getServerError(
-                                    "email"
-                                )}
+                                {getServerError("email")}
                             </p>
-
                         )}
 
                     </div>
@@ -348,14 +379,12 @@ export default function UserForm({
                             <Controller
                                 name="country_code"
                                 control={control}
-                                render={({
-                                    field,
-                                }) => (
+                                render={({ field }) => (
+                                    
 
                                     <Select
                                         value={
-                                            field.value ||
-                                            "+91"
+                                            field.value || "+91"
                                         }
                                         onValueChange={
                                             field.onChange
@@ -396,27 +425,15 @@ export default function UserForm({
                         </div>
 
                         {errors.mobile && (
-
                             <p className="text-sm text-destructive">
-                                {
-                                    errors
-                                        .mobile
-                                        .message
-                                }
+                                {errors.mobile.message}
                             </p>
-
                         )}
 
-                        {getServerError(
-                            "mobile"
-                        ) && (
-
+                        {getServerError("mobile") && (
                             <p className="text-sm text-destructive">
-                                {getServerError(
-                                    "mobile"
-                                )}
+                                {getServerError("mobile")}
                             </p>
-
                         )}
 
                     </div>
@@ -435,100 +452,41 @@ export default function UserForm({
                         <Controller
                             name="role"
                             control={control}
-                            render={({
-                                field,
-                            }) => (
-
+                            render={({ field }) => (
                                 <Select
-                                    value={
-                                        field.value ||
-                                        undefined
-                                    }
-                                    onValueChange={
-                                        field.onChange
-                                    }
+                                    value={field.value}
+                                    defaultValue={field.value}
+                                    onValueChange={field.onChange}
                                 >
-
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select role" />
                                     </SelectTrigger>
 
-                                    {/* <SelectContent>
-
-                                        <SelectItem value="admin">
-                                            Admin
-                                        </SelectItem>
-
-                                        <SelectItem value="user">
-                                            User
-                                        </SelectItem>
-
-                                    </SelectContent> */}
-
                                     <SelectContent>
-
-                                        {rolesLoading ? (
-
+                                        {roles.map((role) => (
                                             <SelectItem
-                                                value="__loading"
-                                                disabled
+                                                key={role.value}
+                                                value={role.value}
                                             >
-                                                Loading roles...
+                                                {role.label}
                                             </SelectItem>
-
-                                        ) : roles.length === 0 ? (
-
-                                            <SelectItem
-                                                value="__empty"
-                                                disabled
-                                            >
-                                                No roles available
-                                            </SelectItem>
-
-                                        ) : (
-
-                                            roles.map((role) => (
-
-                                                <SelectItem
-                                                    key={role.value}
-                                                    value={role.value}
-                                                >
-                                                    {role.label}
-                                                </SelectItem>
-
-                                            ))
-
-                                        )}
-
+                                        ))}
                                     </SelectContent>
-
                                 </Select>
 
                             )}
                         />
 
                         {errors.role && (
-
                             <p className="text-sm text-destructive">
-                                {
-                                    errors
-                                        .role
-                                        .message
-                                }
+                                {errors.role.message}
                             </p>
-
                         )}
 
-                        {getServerError(
-                            "role"
-                        ) && (
-
+                        {getServerError("role") && (
                             <p className="text-sm text-destructive">
-                                {getServerError(
-                                    "role"
-                                )}
+                                {getServerError("role")}
                             </p>
-
                         )}
 
                     </div>
@@ -544,19 +502,15 @@ export default function UserForm({
                         <Controller
                             name="is_active"
                             control={control}
-                            render={({
-                                field,
-                            }) => (
+                            render={({ field }) => (
 
                                 <Select
                                     value={
                                         field.value
-                                            ? "1"
-                                            : "0"
+                                            ? "Active"
+                                            : "Inactive"
                                     }
-                                    onValueChange={(
-                                        value
-                                    ) =>
+                                    onValueChange={(value) =>
                                         field.onChange(
                                             value === "1"
                                         )
@@ -584,16 +538,10 @@ export default function UserForm({
                             )}
                         />
 
-                        {getServerError(
-                            "is_active"
-                        ) && (
-
+                        {getServerError("is_active") && (
                             <p className="text-sm text-destructive">
-                                {getServerError(
-                                    "is_active"
-                                )}
+                                {getServerError("is_active")}
                             </p>
-
                         )}
 
                     </div>
@@ -628,7 +576,10 @@ export default function UserForm({
                         text-sm
                         text-muted-foreground
                     ">
-                        Set the user's login password.
+                        {isEdit
+                            ? "Leave password blank to keep the current password."
+                            : "Set the user's login password."
+                        }
                     </p>
 
                 </div>
@@ -649,9 +600,12 @@ export default function UserForm({
                             className="text-sm font-medium"
                         >
                             Password
-                            <span className="ml-1 text-destructive">
-                                *
-                            </span>
+
+                            {!isEdit && (
+                                <span className="ml-1 text-destructive">
+                                    *
+                                </span>
+                            )}
                         </label>
 
                         <div className="relative">
@@ -663,11 +617,13 @@ export default function UserForm({
                                         ? "text"
                                         : "password"
                                 }
-                                placeholder="Enter password"
+                                placeholder={
+                                    isEdit
+                                        ? "Leave blank to keep current password"
+                                        : "Enter password"
+                                }
                                 className="pr-10"
-                                {...register(
-                                    "password"
-                                )}
+                                {...register("password")}
                             />
 
                             <button
@@ -682,44 +638,29 @@ export default function UserForm({
                                 "
                                 onClick={() =>
                                     setShowPassword(
-                                        (value) =>
-                                            !value
+                                        (value) => !value
                                     )
                                 }
                             >
-
                                 {showPassword ? (
                                     <EyeOff className="h-4 w-4" />
                                 ) : (
                                     <Eye className="h-4 w-4" />
                                 )}
-
                             </button>
 
                         </div>
 
                         {errors.password && (
-
                             <p className="text-sm text-destructive">
-                                {
-                                    errors
-                                        .password
-                                        .message
-                                }
+                                {errors.password.message}
                             </p>
-
                         )}
 
-                        {getServerError(
-                            "password"
-                        ) && (
-
+                        {getServerError("password") && (
                             <p className="text-sm text-destructive">
-                                {getServerError(
-                                    "password"
-                                )}
+                                {getServerError("password")}
                             </p>
-
                         )}
 
                     </div>
@@ -733,9 +674,12 @@ export default function UserForm({
                             className="text-sm font-medium"
                         >
                             Confirm Password
-                            <span className="ml-1 text-destructive">
-                                *
-                            </span>
+
+                            {!isEdit && (
+                                <span className="ml-1 text-destructive">
+                                    *
+                                </span>
+                            )}
                         </label>
 
                         <div className="relative">
@@ -747,7 +691,11 @@ export default function UserForm({
                                         ? "text"
                                         : "password"
                                 }
-                                placeholder="Confirm password"
+                                placeholder={
+                                    isEdit
+                                        ? "Leave blank to keep current password"
+                                        : "Confirm password"
+                                }
                                 className="pr-10"
                                 {...register(
                                     "password_confirmation"
@@ -766,24 +714,20 @@ export default function UserForm({
                                 "
                                 onClick={() =>
                                     setShowPasswordConfirmation(
-                                        (value) =>
-                                            !value
+                                        (value) => !value
                                     )
                                 }
                             >
-
                                 {showPasswordConfirmation ? (
                                     <EyeOff className="h-4 w-4" />
                                 ) : (
                                     <Eye className="h-4 w-4" />
                                 )}
-
                             </button>
 
                         </div>
 
                         {errors.password_confirmation && (
-
                             <p className="text-sm text-destructive">
                                 {
                                     errors
@@ -791,19 +735,18 @@ export default function UserForm({
                                         .message
                                 }
                             </p>
-
                         )}
 
                         {getServerError(
                             "password_confirmation"
                         ) && (
-
                             <p className="text-sm text-destructive">
-                                {getServerError(
-                                    "password_confirmation"
-                                )}
+                                {
+                                    getServerError(
+                                        "password_confirmation"
+                                    )
+                                }
                             </p>
-
                         )}
 
                     </div>
@@ -838,16 +781,18 @@ export default function UserForm({
                     type="submit"
                     disabled={loading}
                 >
-
                     {loading
-                        ? "Creating..."
-                        : "Create User"}
-
+                        ? isEdit
+                            ? "Updating..."
+                            : "Creating..."
+                        : isEdit
+                            ? "Update User"
+                            : "Create User"
+                    }
                 </Button>
 
             </div>
 
         </form>
-
     );
 }

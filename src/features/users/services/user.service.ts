@@ -1,7 +1,7 @@
 import axiosClient from "@/api/axios";
 import { ENDPOINTS } from "@/api/endpoints";
 import type { User, UserListParams, CreateUserPayload, UpdateUserPayload, } from "../types/user";
-import type { PaginatedResponse } from "@/types/api";
+import type { PaginatedResponse, ApiResponse } from "@/types/api";
 
 export const userService = {
     list(params: UserListParams) {
@@ -14,7 +14,7 @@ export const userService = {
     },
 
     details(uuid: string) {
-        return axiosClient.get(
+        return axiosClient.get<ApiResponse<User>>(
             ENDPOINTS.users.details(uuid)
         );
     },

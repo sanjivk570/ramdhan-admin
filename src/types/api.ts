@@ -11,3 +11,11 @@ export interface PaginatedResponse<T> {
     data: T[];
     meta: PaginationMeta;
 }
+
+export interface ApiResponse<T> {
+    success: boolean;
+    message: string;
+    data: T;
+    errors: unknown;
+    meta: unknown;
+}

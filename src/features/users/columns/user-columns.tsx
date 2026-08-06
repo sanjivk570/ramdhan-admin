@@ -1,8 +1,11 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import type { User } from "../types/user";
+import { Button } from "@/components/ui/button";
 import { SortableHeader } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";
+import { Link } from "react-router-dom";
+import { ROUTES } from "@/app/router/route-paths";
 
 export const columns: ColumnDef<User>[] = [
     {
@@ -108,14 +111,21 @@ export const columns: ColumnDef<User>[] = [
         },
         enableSorting: false,
         enableHiding: false,
-        size: 120,
+        size: 140,
         cell: ({ row }) => (
-            <button
-                className="rounded border px-2 py-1 text-sm"
-                onClick={() => console.log(row.original)}
-            >
-                View
-            </button>
+            <div className="flex items-center gap-2">
+
+                <Button variant="outline" size="sm" >
+                    <Link to={`${ROUTES.USERS}/${row.original.uuid}/edit`} > Edit </Link>
+                </Button>
+                
+                <button
+                    className="rounded border px-2 py-1 text-sm"
+                    onClick={() => console.log(row.original)}
+                >
+                    View
+                </button>
+            </div>
         ),
     }
 

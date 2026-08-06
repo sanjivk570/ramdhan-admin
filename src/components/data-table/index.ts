@@ -10,3 +10,4 @@ export { default as SortableHeader } from "./SortableHeader";
 export { default as DataTableLoading } from "./DataTableLoading";
 export { default as DataTableEmpty } from "./DataTableEmpty";
 export { default as DataTableColumnVisibility } from "./DataTableColumnVisibility";
+export { default as DataTableActions } from "./DataTableActions";

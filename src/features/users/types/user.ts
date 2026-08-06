@@ -1,3 +1,9 @@
+export interface UserRole {
+    id: number;
+    name: string;
+    display_name: string;
+}
+
 export interface User {
     uuid: string;
     first_name: string;
@@ -7,6 +13,9 @@ export interface User {
     country_code: string | null;
     avatar: string | null;
     is_active: boolean;
+    role: UserRole | null;
+    password?: string;
+    password_confirmation?: string;
     created_at: string;
     updated_at: string;
 }

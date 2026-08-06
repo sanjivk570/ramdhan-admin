@@ -3,12 +3,14 @@ import { DataTable, useDataTable } from "@/components/data-table";
 import { useUsers } from "../hooks/useUsers";
 import { userTableConfig } from "../config/user-table-config";
 import { ROUTES } from "../../../app/router/route-paths";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function UserListPage() {
     const table = useDataTable({
         storageKey: "users",
     });
+
+    const navigate = useNavigate();
 
     const {data, isLoading } = useUsers(table.query as any);
 
