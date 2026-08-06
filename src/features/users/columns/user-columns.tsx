@@ -2,12 +2,21 @@ import type { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import type { User } from "../types/user";
 import { Button } from "@/components/ui/button";
-import { SortableHeader } from "@/components/data-table";
+import { SortableHeader, DataTableActions } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/app/router/route-paths";
 
-export const columns: ColumnDef<User>[] = [
+export interface UserColumnActions {
+    onView: (user: User) => void;
+    onEdit: (user: User) => void;
+    onDelete: (user: User) => void;
+    onActivate: (user: User) => void;
+    onDeactivate: (user: User) => void;
+}
+
+
+export function getUserColumns({ onView, onEdit, onDelete, onActivate, onDeactivate, }: UserColumnActions): ColumnDef<User>[] { return [
     {
         accessorKey: "first_name",
         meta: {
@@ -103,30 +112,56 @@ export const columns: ColumnDef<User>[] = [
             ),
     },
 
-    {
-        id: "actions",
-        header: "Actions",
-        meta: {
-            title: "Actions",
-        },
-        enableSorting: false,
-        enableHiding: false,
-        size: 140,
-        cell: ({ row }) => (
-            <div className="flex items-center gap-2">
+    // {
+    //     id: "actions",
+    //     header: "Actions",
+    //     meta: {
+    //         title: "Actions",
+    //     },
+    //     enableSorting: false,
+    //     enableHiding: false,
+    //     size: 140,
+    //     cell: ({ row }) => (
+    //         <div className="flex items-center gap-2">
 
-                <Button variant="outline" size="sm" >
-                    <Link to={`${ROUTES.USERS}/${row.original.uuid}/edit`} > Edit </Link>
-                </Button>
+    //             <Button variant="outline" size="sm" >
+    //                 <Link to={`${ROUTES.USERS}/${row.original.uuid}/edit`} > Edit </Link>
+    //             </Button>
                 
-                <button
-                    className="rounded border px-2 py-1 text-sm"
-                    onClick={() => console.log(row.original)}
-                >
-                    View
-                </button>
-            </div>
-        ),
-    }
+    //             <button
+    //                 className="rounded border px-2 py-1 text-sm"
+    //                 onClick={() => console.log(row.original)}
+    //             >
+    //                 View
+    //             </button>
+    //         </div>
+    //     ),
+    // }
 
-];
+    { 
+        id: "actions", 
+        header: "Actions", 
+        meta: { 
+            title: "Actions", 
+        }, 
+        enableSorting: false, 
+        enableHiding: false, 
+        size: 60, 
+        cell: ({ row }) => 
+            { 
+                const user = row.original; 
+                return ( 
+                    <DataTableActions 
+                        onView={() => onView(user) } 
+                        onEdit={() => onEdit(user) } 
+                        onDelete={() => onDelete(user) } 
+                        onActivate={() => onActivate(user) } 
+                        onDeactivate={() => onDeactivate(user) } 
+                        isActive={ user.is_active }
+                     /> 
+                ); 
+            }, 
+    },
+
+]
+}

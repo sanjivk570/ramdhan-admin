@@ -59,7 +59,7 @@ export default function DataTableActions({
     return (
         <DropdownMenu>
 
-            <DropdownMenuTrigger asChild>
+            {/* <DropdownMenuTrigger asChild>
 
                 <Button
                     variant="ghost"
@@ -74,6 +74,20 @@ export default function DataTableActions({
                     </span>
                 </Button>
 
+            </DropdownMenuTrigger> */}
+
+            <DropdownMenuTrigger
+                className="
+                    inline-flex
+                    h-8
+                    w-8
+                    items-center
+                    justify-center
+                    rounded-md
+                    hover:bg-muted
+                "
+            >
+                <MoreHorizontal className="h-4 w-4" />
             </DropdownMenuTrigger>
 
             <DropdownMenuContent

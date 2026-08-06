@@ -30,7 +30,54 @@ export default function UserListPage() {
         : undefined;
     return (
         <DataTable
-            config={userTableConfig}
+            //config={userTableConfig}
+
+            config={userTableConfig({
+
+                onView: (user) => {
+
+                    navigate(
+                        `${ROUTES.USERS}/${user.uuid}`
+                    );
+
+                },
+
+                onEdit: (user) => {
+
+                    navigate(
+                        `${ROUTES.USERS}/${user.uuid}/edit`
+                    );
+
+                },
+
+                onDelete: (user) => {
+
+                    console.log(
+                        "Delete:",
+                        user.uuid
+                    );
+
+                },
+
+                onActivate: (user) => {
+
+                    console.log(
+                        "Activate:",
+                        user.uuid
+                    );
+
+                },
+
+                onDeactivate: (user) => {
+
+                    console.log(
+                        "Deactivate:",
+                        user.uuid
+                    );
+
+                },
+
+            })}
             table={table}
             rows={data?.data ?? []}
             meta={meta}
