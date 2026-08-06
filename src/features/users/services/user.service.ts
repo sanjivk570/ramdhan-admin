@@ -45,15 +45,10 @@ export const userService = {
         );
     },
 
-    activate(uuid: string) {
-        return axiosClient.patch(
-            ENDPOINTS.users.activate(uuid)
-        );
+    updateStatus( uuid: string, status: boolean ) { 
+        return axiosClient.patch( 
+            ENDPOINTS.users.status(uuid), { status, } 
+        ); 
     },
 
-    deactivate(uuid: string) {
-        return axiosClient.patch(
-            ENDPOINTS.users.deactivate(uuid)
-        );
-    },
 };

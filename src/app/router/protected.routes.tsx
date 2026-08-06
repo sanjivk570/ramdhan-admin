@@ -6,7 +6,7 @@ import DashboardPage from "@/features/dashboard/pages/DashboardPage";
 import UserListPage from "@/features/users/pages/UserListPage";
 import CreateUserPage from "@/features/users/pages/CreateUserPage";
 import EditUserPage from "@/features/users/pages/EditUserPage";
-//import UserDetailsPage from "@/features/users/pages/UserDetailsPage";
+import UserDetailsPage from "@/features/users/pages/UserDetailsPage";
 
 //For Role section
 import RoleListPage from "@/features/roles/pages/RoleListPage";
@@ -29,10 +29,10 @@ export const protectedRoutes = [
         path: ROUTES.USERS + "/create",
         element: <CreateUserPage />,
     },
-    // {
-    //     path: ROUTES.USERS + "/:uuid",
-    //     element: <UserDetailsPage />,
-    // },
+    {
+        path: ROUTES.USERS + "/:uuid",
+        element: <UserDetailsPage />,
+    },
     {
         path: ROUTES.USERS + "/:uuid/edit",
         element: <EditUserPage />,

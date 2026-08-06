@@ -15,8 +15,7 @@ export const ENDPOINTS = {
         details: (uuid: string) => `/users/${uuid}`,
         delete: (uuid: string) => `/users/${uuid}`,
         restore: (uuid: string) => `/users/${uuid}/restore`,
-        activate: (uuid: string) => `/users/${uuid}/activate`,
-        deactivate: (uuid: string) => `/users/${uuid}/deactivate`,
+        status: (uuid: string) => `/users/${uuid}/status`,
     },
 
     roles: {

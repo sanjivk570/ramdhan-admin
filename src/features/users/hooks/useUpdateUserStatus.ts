@@ -7,17 +7,26 @@ import { userService } from "../services/user.service";
 
 import { QUERY_KEYS } from "@/constants/query-keys";
 
-export function useDeleteUser() {
+interface UpdateUserStatusPayload {
+    uuid: string;
+    status: boolean;
+}
+
+export function useUpdateUserStatus() {
 
     const queryClient =
         useQueryClient();
 
     return useMutation({
 
-        mutationFn: (
-            uuid: string
-        ) =>
-            userService.delete(uuid),
+        mutationFn: ({
+            uuid,
+            status,
+        }: UpdateUserStatusPayload) =>
+            userService.updateStatus(
+                uuid,
+                status
+            ),
 
         onSuccess: () => {
 
