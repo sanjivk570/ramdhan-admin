@@ -219,6 +219,8 @@ export default function EditRolePage() {
                     )
                 }
 
+                mode = "edit"
+
             />
 
             {/* Permissions */}

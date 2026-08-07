@@ -146,7 +146,7 @@ export default function UserListPage() {
                     },
 
                 })}
-                table={table}
+                table={table as any}
                 rows={data?.data ?? []}
                 meta={meta}
                 loading={isLoading}

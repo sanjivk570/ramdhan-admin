@@ -41,6 +41,8 @@ import {
 
 interface RoleFormProps {
 
+    mode?: "create" | "edit";
+
     initialValues?: RoleFormData;
 
     loading?: boolean;
@@ -62,6 +64,8 @@ interface RoleFormProps {
 
 export default function RoleForm({
 
+    mode = "create",
+
     initialValues,
 
     loading = false,
@@ -76,40 +80,15 @@ export default function RoleForm({
 
 }: RoleFormProps) {
 
-    // const {
-    //     register,
-    //     control,
-    //     handleSubmit,
-    //     formState: {
-    //         errors,
-    //     },
-    // } = useForm<RoleFormData>({
-
-    //     resolver:
-    //         zodResolver(roleSchema),
-
-    //     defaultValues:
-    //     initialValues ?? {
-
-    //         name: "",
-
-    //         display_name: "",
-
-    //         description: "",
-
-    //         guard_name: "web",
-
-    //         is_system: false,
-
-    //     },
-
-    // });
+    const isEdit = mode === "edit";
 
     const {
         register,
         control,
         handleSubmit,
         reset,
+        watch,
+        setValue,
         formState: {
             errors,
         },
@@ -133,6 +112,23 @@ export default function RoleForm({
         },
 
     });
+
+    const generateSlug = (
+        value: string
+    ) => {
+        return value
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-]/g, "")
+            .replace(/\s+/g, "-")
+            .replace(/-+/g, "-");
+    };
+
+    const displayName = watch("display_name");
+
+    useEffect(() => { 
+        const slug = generateSlug( displayName || "" ); setValue( "name", slug, { shouldValidate: true, shouldDirty: true, } ); 
+    }, [ displayName, setValue, ]);
 
     useEffect(() => {
         if (initialValues) {
@@ -229,54 +225,7 @@ export default function RoleForm({
                     md:grid-cols-2
                 ">
 
-                    {/* Name */}
-
-                    <div className="space-y-2">
-
-                        <label
-                            htmlFor="name"
-                            className="text-sm font-medium"
-                        >
-                            Name
-                            <span className="ml-1 text-destructive">
-                                *
-                            </span>
-                        </label>
-
-                        <Input
-                            id="name"
-                            placeholder="Enter Name"
-                            {...register("name")}
-                        />
-
-                        {errors.name && (
-
-                            <p className="text-sm text-destructive">
-                                {
-                                    errors
-                                        .name
-                                        .message
-                                }
-                            </p>
-
-                        )}
-
-                        {getServerError("name") && (
-
-                            <p className="text-sm text-destructive">
-                                {
-                                    getServerError(
-                                        "name"
-                                    )
-                                }
-                            </p>
-
-                        )}
-
-                    </div>
-
                     {/* Display Name */}
-
                     <div className="space-y-2">
 
                         <label
@@ -317,6 +266,52 @@ export default function RoleForm({
                                 {
                                     getServerError(
                                         "display_name"
+                                    )
+                                }
+                            </p>
+
+                        )}
+
+                    </div>
+
+                    {/* Name */}
+                    <div className="space-y-2">
+
+                        <label
+                            htmlFor="name"
+                            className="text-sm font-medium"
+                        >
+                            Name
+                            <span className="ml-1 text-destructive">
+                                *
+                            </span>
+                        </label>
+
+                        {/* <Input
+                            id="name"
+                            placeholder="Enter Name"
+                            {...register("name")}
+                        /> */}
+                        <Input id="name" placeholder="Auto generated" readOnly className="bg-muted" {...register("name")} />
+
+                        {errors.name && (
+
+                            <p className="text-sm text-destructive">
+                                {
+                                    errors
+                                        .name
+                                        .message
+                                }
+                            </p>
+
+                        )}
+
+                        {getServerError("name") && (
+
+                            <p className="text-sm text-destructive">
+                                {
+                                    getServerError(
+                                        "name"
                                     )
                                 }
                             </p>
@@ -490,8 +485,13 @@ export default function RoleForm({
                 >
 
                     {loading
-                        ? "Creating..."
-                        : "Create Role"}
+                       ? isEdit
+                            ? "Updating..."
+                            : "Creating..."
+                        : isEdit
+                            ? "Update Role"
+                            : "Create Role"
+                    }
 
                 </Button>
 

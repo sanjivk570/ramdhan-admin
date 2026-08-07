@@ -285,28 +285,7 @@ export default function RoleDetailsPage() {
                     md:grid-cols-2
                 ">
 
-                    {/* Role Name */}
-
-                    <div>
-
-                        <p className="
-                            text-xs
-                            font-medium
-                            uppercase
-                            tracking-wide
-                            text-muted-foreground
-                        ">
-                            Role Name
-                        </p>
-
-                        <p className="mt-1 font-medium">
-                            {role.name}
-                        </p>
-
-                    </div>
-
                     {/* Display Name */}
-
                     <div>
 
                         <p className="
@@ -321,6 +300,25 @@ export default function RoleDetailsPage() {
 
                         <p className="mt-1 font-medium">
                             {role.display_name}
+                        </p>
+
+                    </div>
+
+                    {/* Role Name */}
+                    <div>
+
+                        <p className="
+                            text-xs
+                            font-medium
+                            uppercase
+                            tracking-wide
+                            text-muted-foreground
+                        ">
+                            Role Name
+                        </p>
+
+                        <p className="mt-1 font-medium">
+                            {role.name}
                         </p>
 
                     </div>
