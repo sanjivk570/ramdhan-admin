@@ -20,7 +20,6 @@ export default function LoginForm() {
     });
 
     function onSubmit(data: LoginFormData) {
-        //console.log(data);
         login.mutate(data);
     }
 

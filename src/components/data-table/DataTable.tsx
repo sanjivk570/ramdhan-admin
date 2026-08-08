@@ -40,6 +40,7 @@ export function DataTable<T extends RowData>({
                 {config.exportColumns && (
 
                     <ExportCsvButton
+                    
 
                         filename={config.storageKey}
 

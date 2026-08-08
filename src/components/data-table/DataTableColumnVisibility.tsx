@@ -40,7 +40,6 @@ export default function DataTableColumnVisibility<TData>({
                             // }
 
                             onCheckedChange={(value) => {
-                                console.log(column.id, column.getIsVisible());
 
                                 column.toggleVisibility(!!value);
                             }}

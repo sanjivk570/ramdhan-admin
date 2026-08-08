@@ -4,6 +4,10 @@ export interface CsvColumn<T> {
 
     title: string;
 
+    value?: (
+        row: T
+    ) => string | number | boolean | null | undefined;
+
 }
 
 export function exportCsv<T>(
@@ -22,7 +26,9 @@ export function exportCsv<T>(
 
         columns.map(col => {
 
-            const value = row[col.key];
+            //const value = row[col.key];
+
+            const value = col.value ? col.value(row) : row[col.key];
 
             return `"${String(value ?? "").replace(/"/g, '""')}"`;
 

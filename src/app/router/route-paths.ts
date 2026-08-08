@@ -7,4 +7,5 @@ export const ROUTES = {
     USERS: "/users",
     ROLES: "/roles",
     PERMISSIONS: "/permissions",
+    CATEGORIES: "/categories",
 } as const;

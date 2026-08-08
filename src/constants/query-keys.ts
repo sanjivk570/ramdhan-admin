@@ -11,4 +11,6 @@ export const QUERY_KEYS = {
     USERS: "users",
     ROLES: "roles",
     PERMISSIONS: "permissions",
+    DASHBOARD: "dashboard",
+    CATEGORIES: "categories",
 } as const;

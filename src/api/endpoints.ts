@@ -30,4 +30,19 @@ export const ENDPOINTS = {
     permissions: {
         list: "/permissions",
     },
+
+    dashboard: {
+        index: "/dashboard",
+    },
+
+    categories: {
+        list: "/categories",
+        details: (uuid: string) => `/categories/${uuid}`,
+        create: "/categories",
+        update: (uuid: string) =>  `/categories/${uuid}`,
+        delete: (uuid: string) => `/categories/${uuid}`,
+        restore: (uuid: string) => `/categories/${uuid}/restore`,
+        status: (uuid: string) => `/categories/${uuid}/status`,
+    },
+
 } as const;

@@ -27,9 +27,14 @@ export const sidebarItems: SidebarItem[] = [
         url: "/roles",
         icon: ShieldCheck,
     },
+    // {
+    //     title: "Permissions",
+    //     url: "/permissions",
+    //     icon: KeyRound,
+    // },
     {
-        title: "Permissions",
-        url: "/permissions",
+        title: "Categories",
+        url: "/categories",
         icon: KeyRound,
     },
 ];

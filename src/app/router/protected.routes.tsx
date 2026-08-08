@@ -14,6 +14,12 @@ import CreateRolePage from "@/features/roles/pages/CreateRolePage";
 import RoleDetailsPage from "@/features/roles/pages/RoleDetailsPage";
 import EditRolePage from "@/features/roles/pages/EditRolePage";
 
+//For Role section
+import CategoryListPage from "@/features/categories/pages/CategoryListPage";
+import CreateCategoryPage from "@/features/categories/pages/CreateCategoryPage";
+import EditCategoryPage from "@/features/categories/pages/EditCategoryPage";
+import CategoryDetailPage from "@/features/categories/pages/CategoryDetailPage";
+
 import { ROUTES } from "./route-paths";
 
 export const protectedRoutes = [
@@ -60,5 +66,23 @@ export const protectedRoutes = [
     {
         path: ROUTES.ROLES + "/:id",
         element: <RoleDetailsPage />,
+    },
+
+    //For Category
+    {
+        path: ROUTES.CATEGORIES,
+        element: <CategoryListPage />,
+    },
+    {
+        path: ROUTES.CATEGORIES+ "/create",
+        element: <CreateCategoryPage />,
+    },
+    {
+        path: ROUTES.CATEGORIES+ "/:uuid/edit",
+        element: <EditCategoryPage />,
+    },
+    {
+        path: ROUTES.CATEGORIES+ "/:uuid",
+        element: <CategoryDetailPage />,
     },
 ];

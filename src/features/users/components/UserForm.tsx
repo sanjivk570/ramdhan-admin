@@ -176,8 +176,6 @@ export default function UserForm({
         reset,
     ]);
 
-    console.log("Initial Role:", initialData?.role);
-    console.log("Roles:", roles);
     const getServerError = (
         field: string
     ) => {
