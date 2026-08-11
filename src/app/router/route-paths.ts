@@ -8,4 +8,8 @@ export const ROUTES = {
     ROLES: "/roles",
     PERMISSIONS: "/permissions",
     CATEGORIES: "/categories",
+    PRODUCTS: "/products",
+    PRODUCT_VARIANTS: "/product-variants",
+
+    INVENTORY: "/inventory",
 } as const;

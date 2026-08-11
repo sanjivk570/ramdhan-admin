@@ -256,7 +256,6 @@ export default function EditCategoryPage() {
     }
 
     return (
-console.log(category),
         <div className="space-y-6">
 
             {/* Page Header */}

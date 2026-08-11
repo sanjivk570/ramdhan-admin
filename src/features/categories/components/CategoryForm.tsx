@@ -451,7 +451,6 @@ export default function CategoryForm({
                             name="parent_id"
                             control={control}
                             render={({ field }) => {
-                                console.log(field, 'this is field');
 
                                 const selectedCategory =
                                     categories.find(
@@ -502,8 +501,6 @@ export default function CategoryForm({
 
                                             {categories.map(
                                                 (category) => (
-                                                    //console.log(category),
-
                                                     <SelectItem
                                                         key={
                                                             category.value

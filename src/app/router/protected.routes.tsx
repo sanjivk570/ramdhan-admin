@@ -20,6 +20,19 @@ import CreateCategoryPage from "@/features/categories/pages/CreateCategoryPage";
 import EditCategoryPage from "@/features/categories/pages/EditCategoryPage";
 import CategoryDetailPage from "@/features/categories/pages/CategoryDetailPage";
 
+//For product section
+import ProductListPage from "@/features/products/pages/ProductListPage";
+import CreateProductPage from "@/features/products/pages/CreateProductPage";
+import EditProductPage from "@/features/products/pages/EditProductPage";
+import ProductDetailsPage from "@/features/products/pages/ProductDetailsPage";
+
+import CreateProductVariantPage from "@/features/products/pages/CreateProductVariantPage";
+import EditProductVariantPage from "@/features/products/pages/EditProductVariantPage";
+
+//For inventory
+import InventoryListPage from "@/features/inventory/pages/InventoryListPage";
+import InventoryDetailsPage from "@/features/inventory/pages/InventoryDetailsPage";
+
 import { ROUTES } from "./route-paths";
 
 export const protectedRoutes = [
@@ -85,4 +98,47 @@ export const protectedRoutes = [
         path: ROUTES.CATEGORIES+ "/:uuid",
         element: <CategoryDetailPage />,
     },
+
+
+    //For product
+    {
+        path: ROUTES.PRODUCTS,
+        element: <ProductListPage />,
+    },
+    {
+        path: ROUTES.PRODUCTS+ "/create",
+        element: <CreateProductPage />,
+    },
+    {
+        path: ROUTES.PRODUCTS+ "/:uuid/edit",
+        element: <EditProductPage />,
+    },
+    {
+        path: ROUTES.PRODUCTS+ "/:uuid",
+        element: <ProductDetailsPage />,
+    },
+
+    //For product variants
+    // {
+    //     path: ROUTES.PRODUCT_VARIANTS+ "/create",
+    //     element: <CreateProductVariantPage />,
+    // },
+    {
+        path: ROUTES.PRODUCTS+ "/:uuid/variants/create",
+        element: <CreateProductVariantPage />,
+    },
+    {
+        path: ROUTES.PRODUCT_VARIANTS+ "/:uuid/edit/:variantUuid",
+        element: <EditProductVariantPage />,
+    },
+
+    //For Inventory
+    {
+        path: ROUTES.INVENTORY,
+        element: <InventoryListPage />,
+    },
+    {
+        path: ROUTES.INVENTORY+ "/:uuid",
+        element: <InventoryDetailsPage />,
+    }, 
 ];

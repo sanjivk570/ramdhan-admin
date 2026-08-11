@@ -45,4 +45,53 @@ export const ENDPOINTS = {
         status: (uuid: string) => `/categories/${uuid}/status`,
     },
 
+    products: {
+        list: "/products",
+        details: (uuid: string) => `/products/${uuid}`,
+        create: "/products",
+        update: (uuid: string) =>  `/products/${uuid}`,
+        delete: (uuid: string) => `/products/${uuid}`,
+        restore: (uuid: string) => `/products/${uuid}/restore`,
+        status: (uuid: string) => `/products/${uuid}/status`,
+        forceDelete: (uuid: string) => `/products/${uuid}/force`,
+
+        variants: {
+            list: (uuid: string) => `/products/${uuid}/variants`,
+            details: (uuid: string, variantUuid: string) => `/products/${uuid}/variants/${variantUuid}`,
+            create: (uuid: string) => `/products/${uuid}/variants`,
+            update: (uuid: string, variantUuid: string) => `/products/${uuid}/variants/${variantUuid}`,
+            delete: (uuid: string, variantUuid: string) => `/products/${uuid}/variants/${variantUuid}`,
+            //restore: (uuid: string, vuuid: string) => `/products/${uuid}/variants/${vuuid}/restore`,
+            //status: (uuid: string, vuuid: string) => `/products/${uuid}/variants/${vuuid}/status`,
+            setDefault: (uuid: string, variantUuid: string) => `/products/${uuid}/variants/${variantUuid}/default`,
+        },
+
+    },
+
+    attributes: {
+        list: "/attributes",
+        details: (uuid: string) => `/attributes/${uuid}`,
+        create: "/attributes",
+        update: (uuid: string) =>  `/attributes/${uuid}`,
+        delete: (uuid: string) => `/attributes/${uuid}`,
+        restore: (uuid: string) => `/attributes/${uuid}/restore`,
+        //status: (uuid: string) => `/categories/${uuid}/status`,
+    },
+
+    inventory: {
+        list: "/inventory",
+        details: (uuid: string) => `/inventory/${uuid}`,
+        stockIn: (uuid: string) => `/inventory/${uuid}/stock-in`,
+        stockOut: (uuid: string) => `/inventory/${uuid}/stock-out`,
+        adjustment: (uuid: string) => `/inventory/${uuid}/adjust`,
+        transactions: (uuid: string) => `/inventory/${uuid}/transactions`,
+    },
+
+    units: {
+        list: "/units",
+    },
+    taxClasses: {
+        list: "/tax-classes",
+    },
+
 } as const;

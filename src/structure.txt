@@ -1,0 +1,297 @@
+Folder PATH listing for volume Windows
+Volume serial number is 000000A6 FC91:C721
+C:.
+|   App.css
+|   App.tsx
+|   index.css
+|   main.tsx
+|   structure.txt
+|   
++---api
+|       axios.ts
+|       endpoints.ts
+|       pagination.ts
+|       response.ts
+|       types.ts
+|       
++---app
+|   \---router
+|           index.tsx
+|           protected.routes.tsx
+|           public.routes.tsx
+|           route-paths.ts
+|           
++---assets
++---components
+|   +---common
+|   |       Card.tsx
+|   |       Loading.tsx
+|   |       PageContainer.tsx
+|   |       PageHeader.tsx
+|   |       ProtectedRoute.tsx
+|   |       
+|   +---data-table
+|   |   |   DataTable.tsx
+|   |   |   DataTableActions.tsx
+|   |   |   DataTableActiveFilters.tsx
+|   |   |   DataTableColumnVisibility.tsx
+|   |   |   DataTableEmpty.tsx
+|   |   |   DataTableFilters.tsx
+|   |   |   DataTableGrid.tsx
+|   |   |   DataTableLoading.tsx
+|   |   |   DataTablePagination.tsx
+|   |   |   DataTableSkeleton.tsx
+|   |   |   DataTableToolbar.tsx
+|   |   |   FilterDate.tsx
+|   |   |   FilterSelect.tsx
+|   |   |   FilterText.tsx
+|   |   |   index.ts
+|   |   |   SortableHeader.tsx
+|   |   |   types.ts
+|   |   |   
+|   |   \---hooks
+|   |           useDataTable.ts
+|   |           
+|   +---export
+|   |       ExportCsvButton.tsx
+|   |       
+|   \---ui
+|           alert-dialog.tsx
+|           avatar.tsx
+|           badge.tsx
+|           button.tsx
+|           card.tsx
+|           checkbox.tsx
+|           dialog.tsx
+|           dropdown-menu.tsx
+|           input.tsx
+|           label.tsx
+|           scroll-area.tsx
+|           select.tsx
+|           separator.tsx
+|           sheet.tsx
+|           skeleton.tsx
+|           sonner.tsx
+|           switch.tsx
+|           table.tsx
+|           textarea.tsx
+|           tooltip.tsx
+|           
++---config
+|       env.ts
+|       sidebar.ts
+|       
++---constants
+|       api.ts
+|       query-keys.ts
+|       
++---features
+|   +---auth
+|   |   +---components
+|   |   |       LoginForm.tsx
+|   |   |       
+|   |   +---hooks
+|   |   |       useLogin.ts
+|   |   |       
+|   |   +---pages
+|   |   |       ForgotPasswordPage.tsx
+|   |   |       LoginPage.tsx
+|   |   |       ResetPasswordPage.tsx
+|   |   |       
+|   |   +---services
+|   |   |       auth.service.ts
+|   |   |       
+|   |   +---types
+|   |   |       auth.ts
+|   |   |       
+|   |   \---validation
+|   |           login.schema.ts
+|   |           
+|   +---categories
+|   |   +---columns
+|   |   |       category-columns.tsx
+|   |   |       
+|   |   +---components
+|   |   |       CategoryForm.tsx
+|   |   |       
+|   |   +---config
+|   |   |       category-export-columns.ts
+|   |   |       category-table-config.ts
+|   |   |       filters.ts
+|   |   |       
+|   |   +---hooks
+|   |   |       useCategories.ts
+|   |   |       useCategory.ts
+|   |   |       useCreateCategory.ts
+|   |   |       useDeleteCategory.ts
+|   |   |       useUpdateCategory.ts
+|   |   |       useUpdateCategoryStatus.ts
+|   |   |       
+|   |   +---pages
+|   |   |       CategoryDetailPage.tsx
+|   |   |       CategoryListPage.tsx
+|   |   |       CreateCategoryPage.tsx
+|   |   |       EditCategoryPage.tsx
+|   |   |       
+|   |   +---services
+|   |   |       category.service.ts
+|   |   |       
+|   |   +---types
+|   |   |       category.ts
+|   |   |       
+|   |   \---validation
+|   |           category.schema.ts
+|   |           
+|   +---dashboard
+|   |   +---components
+|   |   |       DashboardHeader.tsx
+|   |   |       DashboardStats.tsx
+|   |   |       QuickActions.tsx
+|   |   |       RecentUsers.tsx
+|   |   |       UserGrowthChart.tsx
+|   |   |       
+|   |   +---hooks
+|   |   |       useDashboard.ts
+|   |   |       
+|   |   +---pages
+|   |   |       DashboardPage.tsx
+|   |   |       
+|   |   +---services
+|   |   |       dashboard.service.ts
+|   |   |       
+|   |   \---types
+|   |           dashboard.ts
+|   |           
+|   +---permissions
+|   |   +---hooks
+|   |   |       usePermissions.ts
+|   |   |       
+|   |   +---services
+|   |   |       permission.service.ts
+|   |   |       
+|   |   \---types
+|   |           permission.ts
+|   |           
+|   +---roles
+|   |   |   index.ts
+|   |   |   
+|   |   +---columns
+|   |   |       role-columns.tsx
+|   |   |       
+|   |   +---components
+|   |   |       RoleActions.tsx
+|   |   |       RoleFilters.tsx
+|   |   |       RoleForm.tsx
+|   |   |       RolePermissions.tsx
+|   |   |       RoleStatusBadge.tsx
+|   |   |       RoleToolbar.tsx
+|   |   |       
+|   |   +---config
+|   |   |       filters.ts
+|   |   |       role-export-columns.ts
+|   |   |       role-table-config.ts
+|   |   |       
+|   |   +---hooks
+|   |   |       useCreateRole.ts
+|   |   |       useDeleteRole.ts
+|   |   |       useRole.ts
+|   |   |       useRolePermissions.ts
+|   |   |       useRoles.ts
+|   |   |       useUpdateRole.ts
+|   |   |       useUpdateRolePermissions.ts
+|   |   |       
+|   |   +---pages
+|   |   |       CreateRolePage.tsx
+|   |   |       EditRolePage.tsx
+|   |   |       RoleDetailsPage.tsx
+|   |   |       RoleListPage.tsx
+|   |   |       
+|   |   +---services
+|   |   |       role.service.ts
+|   |   |       
+|   |   +---types
+|   |   |       role.ts
+|   |   |       
+|   |   \---validation
+|   |           role.schema.ts
+|   |           
+|   \---users
+|       |   index.ts
+|       |   
+|       +---columns
+|       |       user-columns.tsx
+|       |       
+|       +---components
+|       |       UserActions.tsx
+|       |       UserFilters.tsx
+|       |       UserForm.tsx
+|       |       UserStatusBadge.tsx
+|       |       UserToolbar.tsx
+|       |       
+|       +---config
+|       |       filters.ts
+|       |       user-export-columns.ts
+|       |       user-table-config.ts
+|       |       
+|       +---hooks
+|       |       useCreateUser.ts
+|       |       useDeleteUser.ts
+|       |       useUpdateUser.ts
+|       |       useUpdateUserStatus.ts
+|       |       useUser.ts
+|       |       useUsers.ts
+|       |       
+|       +---pages
+|       |       CreateUserPage.tsx
+|       |       EditUserPage.tsx
+|       |       UserDetailsPage.tsx
+|       |       UserListPage.tsx
+|       |       
+|       +---services
+|       |       user.service.ts
+|       |       
+|       +---types
+|       |       user.ts
+|       |       
+|       \---validation
+|               user.schema.ts
+|               
++---hooks
++---layouts
+|   |   AuthLayout.tsx
+|   |   DashboardLayout.tsx
+|   |   
+|   \---components
+|           AppLogo.tsx
+|           Breadcrumbs.tsx
+|           Header.tsx
+|           Logo.tsx
+|           MobileSidebar.tsx
+|           Sidebar.tsx
+|           SidebarItem.tsx
+|           UserMenu.tsx
+|           
++---lib
+|       api-error.ts
+|       axios.ts
+|       csv.ts
+|       date.ts
+|       notification.ts
+|       query-client.ts
+|       storage.ts
+|       utils.ts
+|       
++---routes
++---services
+|       test.service.ts
+|       
++---store
+|       auth.store.ts
+|       
++---styles
+|       app.css
+|       
++---types
+|       api.ts
+|       
+\---utils

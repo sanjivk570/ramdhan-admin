@@ -3,6 +3,7 @@ import {
     Users,
     ShieldCheck,
     KeyRound,
+    Package,
 } from "lucide-react";
 
 export interface SidebarItem {
@@ -36,5 +37,21 @@ export const sidebarItems: SidebarItem[] = [
         title: "Categories",
         url: "/categories",
         icon: KeyRound,
+    },
+    {
+        title: "Products",
+        url: "/products",
+        icon: KeyRound,
+    },
+    {
+        title: "Product Variants",
+        url: "/product-variants/create",
+        icon: KeyRound,
+    },
+
+    {
+        title: "Inventory",
+        url: "/inventory",
+        icon: Package,
     },
 ];
