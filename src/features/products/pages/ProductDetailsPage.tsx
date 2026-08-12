@@ -31,8 +31,12 @@ export default function ProductDetailsPage() {
             </div>
         );
     }
+    console.log(product, 'hellooo');
 
-    const lowStock = product.stock_quantity <= product.low_stock_threshold;
+    const lowStock =
+        product.inventory?.quantity != null &&
+        product.inventory?.low_stock_threshold != null &&
+        product.inventory.quantity <= product.inventory.low_stock_threshold;
 
     return (
         <div className="space-y-6">
@@ -60,9 +64,9 @@ export default function ProductDetailsPage() {
                 <div className="rounded-xl border bg-card p-5">
                     <p className="text-sm text-muted-foreground">Stock</p>
                     <p className={`mt-2 text-2xl font-semibold ${lowStock ? "text-destructive" : ""}`}>
-                        {product.stock_quantity}
+                        {product.inventory?.quantity}
                     </p>
-                    <p className="text-xs text-muted-foreground">Threshold: {product.low_stock_threshold}</p>
+                    <p className="text-xs text-muted-foreground">Threshold: {product.inventory?.low_stock_threshold}</p>
                 </div>
                 <div className="rounded-xl border bg-card p-5">
                     <p className="text-sm text-muted-foreground">Variants</p>
@@ -141,8 +145,8 @@ export default function ProductDetailsPage() {
                                     <td className="px-4 py-3 font-mono text-xs">{variant.sku}</td>
                                     <td className="px-4 py-3 text-right">₹{Number(variant.price).toLocaleString("en-IN")}</td>
                                     <td className="px-4 py-3 text-right">
-                                        <span className={variant.stock_quantity <= variant.low_stock_threshold ? "font-semibold text-destructive" : ""}>
-                                            {variant.stock_quantity}
+                                        <span className={variant.inventory && variant.inventory.quantity != null && variant.inventory.low_stock_threshold != null && variant.inventory.quantity <= variant.inventory.low_stock_threshold ? "font-semibold text-destructive" : ""}>
+                                            {variant.inventory?.quantity}
                                         </span>
                                     </td>
                                     <td className="px-4 py-3">

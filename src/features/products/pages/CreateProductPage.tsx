@@ -83,6 +83,10 @@ import { getApiErrorMessage, getApiFieldErrors } from "@/lib/api-error";
 import type { ProductFormData } from "../validation/product.schema";
 import type { CreateProductPayload } from "../types/product";
 
+import { useState } from "react";
+import ProductMediaDraft from "../components/ProductMediaDraft";
+import { useUploadProductMedia } from "../hooks/useUploadProductMedia";
+
 export default function CreateProductPage() {
     const navigate = useNavigate();
     const createProduct = useCreateProduct();
@@ -105,6 +109,9 @@ export default function CreateProductPage() {
         value: String(category.uuid ?? category.id),
     }));
 
+    const [mediaFiles, setMediaFiles] = useState<File[]>([]);
+    const uploadProductMedia = useUploadProductMedia();
+
     const handleSubmit = async (data: ProductFormData) => {
         const payload: CreateProductPayload = {
             ...data,
@@ -117,17 +124,37 @@ export default function CreateProductPage() {
         try {
             const response = await createProduct.mutateAsync(payload);
             const uuid = response.data.data?.uuid;
+            const productUuid = uuid;
+            
+            //Upload image
+            for (let index = 0; index < mediaFiles.length; index += 1) {
+                await uploadProductMedia.mutateAsync({
+                    productUuid,
+                    payload: {
+                        file: mediaFiles[index],
+                        sort_order: index,
+                        is_primary: index === 0,
+                    },
+                });
+            }
 
             notification.success(
                 "Product created successfully.",
-                "The product has been created."
+                //"The product has been created.",
+
+                mediaFiles.length
+                ? "Product and selected images have been saved."
+                : "Product has been created successfully."
+
             );
 
-            navigate(
-                uuid
-                    ? `${ROUTES.PRODUCTS}/${uuid}`
-                    : ROUTES.PRODUCTS
-            );
+            // navigate(
+            //     uuid
+            //         ? `${ROUTES.PRODUCTS}/${uuid}`
+            //         : ROUTES.PRODUCTS
+            // );
+
+            navigate(`${ROUTES.PRODUCTS}/${productUuid}/edit`);
         } catch {
             notification.error(
                 "Unable to create product.",
@@ -160,6 +187,13 @@ export default function CreateProductPage() {
                 serverMessage={getApiErrorMessage(createProduct.error)}
                 onCancel={() => navigate(ROUTES.PRODUCTS)}
             />
+
+            <ProductMediaDraft
+                files={mediaFiles}
+                onChange={setMediaFiles}
+                disabled={createProduct.isPending || uploadProductMedia.isPending}
+            />
+
         </div>
     );
 }

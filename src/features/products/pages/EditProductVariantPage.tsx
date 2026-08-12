@@ -204,9 +204,9 @@ export default function EditProductVariantPage() {
                         variant.cost_price == null
                             ? undefined
                             : Number(variant.cost_price),
-                    stock_quantity: Number(variant.stock_quantity ?? 0),
+                    stock_quantity: Number(variant.inventory?.quantity ?? 0),
                     low_stock_threshold: Number(
-                        variant.low_stock_threshold ?? 5
+                        variant.inventory?.low_stock_threshold ?? 5
                     ),
                     is_default: Boolean(variant.is_default),
                     is_active: Boolean(variant.is_active),

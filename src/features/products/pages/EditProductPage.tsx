@@ -112,6 +112,8 @@ import { getApiErrorMessage, getApiFieldErrors } from "@/lib/api-error";
 import type { ProductFormData } from "../validation/product.schema";
 import type { UpdateProductPayload } from "../types/product";
 
+import ProductMediaManager from "../components/ProductMediaManager";
+
 function normalizeCategoryUuid(category: any): string | null {
     if (!category) {
         return null;
@@ -210,7 +212,6 @@ export default function EditProductPage() {
     const selectedCategories = (product.categories ?? [])
         .map(normalizeCategoryUuid)
         .filter((value): value is string => Boolean(value));
-
     return (
         <div className="space-y-6">
             <div>
@@ -232,6 +233,7 @@ export default function EditProductPage() {
             <ProductForm
                 mode="edit"
                 initialData={{
+                    
                     name: product.name,
                     slug: product.slug,
                     sku: product.sku,
@@ -248,8 +250,12 @@ export default function EditProductPage() {
                         product.cost_price == null
                             ? undefined
                             : Number(product.cost_price),
-                    stock_quantity: Number(product.stock_quantity ?? 0),
-                    low_stock_threshold: Number(product.low_stock_threshold ?? 5),
+                    // stock_quantity: Number(product.stock_quantity ?? 0),
+                    // low_stock_threshold: Number(product.low_stock_threshold ?? 5),
+
+                    stock_quantity: Number(product.inventory?.quantity ?? 0),
+                    low_stock_threshold: Number(product.inventory?.low_stock_threshold ?? 5),
+
                     is_active: Boolean(product.is_active),
                     is_featured: Boolean(product.is_featured),
                     sort_order: Number(product.sort_order ?? 0),
@@ -266,6 +272,12 @@ export default function EditProductPage() {
                 onSubmit={handleSubmit}
                 onCancel={() => navigate(`${ROUTES.PRODUCTS}/${uuid}`)}
             />
+
+            <ProductMediaManager
+                productUuid={uuid}
+                media={(product.images ?? []) as any}
+            />
+
         </div>
     );
 }

@@ -94,4 +94,15 @@ export const ENDPOINTS = {
         list: "/tax-classes",
     },
 
+    media: {
+        list: "/media",
+        create: "/media",
+        details: (uuid: string) => `/media/${uuid}`,
+        update: (uuid: string) => `/media/${uuid}`,
+        delete: (uuid: string) => `/media/${uuid}`,
+        restore: (uuid: string) => `/media/${uuid}/restore`,
+        forceDelete: (uuid: string) => `/media/${uuid}/force`,
+        primary: (uuid: string) => `/media/${uuid}/primary`,
+    },
+
 } as const;

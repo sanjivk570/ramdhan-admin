@@ -62,14 +62,23 @@ export interface ProductVariant {
     price: number | string;
     compare_price: number | string | null;
     cost_price: number | string | null;
-    stock_quantity: number;
-    low_stock_threshold: number;
+    // stock_quantity: number;
+    // low_stock_threshold: number;
+    inventory: ProductInventory | null;
     is_default: boolean;
     is_active: boolean;
     sort_order: number;
     attribute_values?: ProductAttributeValue[];
     created_at: string;
     updated_at: string;
+}
+
+export interface ProductInventory{
+    uuid: string;
+    reserved_quantity: number,
+    available_quantity: number,
+    quantity: number;
+    low_stock_threshold: number;
 }
 
 export interface Product {
@@ -84,8 +93,9 @@ export interface Product {
     price: number | string;
     compare_price: number | string | null;
     cost_price: number | string | null;
-    stock_quantity: number;
-    low_stock_threshold: number;
+    // stock_quantity: number;
+    // low_stock_threshold: number;
+    inventory: ProductInventory | null;
     is_active: boolean;
     is_featured: boolean;
     sort_order: number;
