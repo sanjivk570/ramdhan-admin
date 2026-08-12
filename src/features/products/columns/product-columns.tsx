@@ -109,11 +109,14 @@ export function getProductColumns(
             ),
             cell: ({ row }) => {
                 const p = row.original;
-                const low = p.stock_quantity <= p.low_stock_threshold;
+                const hasInventory = !!p.inventory;
+                const quantity = p.inventory?.quantity ?? 0;
+                const lowStockThreshold = p.inventory?.low_stock_threshold ?? 0;
+                const low = hasInventory && quantity <= lowStockThreshold;
                 return (
                     <div>
                         <span className={low ? "font-semibold text-destructive" : "font-medium"}>
-                            {p.stock_quantity}
+                            {p.inventory?.quantity}
                         </span>
                         <div className="text-xs text-muted-foreground">
                             {low ? "Low stock" : "In stock"}

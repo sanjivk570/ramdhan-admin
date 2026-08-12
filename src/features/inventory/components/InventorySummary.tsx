@@ -80,6 +80,9 @@ export default function InventorySummary({ inventory }: Props) {
               <p className="mt-1 text-sm font-medium">
                 {isLowStock ? "Low Stock" : "Healthy"}
               </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Low stock threshold: {inventory.low_stock_threshold}
+              </p>
             </div>
 
             <AlertTriangle
