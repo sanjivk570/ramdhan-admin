@@ -16,8 +16,10 @@ export default function SidebarItem({ item }: Props) {
                 cn(
                     "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                     isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "hover:bg-muted"
+                        // ? "bg-primary text-primary-foreground"
+                        // : "hover:bg-muted"
+                        ? "bg-blue-600 text-white"
+                        : "text-slate-300 hover:bg-slate-800 hover:text-white"
                 )
             }
         >

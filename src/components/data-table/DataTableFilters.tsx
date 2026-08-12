@@ -202,12 +202,12 @@ export default function DataTableFilters({
     }
 
     return (
-        <div className="rounded-xl border bg-card shadow-sm">
+        <div className="rounded-xl border bg-slate-100 shadow-sm  mb-3">
             {/* Header / Toggle */}
             <button
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
-                className="flex w-full items-center justify-between px-5 py-3 text-left"
+                className="flex w-full items-center justify-between rounded-t-xl px-5 py-2 text-left"
             >
                 <div className="flex items-center gap-3">
                     <div className="flex h-8 w-8 items-center justify-center rounded-md bg-muted">
@@ -238,7 +238,7 @@ export default function DataTableFilters({
 
             {/* Filters */}
             {isOpen && (
-                <div className="border-t px-5 pb-5 pt-4">
+                <div className="rounded-b-xl border-t bg-white px-5 pb-5 pt-4">
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-5">
                         {filters.map((filter) => {
                             if (filter.type === "text") {

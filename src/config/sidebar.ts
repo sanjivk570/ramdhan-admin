@@ -2,8 +2,9 @@ import {
     LayoutDashboard,
     Users,
     ShieldCheck,
-    KeyRound,
     Package,
+    FolderTree,
+    Boxes,
 } from "lucide-react";
 
 export interface SidebarItem {
@@ -28,27 +29,16 @@ export const sidebarItems: SidebarItem[] = [
         url: "/roles",
         icon: ShieldCheck,
     },
-    // {
-    //     title: "Permissions",
-    //     url: "/permissions",
-    //     icon: KeyRound,
-    // },
     {
         title: "Categories",
         url: "/categories",
-        icon: KeyRound,
+        icon: FolderTree,
     },
     {
         title: "Products",
         url: "/products",
-        icon: KeyRound,
+        icon: Boxes,
     },
-    {
-        title: "Product Variants",
-        url: "/product-variants/create",
-        icon: KeyRound,
-    },
-
     {
         title: "Inventory",
         url: "/inventory",

@@ -60,9 +60,9 @@ export default function DataTableGrid<T>({
 
     return (
 
-        <div className="overflow-hidden rounded-xl border bg-card shadow-sm mt-4">
+        <div className="overflow-hidden rounded-xl border bg-card shadow-sm">
 
-            <div className="flex items-center justify-between border-b bg-muted/30 px-4 py-3">
+            <div className="flex items-center bg-slate-100 justify-between border-b px-4 py-3">
 
                 <div>
 

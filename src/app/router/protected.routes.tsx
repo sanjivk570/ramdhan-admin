@@ -128,7 +128,7 @@ export const protectedRoutes = [
         element: <CreateProductVariantPage />,
     },
     {
-        path: ROUTES.PRODUCT_VARIANTS+ "/:uuid/edit/:variantUuid",
+        path: ROUTES.PRODUCTS+ "/:uuid/edit/:variantUuid",
         element: <EditProductVariantPage />,
     },
 

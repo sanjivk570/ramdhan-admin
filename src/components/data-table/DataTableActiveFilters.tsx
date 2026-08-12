@@ -94,15 +94,16 @@ export default function DataTableActiveFilters({
     }
 
     return (
-        <div className="flex flex-wrap items-center gap-2 rounded-lg border bg-muted/40 p-3">
+        <div className="flex flex-wrap items-center gap-2 rounded-lg border bg-slate-100 p-3">
 
             {search && (
                 <Button
+                    className="bg-slate-400"
                     variant="secondary"
                     size="sm"
                     onClick={onSearchClear}
                 >
-                    Search : {search}
+                    Search : <span className="font-bold">{search}</span>
 
                     <X className="ml-2 h-3 w-3" />
                 </Button>
@@ -124,6 +125,8 @@ export default function DataTableActiveFilters({
 
                         variant="secondary"
 
+                        className="bg-slate-400"
+
                         size="sm"
 
                         onClick={() =>
@@ -138,13 +141,15 @@ export default function DataTableActiveFilters({
 
                         {" : "}
 
-                        {getFilterValue(
+                        <span className="font-bold">
+                            {getFilterValue(
 
-                            key,
+                                key,
 
-                            value
+                                value
 
-                        )}
+                            )}
+                        </span>
 
                         <X className="ml-2 h-3 w-3" />
 
@@ -157,14 +162,18 @@ export default function DataTableActiveFilters({
             {sorting.length > 0 && (
                 <Button
                     variant="secondary"
+                    className="bg-slate-400"
                     size="sm"
                     onClick={onSortClear}
                 >
-                    Sort : {" "} {sorting[0].id} {" "}
-                    (
-                    {sorting[0].desc ? "DESC"
-                        : "ASC"}
-                    )
+                    Sort : 
+                    <span className="font-bold">
+                        {" "} {sorting[0].id} {" "}
+                        (
+                        {sorting[0].desc ? "DESC"
+                            : "ASC"}
+                        )
+                    </span>
                     <X className="ml-2 h-3 w-3" />
 
                 </Button>
@@ -173,7 +182,7 @@ export default function DataTableActiveFilters({
             <Button
                 variant="ghost"
                 size="sm"
-                className="ml-auto"
+                className="ml-auto bg-slate-400"
                 onClick={onClearAll}
             >
                 Clear All

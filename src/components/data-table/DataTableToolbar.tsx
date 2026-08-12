@@ -47,9 +47,9 @@ export function DataTableToolbar({
 
     return (
 
-        <Card className="shadow-sm">
+        <Card className="rounded-xl border shadow-sm py-2 bg-slate-100">
 
-            <CardContent className="pt-0 pb-0 bg-card">
+            <CardContent className="pt-0 pb-0 bg-card bg-slate-100">
 
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
@@ -57,7 +57,7 @@ export function DataTableToolbar({
 
                         <Input
                             placeholder="Search..."
-                            className="w-full sm:max-w-sm"
+                            className="w-full sm:max-w-sm bg-white"
                             value={search}
                             onChange={(e) =>
                                 setSearch(e.target.value)

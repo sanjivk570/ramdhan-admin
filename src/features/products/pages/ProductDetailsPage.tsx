@@ -157,10 +157,9 @@ export default function ProductDetailsPage() {
                                     <td className="px-4 py-3">
                                         {variant.is_default ? <Badge>Default</Badge> : ""}
 
-                                        <Button onClick={() => navigate(`${ROUTES.PRODUCT_VARIANTS}/${product.uuid}/edit/${variant.uuid}`)}>
+                                        <Button onClick={() => navigate(`${ROUTES.PRODUCTS}/${product.uuid}/edit/${variant.uuid}`)}>
                                             <Layers3 className="mr-2 h-4 w-4" /> Edit
                                         </Button>
-                                        {/* <link rel="stylesheet" href="${ROUTES.PRODUCT_VARIANTS}/${variant.uuid}/edit" /> */}
                                     </td>
                                 </tr>
                             ))}

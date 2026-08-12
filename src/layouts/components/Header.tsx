@@ -1,19 +1,3 @@
-// import UserMenu from "./UserMenu";
-
-// export default function Header() {
-//     return (
-//         <header className="flex h-16 items-center justify-between border-b bg-white px-6">
-
-//             <h2 className="font-semibold">
-//                 Dashboard
-//             </h2>
-
-//             <UserMenu />
-
-//         </header>
-//     );
-// }
-
 import { Menu, Bell } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -25,7 +9,7 @@ import Breadcrumbs from "./Breadcrumbs";
 
 export default function Header() {
     return (
-        <header className="flex h-16 items-center justify-between border-b bg-background px-6">
+        <header className="flex h-16 items-center justify-between border-b bg-background px-6 bg-slate-300">
 
             {/* Left */}
 
