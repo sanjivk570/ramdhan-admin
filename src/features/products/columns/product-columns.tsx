@@ -4,6 +4,8 @@ import { DataTableActions, SortableHeader } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";
 import type { Product } from "../types/product";
 
+import { Image as ImageIcon } from "lucide-react";
+
 export interface ProductColumnActions {
     onView: (product: Product) => void;
     onEdit: (product: Product) => void;
@@ -33,6 +35,56 @@ export function getProductColumns(
                 </div>
             ),
         },
+
+        {
+            accessorKey: "image",
+
+            meta: {
+                title: "Image",
+            },
+
+            enableSorting: false,
+            enableHiding: false,
+
+            size: 80,
+
+            header: "Image",
+
+            cell: ({ row }) => {
+
+                const product = row.original;
+
+                const primaryImage =
+                    product.images?.find(
+                        (image) =>
+                            image.is_primary
+                    ) ??
+                    product.images?.[0];
+
+                const imageUrl =
+                    primaryImage?.url;
+
+                if (!imageUrl) {
+                    return (
+                        <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg border bg-muted">
+                            <ImageIcon className="h-5 w-5 text-muted-foreground"
+                            />
+                        </div>
+                    );
+                }
+
+                return (
+                    <div className="h-12 w-12 overflow-hidden rounded-lg border bg-muted">
+                        <img
+                            src={imageUrl} alt={ primaryImage.alt_text || product.name }
+                            className="h-full w-full object-cover " loading="lazy"
+                        />
+                    </div>
+                );
+            },
+        },
+
+
         {
             accessorKey: "price",
             meta: { title: "Price" },
