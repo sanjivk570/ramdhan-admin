@@ -90,9 +90,9 @@ export const ENDPOINTS = {
     // units: {
     //     list: "/units",
     // },
-    taxClasses: {
-        list: "/tax-classes",
-    },
+    // taxClasses: {
+    //     list: "/tax-classes",
+    // },
 
     media: {
         list: "/media",
@@ -106,23 +106,32 @@ export const ENDPOINTS = {
     },
     units: {
         list: "/units",
-
-        details: (uuid: string) =>
-            `/units/${uuid}`,
-
+        details: (uuid: string) => `/units/${uuid}`,
         create: "/units",
+        update: (uuid: string) =>`/units/${uuid}`,
+        delete: (uuid: string) => `/units/${uuid}`,
+        restore: (uuid: string) => `/units/${uuid}/restore`,
+        status: (uuid: string) => `/units/${uuid}/status`,
+    },
 
-        update: (uuid: string) =>
-            `/units/${uuid}`,
+    taxClasses: {
+        list: "/tax-classes",
+        details: (uuid: string) => `/tax-classes/${uuid}`,
+        create: "/tax-classes",
+        update: (uuid: string) => `/tax-classes/${uuid}`,
+        delete: (uuid: string) => `/tax-classes/${uuid}`,
+        restore: (uuid: string) => `/tax-classes/${uuid}/restore`,
+        status: (uuid: string) => `/tax-classes/${uuid}/status`,
+    },
 
-        delete: (uuid: string) =>
-            `/units/${uuid}`,
-
-        restore: (uuid: string) =>
-            `/units/${uuid}/restore`,
-
-        status: (uuid: string) =>
-            `/units/${uuid}/status`,
+    taxRates: {
+        list: "/tax-rates",
+        details: (uuid: string) => `/tax-rates/${uuid}`,
+        create: "/tax-rates",
+        update: (uuid: string) => `/tax-rates/${uuid}`,
+        delete: (uuid: string) => `/tax-rates/${uuid}`,
+        restore: (uuid: string) => `/tax-rates/${uuid}/restore`,
+        status: (uuid: string) => `/tax-rates/${uuid}/status`,
     },
 
 } as const;

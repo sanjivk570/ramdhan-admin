@@ -18,4 +18,6 @@ export const QUERY_KEYS = {
     INVENTORY: "inventory",
     MEDIA: "media",
     UNITS: "units",
+    TAX_CLASSES: "tax-classes",
+    TAX_RATES: "tax-rates",
 } as const;

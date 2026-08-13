@@ -12,4 +12,6 @@ export const ROUTES = {
     PRODUCT_VARIANTS: "/product-variants",
     UNITS: "/units",
     INVENTORY: "/inventory",
+    TAX_CLASSES: "/tax-classes",
+    TAX_RATES: "/tax-rates",
 } as const;

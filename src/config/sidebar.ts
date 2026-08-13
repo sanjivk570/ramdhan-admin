@@ -49,4 +49,14 @@ export const sidebarItems: SidebarItem[] = [
         url: "/inventory",
         icon: Package,
     },
+    {
+        title: "Tax Classes",
+        url: "/tax-classes",
+        icon: Boxes,
+    },
+    {
+        title: "Tax Rates",
+        url: "/tax-Rates",
+        icon: Package,
+    },
 ];

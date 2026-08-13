@@ -35,12 +35,21 @@ import InventoryDetailsPage from "@/features/inventory/pages/InventoryDetailsPag
 
 //For unit
 import UnitListPage from "@/features/units/pages/UnitListPage";
-
 import CreateUnitPage from "@/features/units/pages/CreateUnitPage";
-
 import EditUnitPage from "@/features/units/pages/EditUnitPage";
-
 import UnitDetailsPage from "@/features/units/pages/UnitDetailsPage";
+
+//For tax
+import TaxClassListPage from "@/features/tax/tax-classes/pages/TaxClassListPage";
+import TaxClassFormPage from "@/features/tax/tax-classes/pages/TaxClassFormPage";
+import TaxClassDetailsPage from "@/features/tax/tax-classes/pages/TaxClassDetailsPage";
+//import TaxClassFormPage from "@/features/tax/tax-classes/pages/TaxClassFormPage";
+import TaxRateListPage from "@/features/tax/tax-rates/pages/TaxRateListPage";
+import TaxRateFormPage from "@/features/tax/tax-rates/pages/TaxRateFormPage";
+import TaxRateDetailsPage from "@/features/tax/tax-rates/pages/TaxRateDetailsPage";
+//import TaxRateFormPage from "@/features/tax/tax-rates/pages/TaxRateFormPage";
+
+
 
 import { ROUTES } from "./route-paths";
 
@@ -167,6 +176,41 @@ export const protectedRoutes = [
     {
         path: ROUTES.UNITS+ "/:uuid/edit",
         element: <EditUnitPage />,
+    },
+
+    //For tax classes
+    {
+        path: ROUTES.TAX_CLASSES,
+        element: <TaxClassListPage />,
+    },
+    {
+        path: ROUTES.TAX_CLASSES+ "/create",
+        element: <TaxClassFormPage />,
+    },
+    {
+        path: ROUTES.TAX_CLASSES+ "/:uuid",
+        element: <TaxClassDetailsPage />,
+    }, 
+    {
+        path: ROUTES.TAX_CLASSES+ "/:uuid/edit",
+        element: <TaxClassFormPage />,
+    },
+    //For tax rates
+    {
+        path: ROUTES.TAX_RATES,
+        element: <TaxRateListPage />,
+    },
+    {
+        path: ROUTES.TAX_RATES+ "/create",
+        element: <TaxRateFormPage />,
+    },
+    {
+        path: ROUTES.TAX_RATES+ "/:uuid",
+        element: <TaxRateDetailsPage />,
+    }, 
+    {
+        path: ROUTES.TAX_RATES+ "/:uuid/edit",
+        element: <TaxRateFormPage />,
     },
     
 ];
