@@ -17,4 +17,5 @@ export const QUERY_KEYS = {
 
     INVENTORY: "inventory",
     MEDIA: "media",
+    UNITS: "units",
 } as const;

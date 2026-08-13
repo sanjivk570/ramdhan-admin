@@ -10,6 +10,6 @@ export const ROUTES = {
     CATEGORIES: "/categories",
     PRODUCTS: "/products",
     PRODUCT_VARIANTS: "/product-variants",
-
+    UNITS: "/units",
     INVENTORY: "/inventory",
 } as const;

@@ -87,9 +87,9 @@ export const ENDPOINTS = {
         transactions: (uuid: string) => `/inventory/${uuid}/transactions`,
     },
 
-    units: {
-        list: "/units",
-    },
+    // units: {
+    //     list: "/units",
+    // },
     taxClasses: {
         list: "/tax-classes",
     },
@@ -103,6 +103,26 @@ export const ENDPOINTS = {
         restore: (uuid: string) => `/media/${uuid}/restore`,
         forceDelete: (uuid: string) => `/media/${uuid}/force`,
         primary: (uuid: string) => `/media/${uuid}/primary`,
+    },
+    units: {
+        list: "/units",
+
+        details: (uuid: string) =>
+            `/units/${uuid}`,
+
+        create: "/units",
+
+        update: (uuid: string) =>
+            `/units/${uuid}`,
+
+        delete: (uuid: string) =>
+            `/units/${uuid}`,
+
+        restore: (uuid: string) =>
+            `/units/${uuid}/restore`,
+
+        status: (uuid: string) =>
+            `/units/${uuid}/status`,
     },
 
 } as const;

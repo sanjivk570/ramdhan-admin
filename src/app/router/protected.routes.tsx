@@ -33,6 +33,15 @@ import EditProductVariantPage from "@/features/products/pages/EditProductVariant
 import InventoryListPage from "@/features/inventory/pages/InventoryListPage";
 import InventoryDetailsPage from "@/features/inventory/pages/InventoryDetailsPage";
 
+//For unit
+import UnitListPage from "@/features/units/pages/UnitListPage";
+
+import CreateUnitPage from "@/features/units/pages/CreateUnitPage";
+
+import EditUnitPage from "@/features/units/pages/EditUnitPage";
+
+import UnitDetailsPage from "@/features/units/pages/UnitDetailsPage";
+
 import { ROUTES } from "./route-paths";
 
 export const protectedRoutes = [
@@ -141,4 +150,23 @@ export const protectedRoutes = [
         path: ROUTES.INVENTORY+ "/:uuid",
         element: <InventoryDetailsPage />,
     }, 
+
+    //For Unit
+    {
+        path: ROUTES.UNITS,
+        element: <UnitListPage />,
+    },
+    {
+        path: ROUTES.UNITS+ "/create",
+        element: <CreateUnitPage />,
+    },
+    {
+        path: ROUTES.UNITS+ "/:uuid",
+        element: <UnitDetailsPage />,
+    }, 
+    {
+        path: ROUTES.UNITS+ "/:uuid/edit",
+        element: <EditUnitPage />,
+    },
+    
 ];

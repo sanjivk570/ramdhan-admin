@@ -40,6 +40,11 @@ export const sidebarItems: SidebarItem[] = [
         icon: Boxes,
     },
     {
+        title: "Units",
+        url: "/units",
+        icon: Boxes,
+    },
+    {
         title: "Inventory",
         url: "/inventory",
         icon: Package,
