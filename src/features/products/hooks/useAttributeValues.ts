@@ -71,6 +71,7 @@ function normalizeAttributeValues(attribute: any): AttributeValueOption[] {
     return extractValues(attribute)
         .map((value: any) => {
             const uuid = value?.uuid ?? value?.id;
+            const attrValue = value?.value ?? value?.value;
             const displayValue =
                 value?.display_value ??
                 value?.displayValue ??
@@ -83,7 +84,7 @@ function normalizeAttributeValues(attribute: any): AttributeValueOption[] {
 
             return {
                 uuid: String(uuid),
-                label: `${attributeName}: ${displayValue}`,
+                label: `${attributeName}: ${attrValue} (${displayValue})`,
             };
         })
         .filter((item): item is AttributeValueOption => Boolean(item));
