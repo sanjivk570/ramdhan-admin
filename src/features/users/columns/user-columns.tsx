@@ -4,6 +4,8 @@ import type { User } from "../types/user";
 import { SortableHeader, DataTableActions } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";
 
+import StatusBadge from "@/components/common/StatusBadge";
+
 export interface UserColumnActions {
     onView: (user: User) => void;
     onEdit: (user: User) => void;
@@ -80,17 +82,7 @@ export function getUserColumns({ onView, onEdit, onDelete, onActivate, onDeactiv
         enableSorting: true,
         enableHiding: true,
         cell: ({ row }) => (
-            <Badge
-                variant={
-                    row.original.is_active
-                        ? "default"
-                        : "secondary"
-                }
-            >
-                {row.original.is_active
-                    ? "Active"
-                    : "Inactive"}
-            </Badge>
+            <StatusBadge isActive={Boolean(row.original.is_active)} />
         ),
     },
     {

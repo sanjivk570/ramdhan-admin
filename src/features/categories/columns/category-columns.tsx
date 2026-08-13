@@ -11,6 +11,9 @@ import { formatDateTime } from "@/lib/date";
 
 import type { Category } from "../types/category";
 
+import StatusBadge from "@/components/common/StatusBadge";
+
+
 export interface CategoryColumnActions {
     onView: (category: Category) => void;
 
@@ -123,17 +126,8 @@ export function getCategoryColumns({
             enableHiding: true,
 
             cell: ({ row }) => (
-                <Badge
-                    variant={
-                        row.original.is_active
-                            ? "default"
-                            : "secondary"
-                    }
-                >
-                    {row.original.is_active
-                        ? "Active"
-                        : "Inactive"}
-                </Badge>
+                <StatusBadge isActive={Boolean(row.original.is_active)} />
+
             ),
         },
 

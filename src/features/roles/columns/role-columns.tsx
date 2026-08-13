@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import type { Role } from "../types/role";
 import { SortableHeader, DataTableActions } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";
+import UnitStatusBadge from "@/components/common/StatusBadge";
 
 
 export interface RoleColumnActions {
@@ -96,8 +97,7 @@ export function getRoleColumns({onView, onEdit, onDelete }: RoleColumnActions): 
             <Badge
                 variant={
                     row.original.is_system
-                        ? "default"
-                        : "secondary"
+                        ? "success" : "destructive"
                 }
             >
                 {row.original.is_system

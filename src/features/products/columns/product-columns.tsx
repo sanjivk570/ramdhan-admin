@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { DataTableActions, SortableHeader } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";
 import type { Product } from "../types/product";
+import StatusBadge from "@/components/common/StatusBadge";
 
 import { Image as ImageIcon } from "lucide-react";
 
@@ -144,9 +145,7 @@ export function getProductColumns(
             enableHiding: true,
             header: "Status",
             cell: ({ row }) => (
-                <Badge variant={row.original.is_active ? "default" : "secondary"}>
-                    {row.original.is_active ? "Active" : "Inactive"}
-                </Badge>
+                <StatusBadge isActive={Boolean(row.original.is_active)} />
             ),
         },
         {

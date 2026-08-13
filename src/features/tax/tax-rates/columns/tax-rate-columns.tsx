@@ -8,6 +8,7 @@ import {
 import { formatDateTime } from "@/lib/date";
 
 import type { TaxRate } from "../types/tax-rate";
+import StatusBadge from "@/components/common/StatusBadge";
 
 export interface TaxRateColumnActions {
     onView: (taxRate: TaxRate) => void;
@@ -108,15 +109,7 @@ export function getTaxRateColumns({
             enableHiding: true,
             header: "Status",
             cell: ({ row }) => (
-                <Badge
-                    variant={
-                        row.original.is_active
-                            ? "default"
-                            : "secondary"
-                    }
-                >
-                    {row.original.is_active ? "Active" : "Inactive"}
-                </Badge>
+                <StatusBadge isActive={Boolean(row.original.is_active)} />
             ),
         },
         {

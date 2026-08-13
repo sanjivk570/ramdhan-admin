@@ -1,10 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 
-interface UnitStatusBadgeProps {
+interface StatusBadgeProps {
   isActive: boolean;
 }
 
-export default function UnitStatusBadge({ isActive }: UnitStatusBadgeProps) {
+export default function StatusBadge({ isActive }: StatusBadgeProps) {
   return (
     <Badge variant={isActive ? "success" : "destructive"}>
       {isActive ? "Active" : "Inactive"}

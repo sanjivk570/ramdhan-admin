@@ -6,7 +6,7 @@ import { SortableHeader, DataTableActions } from "@/components/data-table";
 
 import { formatDateTime } from "@/lib/date";
 
-import UnitStatusBadge from "../components/UnitStatusBadge";
+import StatusBadge from "@/components/common/StatusBadge";
 
 export interface UnitColumnActions {
   onView: (unit: Unit) => void;
@@ -116,7 +116,7 @@ export function getUnitColumns({
       enableHiding: true,
 
       cell: ({ row }) => (
-        <UnitStatusBadge isActive={Boolean(row.original.is_active)} />
+        <StatusBadge isActive={Boolean(row.original.is_active)} />
       ),
     },
 

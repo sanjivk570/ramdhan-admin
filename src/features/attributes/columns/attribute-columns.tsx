@@ -3,6 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { DataTableActions, SortableHeader } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";
 import type { Attribute } from "../types/attribute";
+import StatusBadge from "@/components/common/StatusBadge";
+
 export interface AttributeColumnActions {
   onView: (x: Attribute) => void;
   onEdit: (x: Attribute) => void;
@@ -50,9 +52,8 @@ export function getAttributeColumns(
       enableHiding: true,
       header: "Status",
       cell: ({ row }) => (
-        <Badge variant={row.original.is_active ? "default" : "secondary"}>
-          {row.original.is_active ? "Active" : "Inactive"}
-        </Badge>
+        <StatusBadge isActive={Boolean(row.original.is_active)} />
+
       ),
     },
     {

@@ -10,6 +10,9 @@ import type { InventoryStock } from "../types/inventory";
 
 import InventoryStatusBadge from "../components/InventoryStatusBadge";
 
+import StatusBadge from "@/components/common/StatusBadge";
+
+
 export interface InventoryColumnActions {
   onView: (inventory: InventoryStock) => void;
 }
@@ -152,9 +155,7 @@ export function getInventoryColumns({
       header: "Status",
 
       cell: ({ row }) => (
-        <Badge variant={row.original.is_active ? "default" : "secondary"}>
-          {row.original.is_active ? "Active" : "Inactive"}
-        </Badge>
+        <StatusBadge isActive={Boolean(row.original.is_active)} />
       ),
     },
 
