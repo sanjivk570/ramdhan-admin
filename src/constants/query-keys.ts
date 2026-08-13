@@ -20,4 +20,5 @@ export const QUERY_KEYS = {
     UNITS: "units",
     TAX_CLASSES: "tax-classes",
     TAX_RATES: "tax-rates",
+    ATTRIBUTES: "attributes"
 } as const;

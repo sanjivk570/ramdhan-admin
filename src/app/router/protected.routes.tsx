@@ -49,7 +49,10 @@ import TaxRateFormPage from "@/features/tax/tax-rates/pages/TaxRateFormPage";
 import TaxRateDetailsPage from "@/features/tax/tax-rates/pages/TaxRateDetailsPage";
 //import TaxRateFormPage from "@/features/tax/tax-rates/pages/TaxRateFormPage";
 
-
+//For Product attribute
+import AttributeListPage from "@/features/attributes/pages/AttributeListPage";
+import AttributeFormPage from "@/features/attributes/pages/AttributeFormPage";
+import AttributeDetailsPage from "@/features/attributes/pages/AttributeDetailsPage";
 
 import { ROUTES } from "./route-paths";
 
@@ -211,6 +214,24 @@ export const protectedRoutes = [
     {
         path: ROUTES.TAX_RATES+ "/:uuid/edit",
         element: <TaxRateFormPage />,
+    },
+
+    //For product attribute
+    {
+        path: ROUTES.ATTRIBUTES,
+        element: <AttributeListPage />,
+    },
+    {
+        path: ROUTES.ATTRIBUTES+ "/create",
+        element: <AttributeFormPage />,
+    },
+    {
+        path: ROUTES.ATTRIBUTES+ "/:uuid",
+        element: <AttributeDetailsPage />,
+    }, 
+    {
+        path: ROUTES.ATTRIBUTES+ "/:uuid/edit",
+        element: <AttributeFormPage />,
     },
     
 ];

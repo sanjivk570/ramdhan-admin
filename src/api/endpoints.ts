@@ -68,15 +68,15 @@ export const ENDPOINTS = {
 
     },
 
-    attributes: {
-        list: "/attributes",
-        details: (uuid: string) => `/attributes/${uuid}`,
-        create: "/attributes",
-        update: (uuid: string) =>  `/attributes/${uuid}`,
-        delete: (uuid: string) => `/attributes/${uuid}`,
-        restore: (uuid: string) => `/attributes/${uuid}/restore`,
-        //status: (uuid: string) => `/categories/${uuid}/status`,
-    },
+    // attributes: {
+    //     list: "/attributes",
+    //     details: (uuid: string) => `/attributes/${uuid}`,
+    //     create: "/attributes",
+    //     update: (uuid: string) =>  `/attributes/${uuid}`,
+    //     delete: (uuid: string) => `/attributes/${uuid}`,
+    //     restore: (uuid: string) => `/attributes/${uuid}/restore`,
+    //     //status: (uuid: string) => `/categories/${uuid}/status`,
+    // },
 
     inventory: {
         list: "/inventory",
@@ -133,5 +133,21 @@ export const ENDPOINTS = {
         restore: (uuid: string) => `/tax-rates/${uuid}/restore`,
         status: (uuid: string) => `/tax-rates/${uuid}/status`,
     },
+
+    attributes:{
+        list:"/attributes",
+        details:(uuid:string)=>`/attributes/${uuid}`,
+        create:"/attributes",
+        update:(uuid:string)=>`/attributes/${uuid}`,
+        delete:(uuid:string)=>`/attributes/${uuid}`,
+        restore:(uuid:string)=>`/attributes/${uuid}/restore`,
+        values:{
+            create:(attributeUuid:string)=>`/attributes/${attributeUuid}/values`,
+            details:(attributeUuid:string,valueUuid:string)=>`/attributes/${attributeUuid}/values/${valueUuid}`,
+            delete:(attributeUuid:string,valueUuid:string)=>`/attributes/${attributeUuid}/values/${valueUuid}`,
+            restore:(attributeUuid:string,valueUuid:string)=>`/attributes/${attributeUuid}/values/${valueUuid}/restore`
+        }
+    },
+
 
 } as const;
