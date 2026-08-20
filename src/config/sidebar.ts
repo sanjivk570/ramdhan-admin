@@ -7,6 +7,8 @@ import {
     Boxes,
 } from "lucide-react";
 
+import { ROUTES } from "@/app/router/route-paths";
+
 export interface SidebarItem {
     title: string;
     url: string;
@@ -16,52 +18,57 @@ export interface SidebarItem {
 export const sidebarItems: SidebarItem[] = [
     {
         title: "Dashboard",
-        url: "/",
+        url: ROUTES.DASHBOARD,
         icon: LayoutDashboard,
     },
     {
         title: "Users",
-        url: "/users",
+        url: ROUTES.USERS,
         icon: Users,
     },
     {
         title: "Roles",
-        url: "/roles",
+        url: ROUTES.ROLES,
         icon: ShieldCheck,
     },
     {
         title: "Categories",
-        url: "/categories",
+        url: ROUTES.CATEGORIES,
         icon: FolderTree,
     },
     {
         title: "Products",
-        url: "/products",
+        url: ROUTES.PRODUCTS,
         icon: Boxes,
     },
+    // {
+    //     title: "Product Variants",
+    //     url: ROUTES.PRODUCT_VARIANTS,
+    //     icon: Boxes,
+    // },
     {
         title: "Attributes",
-        url: "/attributes",
+        url: ROUTES.ATTRIBUTES,
         icon: Boxes,
     },
     {
         title: "Units",
-        url: "/units",
+        url: ROUTES.UNITS,
         icon: Boxes,
     },
     {
         title: "Inventory",
-        url: "/inventory",
+        url: ROUTES.INVENTORY,
         icon: Package,
     },
     {
         title: "Tax Classes",
-        url: "/tax-classes",
+        url: ROUTES.TAX_CLASSES,
         icon: Boxes,
     },
     {
         title: "Tax Rates",
-        url: "/tax-Rates",
+        url: ROUTES.TAX_RATES,
         icon: Package,
     },
 ];

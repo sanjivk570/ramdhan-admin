@@ -1,58 +1,58 @@
 
 //For Dashboard Section
-import DashboardPage from "@/features/dashboard/pages/DashboardPage";
+import DashboardPage from "@/features/admin/dashboard/pages/DashboardPage";
 
 //For Role section
-import UserListPage from "@/features/users/pages/UserListPage";
-import CreateUserPage from "@/features/users/pages/CreateUserPage";
-import EditUserPage from "@/features/users/pages/EditUserPage";
-import UserDetailsPage from "@/features/users/pages/UserDetailsPage";
+import UserListPage from "@/features/admin/users/pages/UserListPage";
+import CreateUserPage from "@/features/admin/users/pages/CreateUserPage";
+import EditUserPage from "@/features/admin/users/pages/EditUserPage";
+import UserDetailsPage from "@/features/admin/users/pages/UserDetailsPage";
 
 //For Role section
-import RoleListPage from "@/features/roles/pages/RoleListPage";
-import CreateRolePage from "@/features/roles/pages/CreateRolePage";
-import RoleDetailsPage from "@/features/roles/pages/RoleDetailsPage";
-import EditRolePage from "@/features/roles/pages/EditRolePage";
+import RoleListPage from "@/features/admin/roles/pages/RoleListPage";
+import CreateRolePage from "@/features/admin/roles/pages/CreateRolePage";
+import RoleDetailsPage from "@/features/admin/roles/pages/RoleDetailsPage";
+import EditRolePage from "@/features/admin/roles/pages/EditRolePage";
 
 //For Role section
-import CategoryListPage from "@/features/categories/pages/CategoryListPage";
-import CreateCategoryPage from "@/features/categories/pages/CreateCategoryPage";
-import EditCategoryPage from "@/features/categories/pages/EditCategoryPage";
-import CategoryDetailPage from "@/features/categories/pages/CategoryDetailPage";
+import CategoryListPage from "@/features/admin/categories/pages/CategoryListPage";
+import CreateCategoryPage from "@/features/admin/categories/pages/CreateCategoryPage";
+import EditCategoryPage from "@/features/admin/categories/pages/EditCategoryPage";
+import CategoryDetailPage from "@/features/admin/categories/pages/CategoryDetailPage";
 
 //For product section
-import ProductListPage from "@/features/products/pages/ProductListPage";
-import CreateProductPage from "@/features/products/pages/CreateProductPage";
-import EditProductPage from "@/features/products/pages/EditProductPage";
-import ProductDetailsPage from "@/features/products/pages/ProductDetailsPage";
+import ProductListPage from "@/features/admin/products/pages/ProductListPage";
+import CreateProductPage from "@/features/admin/products/pages/CreateProductPage";
+import EditProductPage from "@/features/admin/products/pages/EditProductPage";
+import ProductDetailsPage from "@/features/admin/products/pages/ProductDetailsPage";
 
-import CreateProductVariantPage from "@/features/products/pages/CreateProductVariantPage";
-import EditProductVariantPage from "@/features/products/pages/EditProductVariantPage";
+import CreateProductVariantPage from "@/features/admin/products/pages/CreateProductVariantPage";
+import EditProductVariantPage from "@/features/admin/products/pages/EditProductVariantPage";
 
 //For inventory
-import InventoryListPage from "@/features/inventory/pages/InventoryListPage";
-import InventoryDetailsPage from "@/features/inventory/pages/InventoryDetailsPage";
+import InventoryListPage from "@/features/admin/inventory/pages/InventoryListPage";
+import InventoryDetailsPage from "@/features/admin/inventory/pages/InventoryDetailsPage";
 
 //For unit
-import UnitListPage from "@/features/units/pages/UnitListPage";
-import CreateUnitPage from "@/features/units/pages/CreateUnitPage";
-import EditUnitPage from "@/features/units/pages/EditUnitPage";
-import UnitDetailsPage from "@/features/units/pages/UnitDetailsPage";
+import UnitListPage from "@/features/admin/units/pages/UnitListPage";
+import CreateUnitPage from "@/features/admin/units/pages/CreateUnitPage";
+import EditUnitPage from "@/features/admin/units/pages/EditUnitPage";
+import UnitDetailsPage from "@/features/admin/units/pages/UnitDetailsPage";
 
 //For tax
-import TaxClassListPage from "@/features/tax/tax-classes/pages/TaxClassListPage";
-import TaxClassFormPage from "@/features/tax/tax-classes/pages/TaxClassFormPage";
-import TaxClassDetailsPage from "@/features/tax/tax-classes/pages/TaxClassDetailsPage";
-//import TaxClassFormPage from "@/features/tax/tax-classes/pages/TaxClassFormPage";
-import TaxRateListPage from "@/features/tax/tax-rates/pages/TaxRateListPage";
-import TaxRateFormPage from "@/features/tax/tax-rates/pages/TaxRateFormPage";
-import TaxRateDetailsPage from "@/features/tax/tax-rates/pages/TaxRateDetailsPage";
-//import TaxRateFormPage from "@/features/tax/tax-rates/pages/TaxRateFormPage";
+import TaxClassListPage from "@/features/admin/tax/tax-classes/pages/TaxClassListPage";
+import TaxClassFormPage from "@/features/admin/tax/tax-classes/pages/TaxClassFormPage";
+import TaxClassDetailsPage from "@/features/admin/tax/tax-classes/pages/TaxClassDetailsPage";
+//import TaxClassFormPage from "@/features/admin/tax/tax-classes/pages/TaxClassFormPage";
+import TaxRateListPage from "@/features/admin/tax/tax-rates/pages/TaxRateListPage";
+import TaxRateFormPage from "@/features/admin/tax/tax-rates/pages/TaxRateFormPage";
+import TaxRateDetailsPage from "@/features/admin/tax/tax-rates/pages/TaxRateDetailsPage";
+//import TaxRateFormPage from "@/features/admin/tax/tax-rates/pages/TaxRateFormPage";
 
 //For Product attribute
-import AttributeListPage from "@/features/attributes/pages/AttributeListPage";
-import AttributeFormPage from "@/features/attributes/pages/AttributeFormPage";
-import AttributeDetailsPage from "@/features/attributes/pages/AttributeDetailsPage";
+import AttributeListPage from "@/features/admin/attributes/pages/AttributeListPage";
+import AttributeFormPage from "@/features/admin/attributes/pages/AttributeFormPage";
+import AttributeDetailsPage from "@/features/admin/attributes/pages/AttributeDetailsPage";
 
 import { ROUTES } from "./route-paths";
 

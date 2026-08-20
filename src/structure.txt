@@ -1,5 +1,5 @@
 Folder PATH listing for volume Windows
-Volume serial number is 000000A6 FC91:C721
+Volume serial number is 000000C7 FC91:C721
 C:.
 |   App.css
 |   App.tsx
@@ -29,6 +29,7 @@ C:.
 |   |       PageContainer.tsx
 |   |       PageHeader.tsx
 |   |       ProtectedRoute.tsx
+|   |       StatusBadge.tsx
 |   |       
 |   +---data-table
 |   |   |   DataTable.tsx
@@ -86,6 +87,42 @@ C:.
 |       query-keys.ts
 |       
 +---features
+|   |   products.zip
+|   |   
+|   +---attributes
+|   |   |   index.ts
+|   |   |   
+|   |   +---columns
+|   |   |       attribute-columns.tsx
+|   |   |       
+|   |   +---components
+|   |   |       AttributeForm.tsx
+|   |   |       AttributeValueForm.tsx
+|   |   |       
+|   |   +---config
+|   |   |       attribute-export-columns.ts
+|   |   |       attribute-table-config.ts
+|   |   |       filters.ts
+|   |   |       
+|   |   +---hooks
+|   |   |       useAttribute.ts
+|   |   |       useAttributeMutations.ts
+|   |   |       useAttributes.ts
+|   |   |       
+|   |   +---pages
+|   |   |       AttributeDetailsPage.tsx
+|   |   |       AttributeFormPage.tsx
+|   |   |       AttributeListPage.tsx
+|   |   |       
+|   |   +---services
+|   |   |       attribute.service.ts
+|   |   |       
+|   |   +---types
+|   |   |       attribute.ts
+|   |   |       
+|   |   \---validation
+|   |           attribute.schema.ts
+|   |           
 |   +---auth
 |   |   +---components
 |   |   |       LoginForm.tsx
@@ -162,6 +199,56 @@ C:.
 |   |   \---types
 |   |           dashboard.ts
 |   |           
+|   +---inventory
+|   |   +---columns
+|   |   |       inventory-columns.tsx
+|   |   |       transaction-columns.tsx
+|   |   |       
+|   |   +---components
+|   |   |       InventoryActionForm.tsx
+|   |   |       InventoryStatusBadge.tsx
+|   |   |       InventorySummary.tsx
+|   |   |       
+|   |   +---config
+|   |   |       filters.ts
+|   |   |       inventory-table-config.ts
+|   |   |       transaction-table-config.ts
+|   |   |       
+|   |   +---hooks
+|   |   |       useInventory.ts
+|   |   |       useInventoryAdjustment.ts
+|   |   |       useInventoryList.ts
+|   |   |       useInventoryStockIn.ts
+|   |   |       useInventoryStockOut.ts
+|   |   |       useInventoryTransactions.ts
+|   |   |       
+|   |   +---pages
+|   |   |       InventoryDetailsPage.tsx
+|   |   |       InventoryListPage.tsx
+|   |   |       
+|   |   +---services
+|   |   |       inventory.service.ts
+|   |   |       
+|   |   \---types
+|   |           inventory.ts
+|   |           
+|   +---media
+|   |   |   index.ts
+|   |   |   
+|   |   +---components
+|   |   |       MediaGallery.tsx
+|   |   |       MediaManager.tsx
+|   |   |       MediaUploader.tsx
+|   |   |       
+|   |   +---hooks
+|   |   |       useMedia.ts
+|   |   |       
+|   |   +---services
+|   |   |       media.service.ts
+|   |   |       
+|   |   \---types
+|   |           media.ts
+|   |           
 |   +---permissions
 |   |   +---hooks
 |   |   |       usePermissions.ts
@@ -171,6 +258,62 @@ C:.
 |   |   |       
 |   |   \---types
 |   |           permission.ts
+|   |           
+|   +---products
+|   |   |   index.ts
+|   |   |   
+|   |   +---columns
+|   |   |       product-columns.tsx
+|   |   |       
+|   |   +---components
+|   |   |       ProductForm.tsx
+|   |   |       ProductMediaDraft.tsx
+|   |   |       ProductMediaManager.tsx
+|   |   |       ProductVariantForm.tsx
+|   |   |       
+|   |   +---config
+|   |   |       filters.ts
+|   |   |       product-table-config.ts
+|   |   |       
+|   |   +---hooks
+|   |   |       useAttributeValues.ts
+|   |   |       useCreateProduct.ts
+|   |   |       useCreateProductVariant.ts
+|   |   |       useDeleteProduct.ts
+|   |   |       useDeleteProductVariant.ts
+|   |   |       useProduct.ts
+|   |   |       useProductMasterData.ts
+|   |   |       useProducts.ts
+|   |   |       useProductVariant.ts
+|   |   |       useProductVariants.ts
+|   |   |       useRestoreProduct.ts
+|   |   |       useSetDefaultProductVariant.ts
+|   |   |       useUpdateProduct.ts
+|   |   |       useUpdateProductStatus.ts
+|   |   |       useUpdateProductVariant.ts
+|   |   |       useUploadProductMedia.ts
+|   |   |       
+|   |   +---pages
+|   |   |       CreateProductPage.tsx
+|   |   |       CreateProductVariantPage.tsx
+|   |   |       EditProductPage.tsx
+|   |   |       EditProductVariantPage.tsx
+|   |   |       ProductDetailsPage.tsx
+|   |   |       ProductListPage.tsx
+|   |   |       
+|   |   +---services
+|   |   |       attribute.service.ts
+|   |   |       catalog.service.ts
+|   |   |       product-media.service.ts
+|   |   |       product.service.ts
+|   |   |       
+|   |   +---types
+|   |   |       product-media.ts
+|   |   |       product.ts
+|   |   |       
+|   |   \---validation
+|   |           product-variant.schema.ts
+|   |           product.schema.ts
 |   |           
 |   +---roles
 |   |   |   index.ts
@@ -214,6 +357,110 @@ C:.
 |   |   |       
 |   |   \---validation
 |   |           role.schema.ts
+|   |           
+|   +---tax
+|   |   |   index.ts
+|   |   |   
+|   |   +---tax-classes
+|   |   |   |   index.ts
+|   |   |   |   
+|   |   |   +---columns
+|   |   |   |       tax-class-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       TaxClassForm.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       tax-class-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useTaxClass.ts
+|   |   |   |       useTaxClasses.ts
+|   |   |   |       useTaxClassMutations.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       TaxClassDetailsPage.tsx
+|   |   |   |       TaxClassFormPage.tsx
+|   |   |   |       TaxClassListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       tax-class.service.ts
+|   |   |   |       
+|   |   |   +---types
+|   |   |   |       tax-class.ts
+|   |   |   |       
+|   |   |   \---validation
+|   |   |           tax-class.schema.ts
+|   |   |           
+|   |   \---tax-rates
+|   |       |   index.ts
+|   |       |   
+|   |       +---columns
+|   |       |       tax-rate-columns.tsx
+|   |       |       
+|   |       +---components
+|   |       |       TaxRateForm.tsx
+|   |       |       
+|   |       +---config
+|   |       |       filters.ts
+|   |       |       tax-rate-table-config.ts
+|   |       |       
+|   |       +---hooks
+|   |       |       useTaxRate.ts
+|   |       |       useTaxRateMutations.ts
+|   |       |       useTaxRates.ts
+|   |       |       
+|   |       +---pages
+|   |       |       TaxRateDetailsPage.tsx
+|   |       |       TaxRateFormPage.tsx
+|   |       |       TaxRateListPage.tsx
+|   |       |       
+|   |       +---services
+|   |       |       tax-rate.service.ts
+|   |       |       
+|   |       +---types
+|   |       |       tax-rate.ts
+|   |       |       
+|   |       \---validation
+|   |               tax-rate.schema.ts
+|   |               
+|   +---units
+|   |   +---columns
+|   |   |       unit-columns.tsx
+|   |   |       
+|   |   +---components
+|   |   |       UnitActions.tsx
+|   |   |       UnitForm.tsx
+|   |   |       UnitStatusBadge.tsx
+|   |   |       
+|   |   +---config
+|   |   |       filters.ts
+|   |   |       unit-export-columns.ts
+|   |   |       unit-table-config.ts
+|   |   |       
+|   |   +---hooks
+|   |   |       useCreateUnit.ts
+|   |   |       useDeleteUnit.ts
+|   |   |       useUnit.ts
+|   |   |       useUnits.ts
+|   |   |       useUpdateUnit.ts
+|   |   |       useUpdateUnitStatus.ts
+|   |   |       
+|   |   +---pages
+|   |   |       CreateUnitPage.tsx
+|   |   |       EditUnitPage.tsx
+|   |   |       UnitDetailsPage.tsx
+|   |   |       UnitListPage.tsx
+|   |   |       
+|   |   +---services
+|   |   |       unit.service.ts
+|   |   |       
+|   |   +---types
+|   |   |       unit.ts
+|   |   |       
+|   |   \---validation
+|   |           unit.schema.ts
 |   |           
 |   \---users
 |       |   index.ts
