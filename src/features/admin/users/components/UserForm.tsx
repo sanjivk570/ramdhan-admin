@@ -80,8 +80,6 @@ export default function UserForm({
 
     roles = [],
 
-    rolesLoading = false,
-
     serverErrors = {},
 
     serverMessage,

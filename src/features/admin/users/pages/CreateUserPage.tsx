@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 import UserForm from "../components/UserForm";
 import { useCreateUser } from "../hooks/useCreateUser";
 
-import type { UserFormData } from "../validation/user.schema";
+import type {
+    UserFormData,
+    EditUserFormData,
+} from "../validation/user.schema";
 import type { CreateUserPayload } from "../types/user";
 
 import { ROUTES } from "@/app/router/route-paths";
@@ -41,7 +44,7 @@ export default function CreateUserPage() {
 
 
     const handleSubmit = async (
-        data: UserFormData
+        data: UserFormData | EditUserFormData
     ) => {
         const payload: CreateUserPayload = {
             first_name: data.first_name,
@@ -57,10 +60,10 @@ export default function CreateUserPage() {
             country_code:
                 data.country_code || undefined,
 
-            password: data.password,
+            password: data.password as string,
 
             password_confirmation:
-                data.password_confirmation,
+                data.password_confirmation as string,
 
             role: data.role,
 

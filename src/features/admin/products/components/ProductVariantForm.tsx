@@ -238,7 +238,7 @@ export default function ProductVariantForm({
         handleSubmit,
         formState: { errors },
     } = useForm<ProductVariantFormData>({
-        resolver: zodResolver(productVariantSchema),
+        resolver: zodResolver(productVariantSchema) as never,
         defaultValues: {
             name: "",
             sku: "",

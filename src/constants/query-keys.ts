@@ -20,5 +20,13 @@ export const QUERY_KEYS = {
     UNITS: "units",
     TAX_CLASSES: "tax-classes",
     TAX_RATES: "tax-rates",
-    ATTRIBUTES: "attributes"
+    ATTRIBUTES: "attributes",
+    ORDERS: "orders",
+    COUPONS: "coupons",
+    RETURNS: "returns",
+    SHIPMENTS: "shipments",
+    INVOICES: "invoices",
+    PAYMENTS: "payments",
+    CARTS: "carts",
+    WISHLISTS: "wishlists",
 } as const;

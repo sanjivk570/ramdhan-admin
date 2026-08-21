@@ -149,5 +149,50 @@ export const ENDPOINTS = {
         }
     },
 
+    // E-commerce / Admin
+    orders: {
+        list: "/admin/orders",
+        details: (uuid: string) => `/admin/orders/${uuid}`,
+        updateStatus: (uuid: string) => `/admin/orders/${uuid}/status`,
+    },
+
+    coupons: {
+        list: "/admin/coupons",
+        create: "/admin/coupons",
+        details: (uuid: string) => `/admin/coupons/${uuid}`,
+        update: (uuid: string) => `/admin/coupons/${uuid}`,
+        delete: (uuid: string) => `/admin/coupons/${uuid}`,
+    },
+
+    returns: {
+        list: "/admin/returns",
+        details: (uuid: string) => `/admin/returns/${uuid}`,
+        process: (uuid: string) => `/admin/returns/${uuid}/process`,
+    },
+
+    shipments: {
+        list: "/admin/shipments",
+        create: "/admin/shipments",
+        ship: (uuid: string) => `/admin/shipments/${uuid}/ship`,
+    },
+
+    invoices: {
+        list: "/admin/invoices",
+        generate: (orderUuid: string) => `/admin/invoices/orders/${orderUuid}/generate`,
+    },
+
+    payments: {
+        transactions: "/admin/payments/transactions",
+        refund: (orderUuid: string) => `/admin/payments/orders/${orderUuid}/refund`,
+    },
+
+    carts: {
+        list: "/admin/carts",
+        details: (uuid: string) => `/admin/carts/${uuid}`,
+    },
+
+    wishlists: {
+        list: "/admin/wishlists",
+    },
 
 } as const;

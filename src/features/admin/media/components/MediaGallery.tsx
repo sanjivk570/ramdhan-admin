@@ -13,7 +13,7 @@ export default function MediaGallery({
     emptyTitle = "No media available",
     emptyDescription = "No files have been attached yet.",
 }: MediaGalleryProps) {
-    const items = [...media].sort((a, b) => {
+    const items = [...(media ?? [])].sort((a, b) => {
         if (a.is_primary !== b.is_primary) return a.is_primary ? -1 : 1;
         return (a.sort_order ?? 0) - (b.sort_order ?? 0);
     });

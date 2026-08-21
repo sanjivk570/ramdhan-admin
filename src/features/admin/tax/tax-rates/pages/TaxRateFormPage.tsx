@@ -156,8 +156,15 @@ export default function TaxRateFormPage() {
             <TaxRateForm
                 mode={isEdit ? "edit" : "create"}
                 initialData={
-                    isEdit
-                        ? taxRateQuery.data
+                    isEdit && taxRateQuery.data
+                        ? {
+                              ...taxRateQuery.data,
+                              rate: Number(taxRateQuery.data.rate),
+                              country_code:
+                                  taxRateQuery.data.country_code ?? "IN",
+                              state_code:
+                                  taxRateQuery.data.state_code ?? "",
+                          }
                         : undefined
                 }
                 taxClasses={taxClassOptions}

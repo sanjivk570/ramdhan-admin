@@ -1,5 +1,4 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import { Badge } from "@/components/ui/badge";
 import type { User } from "../types/user";
 import { SortableHeader, DataTableActions } from "@/components/data-table";
 import { formatDateTime } from "@/lib/date";

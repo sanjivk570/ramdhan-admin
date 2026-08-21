@@ -1,15 +1,14 @@
 import type { DataTableConfig, ExportColumn } from "@/components/data-table";
-import type { CsvColumn } from "@/lib/csv";
 import type { Product } from "../types/product";
 import { getProductColumns, type ProductColumnActions } from "../columns/product-columns";
 import { productFilters } from "./filters";
 
-const exportColumns: CsvColumn<Product>[] = [
-    { key: "name", title: "Product" },
-    { key: "sku", title: "SKU" },
-    { key: "price", title: "Price" },
-    { key: "stock_quantity", title: "Stock" },
-    { key: "is_active", title: "Status" },
+const exportColumns: ExportColumn<Product>[] = [
+    { key: "name", label: "Product" },
+    { key: "sku", label: "SKU" },
+    { key: "price", label: "Price" },
+    { key: "stock_quantity", label: "Stock" },
+    { key: "is_active", label: "Status" },
 ];
 
 export function productTableConfig(

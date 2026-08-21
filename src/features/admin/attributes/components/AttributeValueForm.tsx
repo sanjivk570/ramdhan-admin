@@ -33,7 +33,7 @@ export default function AttributeValueForm({
     watch,
     formState: { errors },
   } = useForm<AttributeValueFormData>({
-    resolver: zodResolver(attributeValueSchema),
+    resolver: zodResolver(attributeValueSchema) as never,
     defaultValues: {
       value: "",
       slug: "",

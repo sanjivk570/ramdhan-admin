@@ -5,6 +5,13 @@ import {
     Package,
     FolderTree,
     Boxes,
+    ShoppingCart,
+    Tag,
+    Undo2,
+    Truck,
+    FileText,
+    CreditCard,
+    Heart,
 } from "lucide-react";
 
 import { ROUTES } from "@/app/router/route-paths";
@@ -70,5 +77,45 @@ export const sidebarItems: SidebarItem[] = [
         title: "Tax Rates",
         url: ROUTES.TAX_RATES,
         icon: Package,
+    },
+    {
+        title: "Orders",
+        url: ROUTES.ORDERS,
+        icon: ShoppingCart,
+    },
+    {
+        title: "Coupons",
+        url: ROUTES.COUPONS,
+        icon: Tag,
+    },
+    {
+        title: "Returns",
+        url: ROUTES.RETURNS,
+        icon: Undo2,
+    },
+    {
+        title: "Shipments",
+        url: ROUTES.SHIPMENTS,
+        icon: Truck,
+    },
+    {
+        title: "Invoices",
+        url: ROUTES.INVOICES,
+        icon: FileText,
+    },
+    {
+        title: "Payments",
+        url: ROUTES.PAYMENTS,
+        icon: CreditCard,
+    },
+    {
+        title: "Carts",
+        url: ROUTES.CARTS,
+        icon: ShoppingCart,
+    },
+    {
+        title: "Wishlists",
+        url: ROUTES.WISHLISTS,
+        icon: Heart,
     },
 ];

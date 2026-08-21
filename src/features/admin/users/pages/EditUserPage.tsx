@@ -12,6 +12,7 @@ import { useUpdateUser } from "../hooks/useUpdateUser";
 
 import type {
     UserFormData,
+    EditUserFormData,
 } from "../validation/user.schema";
 
 import type {
@@ -69,7 +70,7 @@ export default function EditUserPage() {
         })) ?? [];
 
     const handleSubmit = async (
-        data: UserFormData
+        data: UserFormData | EditUserFormData
     ) => {
 
         if (!uuid) {

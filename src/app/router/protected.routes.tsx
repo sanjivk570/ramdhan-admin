@@ -54,6 +54,36 @@ import AttributeListPage from "@/features/admin/attributes/pages/AttributeListPa
 import AttributeFormPage from "@/features/admin/attributes/pages/AttributeFormPage";
 import AttributeDetailsPage from "@/features/admin/attributes/pages/AttributeDetailsPage";
 
+//For Admin Orders
+import OrderListPage from "@/features/admin/orders/pages/OrderListPage";
+import OrderDetailsPage from "@/features/admin/orders/pages/OrderDetailsPage";
+
+//For Admin Coupons
+import CouponListPage from "@/features/admin/coupons/pages/CouponListPage";
+import CreateCouponPage from "@/features/admin/coupons/pages/CreateCouponPage";
+import EditCouponPage from "@/features/admin/coupons/pages/EditCouponPage";
+
+//For Admin Returns
+import ReturnListPage from "@/features/admin/returns/pages/ReturnListPage";
+import ReturnDetailsPage from "@/features/admin/returns/pages/ReturnDetailsPage";
+
+//For Admin Shipments
+import ShipmentListPage from "@/features/admin/shipments/pages/ShipmentListPage";
+import CreateShipmentPage from "@/features/admin/shipments/pages/CreateShipmentPage";
+
+//For Admin Invoices
+import InvoiceListPage from "@/features/admin/invoices/pages/InvoiceListPage";
+
+//For Admin Payments
+import PaymentListPage from "@/features/admin/payments/pages/PaymentListPage";
+
+//For Admin Carts
+import CartListPage from "@/features/admin/carts/pages/CartListPage";
+import CartDetailsPage from "@/features/admin/carts/pages/CartDetailsPage";
+
+//For Admin Wishlists
+import WishlistListPage from "@/features/admin/wishlists/pages/WishlistListPage";
+
 import { ROUTES } from "./route-paths";
 
 export const protectedRoutes = [
@@ -233,5 +263,76 @@ export const protectedRoutes = [
         path: ROUTES.ATTRIBUTES+ "/:uuid/edit",
         element: <AttributeFormPage />,
     },
-    
+
+    //For Admin Orders
+    {
+        path: ROUTES.ORDERS,
+        element: <OrderListPage />,
+    },
+    {
+        path: ROUTES.ORDERS + "/:uuid",
+        element: <OrderDetailsPage />,
+    },
+
+    //For Admin Coupons
+    {
+        path: ROUTES.COUPONS,
+        element: <CouponListPage />,
+    },
+    {
+        path: ROUTES.COUPONS + "/create",
+        element: <CreateCouponPage />,
+    },
+    {
+        path: ROUTES.COUPONS + "/:uuid/edit",
+        element: <EditCouponPage />,
+    },
+
+    //For Admin Returns
+    {
+        path: ROUTES.RETURNS,
+        element: <ReturnListPage />,
+    },
+    {
+        path: ROUTES.RETURNS + "/:uuid",
+        element: <ReturnDetailsPage />,
+    },
+
+    //For Admin Shipments
+    {
+        path: ROUTES.SHIPMENTS,
+        element: <ShipmentListPage />,
+    },
+    {
+        path: ROUTES.SHIPMENTS + "/create",
+        element: <CreateShipmentPage />,
+    },
+
+    //For Admin Invoices
+    {
+        path: ROUTES.INVOICES,
+        element: <InvoiceListPage />,
+    },
+
+    //For Admin Payments
+    {
+        path: ROUTES.PAYMENTS,
+        element: <PaymentListPage />,
+    },
+
+    //For Admin Carts
+    {
+        path: ROUTES.CARTS,
+        element: <CartListPage />,
+    },
+    {
+        path: ROUTES.CARTS + "/:uuid",
+        element: <CartDetailsPage />,
+    },
+
+    //For Admin Wishlists
+    {
+        path: ROUTES.WISHLISTS,
+        element: <WishlistListPage />,
+    },
 ];

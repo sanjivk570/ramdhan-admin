@@ -15,5 +15,13 @@ export const ROUTES = {
     INVENTORY: `${ADMIN_PREFIX}/inventory`,
     TAX_CLASSES: `${ADMIN_PREFIX}/tax-classes`,
     TAX_RATES: `${ADMIN_PREFIX}/tax-rates`,
-    ATTRIBUTES: `${ADMIN_PREFIX}/attributes`
+    ATTRIBUTES: `${ADMIN_PREFIX}/attributes`,
+    ORDERS: `${ADMIN_PREFIX}/orders`,
+    COUPONS: `${ADMIN_PREFIX}/coupons`,
+    RETURNS: `${ADMIN_PREFIX}/returns`,
+    SHIPMENTS: `${ADMIN_PREFIX}/shipments`,
+    INVOICES: `${ADMIN_PREFIX}/invoices`,
+    PAYMENTS: `${ADMIN_PREFIX}/payments`,
+    CARTS: `${ADMIN_PREFIX}/carts`,
+    WISHLISTS: `${ADMIN_PREFIX}/wishlists`,
 } as const;

@@ -10,7 +10,7 @@ import { categoryExportColumns } from "./category-export-columns";
 import type {
     DataTableConfig,
     ExportColumn,
-} from "../../../components/data-table";
+} from "@/components/data-table";
 
 import type { Category } from "../types/category";
 

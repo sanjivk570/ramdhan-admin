@@ -46,7 +46,7 @@ export default function TaxClassForm({
         reset,
         formState: { errors },
     } = useForm<TaxClassFormData>({
-        resolver: zodResolver(taxClassSchema),
+        resolver: zodResolver(taxClassSchema) as never,
         defaultValues: {
             name: "",
             code: "",

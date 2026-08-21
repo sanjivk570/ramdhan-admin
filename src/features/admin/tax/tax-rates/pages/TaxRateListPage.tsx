@@ -166,7 +166,7 @@ export default function TaxRateListPage() {
                         navigate(`${ROUTES.TAX_RATES}/create`),
                 }}
             >
-                <Button asChild>
+                <Button>
                     <Link to={`${ROUTES.TAX_RATES}/create`}>
                         Create Tax Rate
                     </Link>

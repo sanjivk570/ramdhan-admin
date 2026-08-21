@@ -78,7 +78,7 @@ export default function InventoryActionForm({
     reset,
     formState: { errors },
   } = useForm<FormDataValues>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema) as never,
 
     defaultValues: {
       quantity: 1,

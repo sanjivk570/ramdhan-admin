@@ -40,7 +40,7 @@ export default function AttributeForm({
     watch,
     formState: { errors },
   } = useForm<AttributeFormData>({
-    resolver: zodResolver(attributeSchema),
+    resolver: zodResolver(attributeSchema) as never,
     defaultValues: {
       name: "",
       slug: "",
@@ -94,7 +94,7 @@ export default function AttributeForm({
             <Select
               value={watch("type")}
               onValueChange={(v) =>
-                setValue("type", v, { shouldValidate: true })
+                setValue("type", v ?? "", { shouldValidate: true })
               }
             >
               <SelectTrigger>

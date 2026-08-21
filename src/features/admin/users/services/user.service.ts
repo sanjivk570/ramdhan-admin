@@ -1,6 +1,6 @@
 import axiosClient from "@/api/axios";
 import { ENDPOINTS } from "@/api/endpoints";
-import type { User, UserListParams, CreateUserPayload, UpdateUserPayload, } from "../types/user";
+import type { User, UserListParams, } from "../types/user";
 import type { PaginatedResponse, ApiResponse } from "@/types/api";
 
 export const userService = {

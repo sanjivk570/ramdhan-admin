@@ -16,8 +16,6 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { Button } from "@/components/ui/button";
-
 interface DataTableActionsProps {
     onView?: () => void;
     onEdit?: () => void;
@@ -41,7 +39,6 @@ export default function DataTableActions({
     onDeactivate,
     isActive,
     isDeleted = false,
-    loading = false,
 }: DataTableActionsProps) {
 
     const hasActions =

@@ -10,6 +10,8 @@ import DataTableGrid from "./DataTableGrid";
 import DataTablePagination from "./DataTablePagination";
 
 import ExportCsvButton from "@/components/export/ExportCsvButton";
+
+import type { CsvColumn } from "@/lib/csv";
 import DataTableActiveFilters from "./DataTableActiveFilters";
 
 export function DataTable<T extends RowData>({
@@ -21,6 +23,15 @@ export function DataTable<T extends RowData>({
     emptyState,
     children,
 }: DataTableProps<T>) {
+
+    // Export columns are configured with `label`/`formatter`,
+    // but the CSV exporter expects `title`/`value`. Map them here.
+    const exportColumns: CsvColumn<T>[] | undefined =
+        config.exportColumns?.map((column) => ({
+            key: column.key as keyof T,
+            title: column.label,
+            value: column.formatter,
+        }));
 
     return (
 
@@ -44,7 +55,7 @@ export function DataTable<T extends RowData>({
 
                         filename={config.storageKey}
 
-                        columns={config.exportColumns}
+                        columns={exportColumns ?? []}
 
                         rows={rows}
                     />

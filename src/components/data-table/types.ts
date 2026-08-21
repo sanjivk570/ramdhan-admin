@@ -203,6 +203,14 @@ export interface DataTableHook {
         value: string
     ) => void;
 
+    removeFilter: (
+        key: string
+    ) => void;
+
+    clearSearch: () => void;
+
+    clearSorting: () => void;
+
     sorting: SortingState;
 
     setSorting: React.Dispatch<

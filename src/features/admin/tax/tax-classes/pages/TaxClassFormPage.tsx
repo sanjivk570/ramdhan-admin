@@ -128,8 +128,12 @@ export default function TaxClassFormPage() {
             <TaxClassForm
                 mode={isEdit ? "edit" : "create"}
                 initialData={
-                    isEdit
-                        ? taxClassQuery.data
+                    isEdit && taxClassQuery.data
+                        ? {
+                              ...taxClassQuery.data,
+                              description:
+                                  taxClassQuery.data.description ?? "",
+                          }
                         : undefined
                 }
                 loading={mutation.isPending}

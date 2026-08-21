@@ -166,7 +166,7 @@ export default function TaxClassListPage() {
                         navigate(`${ROUTES.TAX_CLASSES}/create`),
                 }}
             >
-                <Button asChild>
+                <Button>
                     <Link to={`${ROUTES.TAX_CLASSES}/create`}>
                         Create Tax Class
                     </Link>

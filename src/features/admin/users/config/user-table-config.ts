@@ -30,7 +30,7 @@ import { userExportColumns } from "./user-export-columns";
 import type {
     DataTableConfig,
     ExportColumn,
-} from "../../../components/data-table";
+} from "@/components/data-table";
 
 import type { User } from "../types/user";
 

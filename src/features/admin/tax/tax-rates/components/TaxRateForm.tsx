@@ -54,7 +54,7 @@ export default function TaxRateForm({
         reset,
         formState: { errors },
     } = useForm<TaxRateFormData>({
-        resolver: zodResolver(taxRateSchema),
+        resolver: zodResolver(taxRateSchema) as never,
         defaultValues: {
             name: "",
             rate: 0,

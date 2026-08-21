@@ -4,7 +4,7 @@ import { roleFilters } from "./filters";
 
 import { roleExportColumns } from "./role-export-columns.ts";
 
-import type { DataTableConfig, ExportColumn } from "../../../components/data-table";
+import type { DataTableConfig, ExportColumn } from "@/components/data-table";
 
 import type { Role } from "../types/role.ts";
 
