@@ -18,16 +18,16 @@ export function getCartColumns({
 }: CartColumnActions): ColumnDef<Cart>[] {
     return [
         {
-            accessorKey: "uuid",
-            meta: { title: "Cart" },
+            accessorKey: "id",
+            meta: { title: "ID" },
             enableSorting: true,
             enableHiding: true,
             header: ({ column }) => (
-                <SortableHeader column={column} title="Cart" />
+                <SortableHeader column={column} title="ID" />
             ),
             cell: ({ row }) => (
                 <span className="font-mono text-sm">
-                    {row.original.uuid || "-"}
+                    {row.original.id || "-"}
                 </span>
             ),
         },
@@ -39,7 +39,8 @@ export function getCartColumns({
             header: ({ column }) => (
                 <SortableHeader column={column} title="Customer" />
             ),
-            cell: ({ row }) => row.original.customer_name || "-",
+            
+            cell: ({ row })  => row.original.customer?.name || "-",
         },
         {
             accessorKey: "status",
@@ -54,16 +55,72 @@ export function getCartColumns({
             ),
         },
         {
-            accessorKey: "total",
-            meta: { title: "Total" },
+            accessorKey: "discount_amount",
+            meta: { title: "discount_amount" },
             enableSorting: true,
             enableHiding: true,
             header: ({ column }) => (
-                <SortableHeader column={column} title="Total" />
+                <SortableHeader column={column} title="discount_amount" />
             ),
             cell: ({ row }) => (
                 <span className="font-medium">
-                    {formatMoney(row.original.total)}
+                    {formatMoney(row.original.discount_amount)}
+                </span>
+            ),
+        },
+        {
+            accessorKey: "tax_amount",
+            meta: { title: "tax_amount" },
+            enableSorting: true,
+            enableHiding: true,
+            header: ({ column }) => (
+                <SortableHeader column={column} title="tax_amount" />
+            ),
+            cell: ({ row }) => (
+                <span className="font-medium">
+                    {formatMoney(row.original.tax_amount)}
+                </span>
+            ),
+        },
+        {
+            accessorKey: "shipping_amount",
+            meta: { title: "shipping_amount" },
+            enableSorting: true,
+            enableHiding: true,
+            header: ({ column }) => (
+                <SortableHeader column={column} title="shipping_amount" />
+            ),
+            cell: ({ row }) => (
+                <span className="font-medium">
+                    {formatMoney(row.original.shipping_amount)}
+                </span>
+            ),
+        },
+        {
+            accessorKey: "subtotal",
+            meta: { title: "Subtotal" },
+            enableSorting: true,
+            enableHiding: true,
+            header: ({ column }) => (
+                <SortableHeader column={column} title="Subtotal" />
+            ),
+            cell: ({ row }) => (
+                <span className="font-medium">
+                    {formatMoney(row.original.subtotal)}
+                </span>
+            ),
+        },
+        {
+            accessorKey: "grand_total",
+            meta: { title: "grand_total" },
+            enableSorting: true,
+            enableHiding: true,
+            header: ({ column }) => (
+                <SortableHeader column={column} title="grand_total" />
+            ),
+            cell: ({ row }) => (
+                <span className="font-medium">
+                    {formatMoney(row.original.grand_total)}
                 </span>
             ),
         },

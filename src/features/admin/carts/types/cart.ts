@@ -8,17 +8,27 @@ export interface CartItem {
     line_total: number;
 }
 
+export interface CartCustomer {
+    id: number
+    uuid: string;
+    name: string;
+    email: string;
+}
+
 export interface Cart {
     uuid: string;
-    customer_uuid?: string;
-    customer_name?: string;
-    customer_email?: string;
+    id: number;
+    // customer_uuid?: string;
+    // customer_name?: string;
+    // customer_email?: string;
     status: string;
-    currency: string;
+    currency_code: string;
+    discount_amount: number;
+    tax_amount: number;
+    shipping_amount: number;
     subtotal: number;
-    discount: number;
-    tax: number;
-    total: number;
+    grand_total: number;
+    customer?: CartCustomer;
     items?: CartItem[];
     created_at: string;
     updated_at: string;

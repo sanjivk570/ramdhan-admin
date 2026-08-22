@@ -9,9 +9,9 @@ export const cartFilters: DataTableFilter[] = [
         type: "select",
         options: [
             { label: "Active", value: "active" },
-            { label: "Pending", value: "pending" },
-            { label: "Ordered", value: "ordered" },
-            { label: "Abandoned", value: "abandoned" },
+            { label: "Converted", value: "converted" },
+            { label: "Merged", value: "merged" },
+            // { label: "Abandoned", value: "abandoned" },
         ],
     },
 ];

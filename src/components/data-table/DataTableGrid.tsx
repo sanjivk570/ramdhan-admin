@@ -82,133 +82,135 @@ export default function DataTableGrid<T>({
 
             </div>
 
-            <table className="w-full border-collapse">
+            <div className="overflow-x-auto">
+                <table className="w-full border-collapse">
 
-                <thead className="sticky top-0 z-10 bg-background">
+                    <thead className="sticky top-0 z-10 bg-background">
 
-                    {table
-                        .getHeaderGroups()
-                        .map(group => (
+                        {table
+                            .getHeaderGroups()
+                            .map(group => (
 
-                            <tr key={group.id}>
+                                <tr key={group.id}>
 
-                                {group.headers.map(header => (
+                                    {group.headers.map(header => (
 
-                                    <th
-                                        key={header.id}
-                                        className="
-                                            h-12
-                                            border-b
-                                            bg-muted/40
-                                            px-4
-                                            text-left
-                                            text-sm
-                                            font-semibold
-                                            uppercase
-                                            tracking-wide
-                                            text-muted-foreground
-                                            whitespace-nowrap
-                                        "
-                                    >
+                                        <th
+                                            key={header.id}
+                                            className="
+                                                h-12
+                                                border-b
+                                                bg-muted/40
+                                                px-4
+                                                text-left
+                                                text-sm
+                                                font-semibold
+                                                uppercase
+                                                tracking-wide
+                                                text-muted-foreground
+                                                whitespace-nowrap
+                                            "
+                                        >
 
-                                        {header.isPlaceholder
-                                            ? null
-                                            : flexRender(
-                                                header.column.columnDef.header,
-                                                header.getContext()
+                                            {header.isPlaceholder
+                                                ? null
+                                                : flexRender(
+                                                    header.column.columnDef.header,
+                                                    header.getContext()
+                                                )}
+
+                                        </th>
+
+                                    ))}
+
+                                </tr>
+
+                            ))}
+
+                    </thead>
+
+                    <tbody>
+
+                        {loading ? (
+
+                            <DataTableLoading
+
+                                columns={columns.length}
+
+                                rows={pagination.pageSize}
+
+                            />
+
+                        ) : table.getRowModel().rows.length === 0 ? (
+
+                            <tr>
+
+                                <td colSpan={columns.length}>
+
+                                    <DataTableEmpty
+
+                                        {...emptyState}
+
+                                    />
+
+                                </td>
+
+                            </tr>
+
+                        ) : (
+
+                            table.getRowModel().rows.map(row => (
+
+                                <tr
+
+                                    key={row.id}
+
+                                    className="
+                                        border-b
+                                        even:bg-muted/20
+                                        hover:bg-muted/40
+                                        transition-colors
+                                    "
+
+                                >
+
+                                    {row.getVisibleCells().map(cell => (
+
+                                        <td
+
+                                            key={cell.id}
+
+                                            className="
+                                                px-4
+                                                py-3
+                                                text-sm
+                                                align-middle
+                                            "
+
+                                        >
+
+                                            {flexRender(
+
+                                                cell.column.columnDef.cell,
+
+                                                cell.getContext()
+
                                             )}
 
-                                    </th>
+                                        </td>
 
-                                ))}
+                                    ))}
 
-                            </tr>
+                                </tr>
 
-                        ))}
+                            ))
 
-                </thead>
+                        )}
 
-                <tbody>
+                    </tbody>
 
-                    {loading ? (
-
-                        <DataTableLoading
-
-                            columns={columns.length}
-
-                            rows={pagination.pageSize}
-
-                        />
-
-                    ) : table.getRowModel().rows.length === 0 ? (
-
-                        <tr>
-
-                            <td colSpan={columns.length}>
-
-                                <DataTableEmpty
-
-                                    {...emptyState}
-
-                                />
-
-                            </td>
-
-                        </tr>
-
-                    ) : (
-
-                        table.getRowModel().rows.map(row => (
-
-                            <tr
-
-                                key={row.id}
-
-                                className="
-                                    border-b
-                                    even:bg-muted/20
-                                    hover:bg-muted/40
-                                    transition-colors
-                                "
-
-                            >
-
-                                {row.getVisibleCells().map(cell => (
-
-                                    <td
-
-                                        key={cell.id}
-
-                                        className="
-                                            px-4
-                                            py-3
-                                            text-sm
-                                            align-middle
-                                        "
-
-                                    >
-
-                                        {flexRender(
-
-                                            cell.column.columnDef.cell,
-
-                                            cell.getContext()
-
-                                        )}
-
-                                    </td>
-
-                                ))}
-
-                            </tr>
-
-                        ))
-
-                    )}
-
-                </tbody>
-
-            </table>
+                </table>
+            </div>
 
         </div>
 
