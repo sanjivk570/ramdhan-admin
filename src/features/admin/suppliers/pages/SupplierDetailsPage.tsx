@@ -9,6 +9,8 @@ import { useSupplier } from "../hooks/useSupplierQueries";
 import { usePurchaseOrders } from "@/features/admin/purchases/hooks/usePurchaseQueries";
 import type { PurchaseOrderListParams } from "@/features/admin/purchases/types/purchase";
 
+import { PurchaseOrderMiniTable } from "@/features/admin/purchases/components/PurchaseOrderMiniTable";
+
 export default function SupplierDetailsPage() {
     const navigate = useNavigate();
     const { uuid } = useParams<{ uuid: string }>();

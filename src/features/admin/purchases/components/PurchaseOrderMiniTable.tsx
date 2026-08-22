@@ -5,6 +5,8 @@ import { formatMoney } from "@/features/admin/orders/columns/order-columns";
 
 import type { PurchaseOrder } from "@/features/admin/purchases/types/purchase";
 
+import { Button } from "@/components/ui/button";
+
 export function PurchaseOrderMiniTable({
     orders,
     onView,

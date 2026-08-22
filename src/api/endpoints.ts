@@ -209,14 +209,14 @@ export const ENDPOINTS = {
         status: (uuid: string) => `/customers/${uuid}/status`,
     },
 
-    addresses: {
-        list: "/customer/addresses",
-        details: (uuid: string) => `/customer/addresses/${uuid}`,
-        create: "/customer/addresses",
-        update: (uuid: string) => `/customer/addresses/${uuid}`,
-        delete: (uuid: string) => `/customer/addresses/${uuid}`,
-        setDefault: (uuid: string) => `/customer/addresses/${uuid}/default`,
-    },
+    // addresses: {
+    //     list: "/customer/addresses",
+    //     details: (uuid: string) => `/customer/addresses/${uuid}`,
+    //     create: "/customer/addresses",
+    //     update: (uuid: string) => `/customer/addresses/${uuid}`,
+    //     delete: (uuid: string) => `/customer/addresses/${uuid}`,
+    //     setDefault: (uuid: string) => `/customer/addresses/${uuid}/default`,
+    // },
 
     suppliers: {
         list: "/suppliers",
