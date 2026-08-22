@@ -65,8 +65,11 @@ export default function CartDetailsPage() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
-                <InfoCard label="Customer" value={cart.customer_name || "-"} />
-                <InfoCard label="Total" value={formatMoney(cart.total)} />
+                <InfoCard
+                    label="Customer"
+                    value={cart.customer?.name || "-"}
+                />
+                <InfoCard label="Total" value={formatMoney(cart.grand_total)} />
                 <InfoCard label="Status" value={cart.status} />
             </div>
 

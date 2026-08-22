@@ -31,4 +31,11 @@ export const shipmentService = {
             ENDPOINTS.shipments.ship(uuid)
         );
     },
+
+    update(uuid: string, payload: Partial<CreateShipmentPayload>) {
+        return axiosClient.put<ApiResponse<Shipment>>(
+            ENDPOINTS.shipments.update(uuid),
+            payload
+        );
+    },
 };

@@ -22,7 +22,12 @@ export interface CouponListParams {
     search?: string;
     sort_by?: string;
     sort_order?: "asc" | "desc";
-    status?: string;
+    filters?: {
+        discount_type?: string;
+        is_active?: string;
+        from_date?: string;
+        to_date?: string;
+    };
 }
 
 export interface CreateCouponPayload {

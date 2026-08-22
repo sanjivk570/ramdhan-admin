@@ -35,9 +35,17 @@ export interface OrderListParams {
     search?: string;
     sort_by?: string;
     sort_order?: "asc" | "desc";
-    status?: string;
-    payment_status?: string;
-    fulfillment_status?: string;
+    filters?: {
+        status?: string;
+        payment_status?: string;
+        fulfillment_status?: string;
+        customer_id?: string;
+        payment_method?: string;
+        min_total?: string;
+        max_total?: string;
+        from_date?: string;
+        to_date?: string;
+    };
 }
 
 export interface UpdateOrderStatusPayload {

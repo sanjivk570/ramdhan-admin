@@ -14,4 +14,38 @@ export const invoiceFilters: DataTableFilter[] = [
             { label: "Void", value: "void" },
         ],
     },
+    {
+        key: "customer_id",
+        label: "Customer ID",
+        type: "text",
+    },
+    {
+        key: "due_only",
+        label: "Due Only",
+        type: "select",
+        options: [
+            { label: "Yes", value: "true" },
+            { label: "No", value: "false" },
+        ],
+    },
+    {
+        key: "min_total",
+        label: "Min Total",
+        type: "text",
+    },
+    {
+        key: "max_total",
+        label: "Max Total",
+        type: "text",
+    },
+    {
+        key: "from_date",
+        label: "From Date",
+        type: "date",
+    },
+    {
+        key: "to_date",
+        label: "To Date",
+        type: "date",
+    },
 ];

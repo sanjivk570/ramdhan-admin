@@ -4,26 +4,60 @@ import type {
 
 export const paymentFilters: DataTableFilter[] = [
     {
-        key: "payment_status",
+        key: "status",
         label: "Status",
         type: "select",
         options: [
-            { label: "Paid", value: "paid" },
+            { label: "Success", value: "success" },
             { label: "Pending", value: "pending" },
             { label: "Failed", value: "failed" },
             { label: "Refunded", value: "refunded" },
-            { label: "Cancelled", value: "cancelled" },
         ],
     },
     {
-        key: "payment_method",
-        label: "Method",
+        key: "provider",
+        label: "Provider",
         type: "select",
         options: [
-            { label: "Card", value: "card" },
+            { label: "Razorpay", value: "razorpay" },
+            { label: "Stripe", value: "stripe" },
+            { label: "COD", value: "cod" },
             { label: "Bank Transfer", value: "bank_transfer" },
-            { label: "Cash on Delivery", value: "cash_on_delivery" },
             { label: "Wallet", value: "wallet" },
         ],
+    },
+    {
+        key: "transaction_type",
+        label: "Type",
+        type: "select",
+        options: [
+            { label: "Payment", value: "payment" },
+            { label: "Refund", value: "refund" },
+        ],
+    },
+    {
+        key: "order_id",
+        label: "Order ID",
+        type: "text",
+    },
+    {
+        key: "min_amount",
+        label: "Min Amount",
+        type: "text",
+    },
+    {
+        key: "max_amount",
+        label: "Max Amount",
+        type: "text",
+    },
+    {
+        key: "from_date",
+        label: "From Date",
+        type: "date",
+    },
+    {
+        key: "to_date",
+        label: "To Date",
+        type: "date",
     },
 ];

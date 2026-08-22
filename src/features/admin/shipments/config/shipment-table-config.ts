@@ -1,5 +1,6 @@
 import type {
     DataTableConfig,
+    ExportColumn,
 } from "@/components/data-table";
 
 import {
@@ -7,6 +8,7 @@ import {
     type ShipmentColumnActions,
 } from "../columns/shipment-columns";
 import { shipmentFilters } from "./filters";
+import { shipmentExportColumns } from "./shipment-export-columns";
 import type { Shipment } from "../types/shipment";
 
 export function shipmentTableConfig(
@@ -18,5 +20,7 @@ export function shipmentTableConfig(
         searchPlaceholder: "Search shipments by tracking number or order...",
         columns: getShipmentColumns(actions),
         filters: shipmentFilters,
+        exportColumns:
+            shipmentExportColumns as unknown as ExportColumn<Shipment>[],
     };
 }

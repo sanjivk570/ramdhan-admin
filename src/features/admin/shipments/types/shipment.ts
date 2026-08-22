@@ -24,10 +24,19 @@ export interface Shipment {
 export interface ShipmentListParams {
     page?: number;
     per_page?: number;
-    status?: string;
-    tracking_number?: string;
+    search?: string;
     sort_by?: string;
     sort_order?: "asc" | "desc";
+    filters?: {
+        status?: string;
+        carrier?: string;
+        order_id?: string;
+        customer_id?: string;
+        shipped_from?: string;
+        shipped_to?: string;
+        from_date?: string;
+        to_date?: string;
+    };
 }
 
 export interface CreateShipmentPayload {

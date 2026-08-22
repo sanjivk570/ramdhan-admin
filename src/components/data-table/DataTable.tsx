@@ -24,14 +24,32 @@ export function DataTable<T extends RowData>({
     children,
 }: DataTableProps<T>) {
 
-    // Export columns are configured with `label`/`formatter`,
-    // but the CSV exporter expects `title`/`value`. Map them here.
+    // Export columns may be configured with either
+    // `{ label, formatter }` or `{ title, value }`.
+    // Normalize them here for the CSV exporter.
     const exportColumns: CsvColumn<T>[] | undefined =
-        config.exportColumns?.map((column) => ({
-            key: column.key as keyof T,
-            title: column.label,
-            value: column.formatter,
-        }));
+        config.exportColumns?.map((raw) => {
+            const column =
+                raw as unknown as {
+                    key: keyof T;
+                    title?: string;
+                    label?: string;
+                    formatter?: (row: T) => string;
+                    value?: (
+                        row: T
+                    ) => string | number | boolean | null | undefined;
+                };
+
+            return {
+                key: column.key,
+                title:
+                    column.title ??
+                    column.label ??
+                    String(column.key),
+                value:
+                    column.formatter ?? column.value,
+            };
+        });
 
     return (
 

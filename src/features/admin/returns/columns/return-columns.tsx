@@ -13,12 +13,19 @@ export interface ReturnColumnActions {
     onView: (item: ReturnRequest) => void;
 }
 
-export function formatMoney(value: number | string | null | undefined): string {
+export function formatMoney(
+    value: number | string | null | undefined,
+    currency = "INR"
+): string {
     const amount = Number(value ?? 0);
-    return new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-    }).format(amount);
+    try {
+        return new Intl.NumberFormat("en-IN", {
+            style: "currency",
+            currency,
+        }).format(amount);
+    } catch {
+        return `${currency} ${amount.toFixed(2)}`;
+    }
 }
 
 function statusVariant(status: string) {

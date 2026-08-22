@@ -14,14 +14,6 @@ export interface PaymentColumnActions {
     onRefund: (payment: PaymentTransaction) => void;
 }
 
-function statusVariant(status: string) {
-    const value = (status || "").toLowerCase();
-    if (value === "paid" || value === "completed") return "success" as const;
-    if (value === "failed" || value === "cancelled" || value === "refunded")
-        return "destructive" as const;
-    return "secondary" as const;
-}
-
 export function getPaymentColumns({
     onRefund,
 }: PaymentColumnActions): ColumnDef<PaymentTransaction>[] {
@@ -75,30 +67,66 @@ export function getPaymentColumns({
             ),
         },
         {
-            accessorKey: "payment_method",
-            meta: { title: "Method" },
+            accessorKey: "provider",
+            meta: { title: "Provider" },
             enableSorting: true,
             enableHiding: true,
             header: ({ column }) => (
-                <SortableHeader column={column} title="Method" />
+                <SortableHeader column={column} title="Provider" />
             ),
-            cell: ({ row }) => row.original.payment_method || "-",
+            cell: ({ row }) => (
+                <span className="capitalize">
+                    {row.original.provider || "-"}
+                </span>
+            ),
         },
         {
-            accessorKey: "payment_status",
+            accessorKey: "transaction_type",
+            meta: { title: "Type" },
+            enableSorting: true,
+            enableHiding: true,
+            header: ({ column }) => (
+                <SortableHeader column={column} title="Type" />
+            ),
+            cell: ({ row }) => (
+                <Badge
+                    variant={
+                        row.original.transaction_type === "refund"
+                            ? "destructive"
+                            : "secondary"
+                    }
+                >
+                    <span className="capitalize">
+                        {row.original.transaction_type || "payment"}
+                    </span>
+                </Badge>
+            ),
+        },
+        {
+            accessorKey: "status",
             meta: { title: "Status" },
             enableSorting: true,
             enableHiding: true,
             header: ({ column }) => (
                 <SortableHeader column={column} title="Status" />
             ),
-            cell: ({ row }) => (
-                <Badge variant={statusVariant(row.original.payment_status)}>
-                    <span className="capitalize">
-                        {row.original.payment_status}
-                    </span>
-                </Badge>
-            ),
+            cell: ({ row }) => {
+                const value = (row.original.status || "").toLowerCase();
+                const variant =
+                    value === "success" || value === "paid"
+                        ? ("success" as const)
+                        : value === "failed" ||
+                            value === "refunded"
+                          ? ("destructive" as const)
+                          : ("secondary" as const);
+                return (
+                    <Badge variant={variant}>
+                        <span className="capitalize">
+                            {row.original.status || "-"}
+                        </span>
+                    </Badge>
+                );
+            },
         },
         {
             accessorKey: "created_at",
@@ -119,7 +147,9 @@ export function getPaymentColumns({
             size: 60,
             cell: ({ row }) => {
                 const payment = row.original;
-                const canRefund = payment.payment_status === "paid";
+                const status = (payment.status || "").toLowerCase();
+                const canRefund =
+                    status === "success" || status === "paid";
                 return (
                     <DataTableActions
                         onActivate={

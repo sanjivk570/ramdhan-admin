@@ -28,7 +28,13 @@ export interface ReturnListParams {
     search?: string;
     sort_by?: string;
     sort_order?: "asc" | "desc";
-    status?: string;
+    filters?: {
+        status?: string;
+        refund_status?: string;
+        customer_id?: string;
+        from_date?: string;
+        to_date?: string;
+    };
 }
 
 export interface ProcessReturnPayload {

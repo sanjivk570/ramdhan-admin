@@ -19,6 +19,12 @@ export const invoiceService = {
         );
     },
 
+    details(uuid: string) {
+        return axiosClient.get<ApiResponse<Invoice>>(
+            ENDPOINTS.invoices.details(uuid)
+        );
+    },
+
     generate(payload: GenerateInvoicePayload) {
         return axiosClient.post<ApiResponse<Invoice>>(
             ENDPOINTS.invoices.generate(payload.order_uuid),

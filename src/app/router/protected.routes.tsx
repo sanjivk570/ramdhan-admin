@@ -73,6 +73,7 @@ import CreateShipmentPage from "@/features/admin/shipments/pages/CreateShipmentP
 
 //For Admin Invoices
 import InvoiceListPage from "@/features/admin/invoices/pages/InvoiceListPage";
+import InvoiceDetailsPage from "@/features/admin/invoices/pages/InvoiceDetailsPage";
 
 //For Admin Payments
 import PaymentListPage from "@/features/admin/payments/pages/PaymentListPage";
@@ -83,6 +84,31 @@ import CartDetailsPage from "@/features/admin/carts/pages/CartDetailsPage";
 
 //For Admin Wishlists
 import WishlistListPage from "@/features/admin/wishlists/pages/WishlistListPage";
+
+//For Purchase
+import PurchaseOrderListPage from "@/features/admin/purchases/pages/PurchaseOrderListPage";
+import GoodsReceiptListPage from "@/features/admin/purchases/pages/GoodsReceiptListPage";
+import PurchaseInvoiceListPage from "@/features/admin/purchases/pages/PurchaseInvoiceListPage";
+import PurchasePaymentListPage from "@/features/admin/purchases/pages/PurchasePaymentListPage";
+import PurchaseReturnListPage from "@/features/admin/purchases/pages/PurchaseReturnListPage";
+
+//For Customers
+import CustomerListPage from "@/features/admin/customers/pages/CustomerListPage";
+import CustomerDetailsPage from "@/features/admin/customers/pages/CustomerDetailsPage";
+import CustomerFormPage from "@/features/admin/customers/pages/CustomerFormPage";
+
+//For Addresses
+import AddressListPage from "@/features/admin/addresses/pages/AddressListPage";
+
+//For Suppliers
+import SupplierListPage from "@/features/admin/suppliers/pages/SupplierListPage";
+import SupplierDetailsPage from "@/features/admin/suppliers/pages/SupplierDetailsPage";
+import SupplierFormPage from "@/features/admin/suppliers/pages/SupplierFormPage";
+
+//For Shipping
+import ShippingZoneListPage from "@/features/admin/shipping/pages/ShippingZoneListPage";
+import ShippingMethodListPage from "@/features/admin/shipping/pages/ShippingMethodListPage";
+import ShippingRateListPage from "@/features/admin/shipping/pages/ShippingRateListPage";
 
 import { ROUTES } from "./route-paths";
 
@@ -313,6 +339,10 @@ export const protectedRoutes = [
         path: ROUTES.INVOICES,
         element: <InvoiceListPage />,
     },
+    {
+        path: ROUTES.INVOICES + "/:uuid",
+        element: <InvoiceDetailsPage />,
+    },
 
     //For Admin Payments
     {
@@ -334,5 +364,83 @@ export const protectedRoutes = [
     {
         path: ROUTES.WISHLISTS,
         element: <WishlistListPage />,
+    },
+
+    //For Purchase
+    {
+        path: ROUTES.PURCHASE_ORDERS,
+        element: <PurchaseOrderListPage />,
+    },
+    {
+        path: ROUTES.GOODS_RECEIPTS,
+        element: <GoodsReceiptListPage />,
+    },
+    {
+        path: ROUTES.PURCHASE_INVOICES,
+        element: <PurchaseInvoiceListPage />,
+    },
+    {
+        path: ROUTES.PURCHASE_PAYMENTS,
+        element: <PurchasePaymentListPage />,
+    },
+        {
+        path: ROUTES.PURCHASE_RETURNS,
+        element: <PurchaseReturnListPage />,
+    },
+
+    //For Customers
+    {
+        path: ROUTES.CUSTOMERS,
+        element: <CustomerListPage />,
+    },
+    {
+        path: ROUTES.CUSTOMERS + "/create",
+        element: <CustomerFormPage />,
+    },
+    {
+        path: ROUTES.CUSTOMERS + "/:uuid",
+        element: <CustomerDetailsPage />,
+    },
+    {
+        path: ROUTES.CUSTOMERS + "/:uuid/edit",
+        element: <CustomerFormPage />,
+    },
+
+    //For Addresses
+    {
+        path: ROUTES.ADDRESSES,
+        element: <AddressListPage />,
+    },
+
+        //For Suppliers
+    {
+        path: ROUTES.SUPPLIERS,
+        element: <SupplierListPage />,
+    },
+    {
+        path: ROUTES.SUPPLIERS + "/create",
+        element: <SupplierFormPage />,
+    },
+    {
+        path: ROUTES.SUPPLIERS + "/:uuid",
+        element: <SupplierDetailsPage />,
+    },
+    {
+        path: ROUTES.SUPPLIERS + "/:uuid/edit",
+        element: <SupplierFormPage />,
+    },
+
+    //For Shipping
+    {
+        path: ROUTES.SHIPPING_ZONES,
+        element: <ShippingZoneListPage />,
+    },
+    {
+        path: ROUTES.SHIPPING_METHODS,
+        element: <ShippingMethodListPage />,
+    },
+    {
+        path: ROUTES.SHIPPING_RATES,
+        element: <ShippingRateListPage />,
     },
 ];

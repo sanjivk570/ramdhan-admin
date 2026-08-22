@@ -173,11 +173,14 @@ export const ENDPOINTS = {
     shipments: {
         list: "/admin/shipments",
         create: "/admin/shipments",
+        details: (uuid: string) => `/admin/shipments/${uuid}`,
+        update: (uuid: string) => `/admin/shipments/${uuid}`,
         ship: (uuid: string) => `/admin/shipments/${uuid}/ship`,
     },
 
     invoices: {
         list: "/admin/invoices",
+        details: (uuid: string) => `/admin/invoices/${uuid}`,
         generate: (orderUuid: string) => `/admin/invoices/orders/${orderUuid}/generate`,
     },
 
@@ -193,6 +196,115 @@ export const ENDPOINTS = {
 
     wishlists: {
         list: "/admin/wishlists",
+    },
+
+    // Customers / Addresses / Suppliers
+    customers: {
+        list: "/customers",
+        details: (uuid: string) => `/customers/${uuid}`,
+        create: "/customers",
+        update: (uuid: string) => `/customers/${uuid}`,
+        delete: (uuid: string) => `/customers/${uuid}`,
+        restore: (uuid: string) => `/customers/${uuid}/restore`,
+        status: (uuid: string) => `/customers/${uuid}/status`,
+    },
+
+    addresses: {
+        list: "/customer/addresses",
+        details: (uuid: string) => `/customer/addresses/${uuid}`,
+        create: "/customer/addresses",
+        update: (uuid: string) => `/customer/addresses/${uuid}`,
+        delete: (uuid: string) => `/customer/addresses/${uuid}`,
+        setDefault: (uuid: string) => `/customer/addresses/${uuid}/default`,
+    },
+
+    suppliers: {
+        list: "/suppliers",
+        details: (uuid: string) => `/suppliers/${uuid}`,
+        create: "/suppliers",
+        update: (uuid: string) => `/suppliers/${uuid}`,
+        delete: (uuid: string) => `/suppliers/${uuid}`,
+        restore: (uuid: string) => `/suppliers/${uuid}/restore`,
+        status: (uuid: string) => `/suppliers/${uuid}/status`,
+        users: {
+            list: (uuid: string) => `/suppliers/${uuid}/users`,
+            details: (uuid: string, userUuid: string) =>
+                `/suppliers/${uuid}/users/${userUuid}`,
+            create: (uuid: string) => `/suppliers/${uuid}/users`,
+            update: (uuid: string, userUuid: string) =>
+                `/suppliers/${uuid}/users/${userUuid}`,
+            delete: (uuid: string, userUuid: string) =>
+                `/suppliers/${uuid}/users/${userUuid}`,
+            status: (uuid: string, userUuid: string) =>
+                `/suppliers/${uuid}/users/${userUuid}/status`,
+            restore: (uuid: string, userUuid: string) =>
+                `/suppliers/${uuid}/users/${userUuid}/restore`,
+        },
+    },
+
+    // Purchase / Back office
+    purchaseOrders: {
+        list: "/purchase-orders",
+        details: (uuid: string) => `/purchase-orders/${uuid}`,
+        create: "/purchase-orders",
+        update: (uuid: string) => `/purchase-orders/${uuid}`,
+        submit: (uuid: string) => `/purchase-orders/${uuid}/submit`,
+        approve: (uuid: string) => `/purchase-orders/${uuid}/approve`,
+        cancel: (uuid: string) => `/purchase-orders/${uuid}/cancel`,
+    },
+
+    goodsReceipts: {
+        list: "/goods-receipts",
+        details: (uuid: string) => `/goods-receipts/${uuid}`,
+        create: "/goods-receipts",
+        post: (uuid: string) => `/goods-receipts/${uuid}/post`,
+        void: (uuid: string) => `/goods-receipts/${uuid}/void`,
+    },
+
+    purchaseInvoices: {
+        list: "/purchase-invoices",
+        details: (uuid: string) => `/purchase-invoices/${uuid}`,
+        create: "/purchase-invoices",
+        post: (uuid: string) => `/purchase-invoices/${uuid}/post`,
+    },
+
+    purchasePayments: {
+        list: "/purchase-payments",
+        details: (uuid: string) => `/purchase-payments/${uuid}`,
+        create: "/purchase-payments",
+    },
+
+         purchaseReturns: {
+        list: "/purchase-returns",
+        details: (uuid: string) => `/purchase-returns/${uuid}`,
+        create: "/purchase-returns",
+        post: (uuid: string) => `/purchase-returns/${uuid}/post`,
+    },
+
+    // Shipping Admin — zones, methods, rates
+    shippingZones: {
+        list: "/admin/shipping/zones",
+        details: (uuid: string) => `/admin/shipping/zones/${uuid}`,
+        create: "/admin/shipping/zones",
+        update: (uuid: string) => `/admin/shipping/zones/${uuid}`,
+        delete: (uuid: string) => `/admin/shipping/zones/${uuid}`,
+        status: (uuid: string) => `/admin/shipping/zones/${uuid}/status`,
+    },
+
+    shippingMethods: {
+        list: "/admin/shipping/methods",
+        details: (uuid: string) => `/admin/shipping/methods/${uuid}`,
+        create: "/admin/shipping/methods",
+        update: (uuid: string) => `/admin/shipping/methods/${uuid}`,
+        delete: (uuid: string) => `/admin/shipping/methods/${uuid}`,
+        status: (uuid: string) => `/admin/shipping/methods/${uuid}/status`,
+    },
+
+    shippingRates: {
+        list: "/admin/shipping/rates",
+        create: "/admin/shipping/rates",
+        update: (uuid: string) => `/admin/shipping/rates/${uuid}`,
+        delete: (uuid: string) => `/admin/shipping/rates/${uuid}`,
     },
 
 } as const;

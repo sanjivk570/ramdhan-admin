@@ -1,5 +1,6 @@
 import type {
     DataTableConfig,
+    ExportColumn,
 } from "@/components/data-table";
 
 import {
@@ -7,6 +8,7 @@ import {
     type CartColumnActions,
 } from "../columns/cart-columns";
 import { cartFilters } from "./filters";
+import { cartExportColumns } from "./cart-export-columns";
 import type { Cart } from "../types/cart";
 
 export function cartTableConfig(
@@ -18,5 +20,7 @@ export function cartTableConfig(
         searchPlaceholder: "Search carts by customer...",
         columns: getCartColumns(actions),
         filters: cartFilters,
+        exportColumns:
+            cartExportColumns as unknown as ExportColumn<Cart>[],
     };
 }

@@ -23,5 +23,10 @@ export interface WishlistListParams {
     search?: string;
     sort_by?: string;
     sort_order?: "asc" | "desc";
-    customer_id?: string;
+    filters?: {
+        customer_id?: string;
+        product_id?: string;
+        from_date?: string;
+        to_date?: string;
+    };
 }

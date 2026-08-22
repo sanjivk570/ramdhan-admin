@@ -1,5 +1,6 @@
 import type {
     DataTableConfig,
+    ExportColumn,
 } from "@/components/data-table";
 
 import {
@@ -7,6 +8,7 @@ import {
     type PaymentColumnActions,
 } from "../columns/payment-columns";
 import { paymentFilters } from "./filters";
+import { paymentExportColumns } from "./payment-export-columns";
 import type { PaymentTransaction } from "../types/payment";
 
 export function paymentTableConfig(
@@ -18,5 +20,7 @@ export function paymentTableConfig(
         searchPlaceholder: "Search payments by transaction or order...",
         columns: getPaymentColumns(actions),
         filters: paymentFilters,
+        exportColumns:
+            paymentExportColumns as unknown as ExportColumn<PaymentTransaction>[],
     };
 }

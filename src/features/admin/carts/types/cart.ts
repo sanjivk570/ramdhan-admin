@@ -40,6 +40,13 @@ export interface CartListParams {
     search?: string;
     sort_by?: string;
     sort_order?: "asc" | "desc";
-    status?: string;
-    customer_id?: string;
+    filters?: {
+        customer_id?: string;
+        status?: string;
+        coupon_code?: string;
+        min_total?: string;
+        max_total?: string;
+        from_date?: string;
+        to_date?: string;
+    };
 }

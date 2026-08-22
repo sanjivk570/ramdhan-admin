@@ -9,6 +9,7 @@ export const orderFilters: DataTableFilter[] = [
         type: "select",
         options: [
             { label: "Pending", value: "pending" },
+            { label: "Confirmed", value: "confirmed" },
             { label: "Processing", value: "processing" },
             { label: "Completed", value: "completed" },
             { label: "Cancelled", value: "cancelled" },
@@ -35,5 +36,42 @@ export const orderFilters: DataTableFilter[] = [
             { label: "Shipped", value: "shipped" },
             { label: "Fulfilled", value: "fulfilled" },
         ],
+    },
+    {
+        key: "customer_id",
+        label: "Customer ID",
+        type: "text",
+    },
+    {
+        key: "payment_method",
+        label: "Payment Method",
+        type: "select",
+        options: [
+            { label: "COD", value: "cod" },
+            { label: "Card", value: "card" },
+            { label: "Razorpay", value: "razorpay" },
+            { label: "Bank Transfer", value: "bank_transfer" },
+            { label: "Wallet", value: "wallet" },
+        ],
+    },
+    {
+        key: "min_total",
+        label: "Min Total",
+        type: "text",
+    },
+    {
+        key: "max_total",
+        label: "Max Total",
+        type: "text",
+    },
+    {
+        key: "from_date",
+        label: "From Date",
+        type: "date",
+    },
+    {
+        key: "to_date",
+        label: "To Date",
+        type: "date",
     },
 ];

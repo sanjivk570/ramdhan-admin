@@ -5,9 +5,13 @@ export interface PaymentTransaction {
     customer_name?: string;
     customer_email?: string;
     amount: number;
-    currency: string;
-    payment_method: string;
-    payment_status: string;
+    currency?: string;
+    /** Payment gateway provider e.g. razorpay, cod */
+    provider?: string;
+    /** success | pending | failed | refunded */
+    status?: string;
+    /** payment | refund */
+    transaction_type?: string;
     transaction_id?: string;
     notes?: string | null;
     created_at: string;
@@ -20,6 +24,16 @@ export interface PaymentListParams {
     search?: string;
     sort_by?: string;
     sort_order?: "asc" | "desc";
+    filters?: {
+        status?: string;
+        provider?: string;
+        transaction_type?: string;
+        order_id?: string;
+        min_amount?: string;
+        max_amount?: string;
+        from_date?: string;
+        to_date?: string;
+    };
 }
 
 export interface RefundPayload {
