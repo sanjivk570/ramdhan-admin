@@ -1,5 +1,5 @@
 Folder PATH listing for volume Windows
-Volume serial number is 000000C7 FC91:C721
+Volume serial number is 00000008 FC91:C721
 C:.
 |   App.css
 |   App.tsx
@@ -63,6 +63,7 @@ C:.
 |           button.tsx
 |           card.tsx
 |           checkbox.tsx
+|           collapsible.tsx
 |           dialog.tsx
 |           dropdown-menu.tsx
 |           input.tsx
@@ -89,419 +90,750 @@ C:.
 +---features
 |   |   products.zip
 |   |   
-|   +---attributes
-|   |   |   index.ts
-|   |   |   
-|   |   +---columns
-|   |   |       attribute-columns.tsx
-|   |   |       
-|   |   +---components
-|   |   |       AttributeForm.tsx
-|   |   |       AttributeValueForm.tsx
-|   |   |       
-|   |   +---config
-|   |   |       attribute-export-columns.ts
-|   |   |       attribute-table-config.ts
-|   |   |       filters.ts
-|   |   |       
-|   |   +---hooks
-|   |   |       useAttribute.ts
-|   |   |       useAttributeMutations.ts
-|   |   |       useAttributes.ts
-|   |   |       
-|   |   +---pages
-|   |   |       AttributeDetailsPage.tsx
-|   |   |       AttributeFormPage.tsx
-|   |   |       AttributeListPage.tsx
-|   |   |       
-|   |   +---services
-|   |   |       attribute.service.ts
-|   |   |       
-|   |   +---types
-|   |   |       attribute.ts
-|   |   |       
-|   |   \---validation
-|   |           attribute.schema.ts
-|   |           
-|   +---auth
-|   |   +---components
-|   |   |       LoginForm.tsx
-|   |   |       
-|   |   +---hooks
-|   |   |       useLogin.ts
-|   |   |       
-|   |   +---pages
-|   |   |       ForgotPasswordPage.tsx
-|   |   |       LoginPage.tsx
-|   |   |       ResetPasswordPage.tsx
-|   |   |       
-|   |   +---services
-|   |   |       auth.service.ts
-|   |   |       
-|   |   +---types
-|   |   |       auth.ts
-|   |   |       
-|   |   \---validation
-|   |           login.schema.ts
-|   |           
-|   +---categories
-|   |   +---columns
-|   |   |       category-columns.tsx
-|   |   |       
-|   |   +---components
-|   |   |       CategoryForm.tsx
-|   |   |       
-|   |   +---config
-|   |   |       category-export-columns.ts
-|   |   |       category-table-config.ts
-|   |   |       filters.ts
-|   |   |       
-|   |   +---hooks
-|   |   |       useCategories.ts
-|   |   |       useCategory.ts
-|   |   |       useCreateCategory.ts
-|   |   |       useDeleteCategory.ts
-|   |   |       useUpdateCategory.ts
-|   |   |       useUpdateCategoryStatus.ts
-|   |   |       
-|   |   +---pages
-|   |   |       CategoryDetailPage.tsx
-|   |   |       CategoryListPage.tsx
-|   |   |       CreateCategoryPage.tsx
-|   |   |       EditCategoryPage.tsx
-|   |   |       
-|   |   +---services
-|   |   |       category.service.ts
-|   |   |       
-|   |   +---types
-|   |   |       category.ts
-|   |   |       
-|   |   \---validation
-|   |           category.schema.ts
-|   |           
-|   +---dashboard
-|   |   +---components
-|   |   |       DashboardHeader.tsx
-|   |   |       DashboardStats.tsx
-|   |   |       QuickActions.tsx
-|   |   |       RecentUsers.tsx
-|   |   |       UserGrowthChart.tsx
-|   |   |       
-|   |   +---hooks
-|   |   |       useDashboard.ts
-|   |   |       
-|   |   +---pages
-|   |   |       DashboardPage.tsx
-|   |   |       
-|   |   +---services
-|   |   |       dashboard.service.ts
-|   |   |       
-|   |   \---types
-|   |           dashboard.ts
-|   |           
-|   +---inventory
-|   |   +---columns
-|   |   |       inventory-columns.tsx
-|   |   |       transaction-columns.tsx
-|   |   |       
-|   |   +---components
-|   |   |       InventoryActionForm.tsx
-|   |   |       InventoryStatusBadge.tsx
-|   |   |       InventorySummary.tsx
-|   |   |       
-|   |   +---config
-|   |   |       filters.ts
-|   |   |       inventory-table-config.ts
-|   |   |       transaction-table-config.ts
-|   |   |       
-|   |   +---hooks
-|   |   |       useInventory.ts
-|   |   |       useInventoryAdjustment.ts
-|   |   |       useInventoryList.ts
-|   |   |       useInventoryStockIn.ts
-|   |   |       useInventoryStockOut.ts
-|   |   |       useInventoryTransactions.ts
-|   |   |       
-|   |   +---pages
-|   |   |       InventoryDetailsPage.tsx
-|   |   |       InventoryListPage.tsx
-|   |   |       
-|   |   +---services
-|   |   |       inventory.service.ts
-|   |   |       
-|   |   \---types
-|   |           inventory.ts
-|   |           
-|   +---media
-|   |   |   index.ts
-|   |   |   
-|   |   +---components
-|   |   |       MediaGallery.tsx
-|   |   |       MediaManager.tsx
-|   |   |       MediaUploader.tsx
-|   |   |       
-|   |   +---hooks
-|   |   |       useMedia.ts
-|   |   |       
-|   |   +---services
-|   |   |       media.service.ts
-|   |   |       
-|   |   \---types
-|   |           media.ts
-|   |           
-|   +---permissions
-|   |   +---hooks
-|   |   |       usePermissions.ts
-|   |   |       
-|   |   +---services
-|   |   |       permission.service.ts
-|   |   |       
-|   |   \---types
-|   |           permission.ts
-|   |           
-|   +---products
-|   |   |   index.ts
-|   |   |   
-|   |   +---columns
-|   |   |       product-columns.tsx
-|   |   |       
-|   |   +---components
-|   |   |       ProductForm.tsx
-|   |   |       ProductMediaDraft.tsx
-|   |   |       ProductMediaManager.tsx
-|   |   |       ProductVariantForm.tsx
-|   |   |       
-|   |   +---config
-|   |   |       filters.ts
-|   |   |       product-table-config.ts
-|   |   |       
-|   |   +---hooks
-|   |   |       useAttributeValues.ts
-|   |   |       useCreateProduct.ts
-|   |   |       useCreateProductVariant.ts
-|   |   |       useDeleteProduct.ts
-|   |   |       useDeleteProductVariant.ts
-|   |   |       useProduct.ts
-|   |   |       useProductMasterData.ts
-|   |   |       useProducts.ts
-|   |   |       useProductVariant.ts
-|   |   |       useProductVariants.ts
-|   |   |       useRestoreProduct.ts
-|   |   |       useSetDefaultProductVariant.ts
-|   |   |       useUpdateProduct.ts
-|   |   |       useUpdateProductStatus.ts
-|   |   |       useUpdateProductVariant.ts
-|   |   |       useUploadProductMedia.ts
-|   |   |       
-|   |   +---pages
-|   |   |       CreateProductPage.tsx
-|   |   |       CreateProductVariantPage.tsx
-|   |   |       EditProductPage.tsx
-|   |   |       EditProductVariantPage.tsx
-|   |   |       ProductDetailsPage.tsx
-|   |   |       ProductListPage.tsx
-|   |   |       
-|   |   +---services
-|   |   |       attribute.service.ts
-|   |   |       catalog.service.ts
-|   |   |       product-media.service.ts
-|   |   |       product.service.ts
-|   |   |       
-|   |   +---types
-|   |   |       product-media.ts
-|   |   |       product.ts
-|   |   |       
-|   |   \---validation
-|   |           product-variant.schema.ts
-|   |           product.schema.ts
-|   |           
-|   +---roles
-|   |   |   index.ts
-|   |   |   
-|   |   +---columns
-|   |   |       role-columns.tsx
-|   |   |       
-|   |   +---components
-|   |   |       RoleActions.tsx
-|   |   |       RoleFilters.tsx
-|   |   |       RoleForm.tsx
-|   |   |       RolePermissions.tsx
-|   |   |       RoleStatusBadge.tsx
-|   |   |       RoleToolbar.tsx
-|   |   |       
-|   |   +---config
-|   |   |       filters.ts
-|   |   |       role-export-columns.ts
-|   |   |       role-table-config.ts
-|   |   |       
-|   |   +---hooks
-|   |   |       useCreateRole.ts
-|   |   |       useDeleteRole.ts
-|   |   |       useRole.ts
-|   |   |       useRolePermissions.ts
-|   |   |       useRoles.ts
-|   |   |       useUpdateRole.ts
-|   |   |       useUpdateRolePermissions.ts
-|   |   |       
-|   |   +---pages
-|   |   |       CreateRolePage.tsx
-|   |   |       EditRolePage.tsx
-|   |   |       RoleDetailsPage.tsx
-|   |   |       RoleListPage.tsx
-|   |   |       
-|   |   +---services
-|   |   |       role.service.ts
-|   |   |       
-|   |   +---types
-|   |   |       role.ts
-|   |   |       
-|   |   \---validation
-|   |           role.schema.ts
-|   |           
-|   +---tax
-|   |   |   index.ts
-|   |   |   
-|   |   +---tax-classes
+|   +---admin
+|   |   +---addresses
+|   |   |   +---columns
+|   |   |   |       address-columns.tsx
+|   |   |   |       address-export-columns.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       address-table-config.ts
+|   |   |   |       filters.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useAddressMutations.ts
+|   |   |   |       useAddressQueries.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       AddressListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       address.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           address.ts
+|   |   |           
+|   |   +---attributes
 |   |   |   |   index.ts
 |   |   |   |   
 |   |   |   +---columns
-|   |   |   |       tax-class-columns.tsx
+|   |   |   |       attribute-columns.tsx
 |   |   |   |       
 |   |   |   +---components
-|   |   |   |       TaxClassForm.tsx
+|   |   |   |       AttributeForm.tsx
+|   |   |   |       AttributeValueForm.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       attribute-export-columns.ts
+|   |   |   |       attribute-table-config.ts
+|   |   |   |       filters.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useAttribute.ts
+|   |   |   |       useAttributeMutations.ts
+|   |   |   |       useAttributes.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       AttributeDetailsPage.tsx
+|   |   |   |       AttributeFormPage.tsx
+|   |   |   |       AttributeListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       attribute.service.ts
+|   |   |   |       
+|   |   |   +---types
+|   |   |   |       attribute.ts
+|   |   |   |       
+|   |   |   \---validation
+|   |   |           attribute.schema.ts
+|   |   |           
+|   |   +---carts
+|   |   |   +---columns
+|   |   |   |       cart-columns.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       cart-export-columns.ts
+|   |   |   |       cart-table-config.ts
+|   |   |   |       filters.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useCart.ts
+|   |   |   |       useCarts.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       CartDetailsPage.tsx
+|   |   |   |       CartListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       cart.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           cart.ts
+|   |   |           
+|   |   +---categories
+|   |   |   +---columns
+|   |   |   |       category-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       CategoryForm.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       category-export-columns.ts
+|   |   |   |       category-table-config.ts
+|   |   |   |       filters.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useCategories.ts
+|   |   |   |       useCategory.ts
+|   |   |   |       useCreateCategory.ts
+|   |   |   |       useDeleteCategory.ts
+|   |   |   |       useUpdateCategory.ts
+|   |   |   |       useUpdateCategoryStatus.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       CategoryDetailPage.tsx
+|   |   |   |       CategoryListPage.tsx
+|   |   |   |       CreateCategoryPage.tsx
+|   |   |   |       EditCategoryPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       category.service.ts
+|   |   |   |       
+|   |   |   +---types
+|   |   |   |       category.ts
+|   |   |   |       
+|   |   |   \---validation
+|   |   |           category.schema.ts
+|   |   |           
+|   |   +---coupons
+|   |   |   +---columns
+|   |   |   |       coupon-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       CouponForm.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       coupon-export-columns.ts
+|   |   |   |       coupon-table-config.ts
+|   |   |   |       filters.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useCoupon.ts
+|   |   |   |       useCouponMutations.ts
+|   |   |   |       useCoupons.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       CouponListPage.tsx
+|   |   |   |       CreateCouponPage.tsx
+|   |   |   |       EditCouponPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       coupon.service.ts
+|   |   |   |       
+|   |   |   +---types
+|   |   |   |       coupon.ts
+|   |   |   |       
+|   |   |   \---validation
+|   |   |           coupon.schema.ts
+|   |   |           
+|   |   +---customers
+|   |   |   +---columns
+|   |   |   |       customer-columns.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       customer-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useCustomerMutations.ts
+|   |   |   |       useCustomerQueries.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       CustomerDetailsPage.tsx
+|   |   |   |       CustomerFormPage.tsx
+|   |   |   |       CustomerListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       customer.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           customer.ts
+|   |   |           
+|   |   +---dashboard
+|   |   |   +---components
+|   |   |   |       DashboardHeader.tsx
+|   |   |   |       DashboardStats.tsx
+|   |   |   |       QuickActions.tsx
+|   |   |   |       RecentUsers.tsx
+|   |   |   |       UserGrowthChart.tsx
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useDashboard.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       DashboardPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       dashboard.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           dashboard.ts
+|   |   |           
+|   |   +---inventory
+|   |   |   +---columns
+|   |   |   |       inventory-columns.tsx
+|   |   |   |       transaction-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       InventoryActionForm.tsx
+|   |   |   |       InventoryStatusBadge.tsx
+|   |   |   |       InventorySummary.tsx
 |   |   |   |       
 |   |   |   +---config
 |   |   |   |       filters.ts
-|   |   |   |       tax-class-table-config.ts
+|   |   |   |       inventory-table-config.ts
+|   |   |   |       transaction-table-config.ts
 |   |   |   |       
 |   |   |   +---hooks
-|   |   |   |       useTaxClass.ts
-|   |   |   |       useTaxClasses.ts
-|   |   |   |       useTaxClassMutations.ts
+|   |   |   |       useInventory.ts
+|   |   |   |       useInventoryAdjustment.ts
+|   |   |   |       useInventoryList.ts
+|   |   |   |       useInventoryStockIn.ts
+|   |   |   |       useInventoryStockOut.ts
+|   |   |   |       useInventoryTransactions.ts
 |   |   |   |       
 |   |   |   +---pages
-|   |   |   |       TaxClassDetailsPage.tsx
-|   |   |   |       TaxClassFormPage.tsx
-|   |   |   |       TaxClassListPage.tsx
+|   |   |   |       InventoryDetailsPage.tsx
+|   |   |   |       InventoryListPage.tsx
 |   |   |   |       
 |   |   |   +---services
-|   |   |   |       tax-class.service.ts
+|   |   |   |       inventory.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           inventory.ts
+|   |   |           
+|   |   +---invoices
+|   |   |   +---columns
+|   |   |   |       invoice-columns.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       invoice-export-columns.ts
+|   |   |   |       invoice-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useGenerateInvoice.ts
+|   |   |   |       useInvoice.ts
+|   |   |   |       useInvoices.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       InvoiceDetailsPage.tsx
+|   |   |   |       InvoiceListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       invoice.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           invoice.ts
+|   |   |           
+|   |   +---media
+|   |   |   |   index.ts
+|   |   |   |   
+|   |   |   +---components
+|   |   |   |       MediaGallery.tsx
+|   |   |   |       MediaManager.tsx
+|   |   |   |       MediaUploader.tsx
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useMedia.ts
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       media.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           media.ts
+|   |   |           
+|   |   +---orders
+|   |   |   +---columns
+|   |   |   |       order-columns.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       order-export-columns.ts
+|   |   |   |       order-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useOrder.ts
+|   |   |   |       useOrders.ts
+|   |   |   |       useUpdateOrderStatus.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       OrderDetailsPage.tsx
+|   |   |   |       OrderListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       order.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           order.ts
+|   |   |           
+|   |   +---payments
+|   |   |   +---columns
+|   |   |   |       payment-columns.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       payment-export-columns.ts
+|   |   |   |       payment-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       usePayments.ts
+|   |   |   |       useRefund.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       PaymentListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       payment.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           payment.ts
+|   |   |           
+|   |   +---permissions
+|   |   |   +---hooks
+|   |   |   |       usePermissions.ts
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       permission.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           permission.ts
+|   |   |           
+|   |   +---products
+|   |   |   |   index.ts
+|   |   |   |   
+|   |   |   +---columns
+|   |   |   |       product-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       ProductForm.tsx
+|   |   |   |       ProductMediaDraft.tsx
+|   |   |   |       ProductMediaManager.tsx
+|   |   |   |       ProductVariantForm.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       product-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useAttributeValues.ts
+|   |   |   |       useCreateProduct.ts
+|   |   |   |       useCreateProductVariant.ts
+|   |   |   |       useDeleteProduct.ts
+|   |   |   |       useDeleteProductVariant.ts
+|   |   |   |       useProduct.ts
+|   |   |   |       useProductMasterData.ts
+|   |   |   |       useProducts.ts
+|   |   |   |       useProductVariant.ts
+|   |   |   |       useProductVariants.ts
+|   |   |   |       useRestoreProduct.ts
+|   |   |   |       useSetDefaultProductVariant.ts
+|   |   |   |       useUpdateProduct.ts
+|   |   |   |       useUpdateProductStatus.ts
+|   |   |   |       useUpdateProductVariant.ts
+|   |   |   |       useUploadProductMedia.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       CreateProductPage.tsx
+|   |   |   |       CreateProductVariantPage.tsx
+|   |   |   |       EditProductPage.tsx
+|   |   |   |       EditProductVariantPage.tsx
+|   |   |   |       ProductDetailsPage.tsx
+|   |   |   |       ProductListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       attribute.service.ts
+|   |   |   |       catalog.service.ts
+|   |   |   |       product-media.service.ts
+|   |   |   |       product.service.ts
 |   |   |   |       
 |   |   |   +---types
-|   |   |   |       tax-class.ts
+|   |   |   |       product-media.ts
+|   |   |   |       product.ts
 |   |   |   |       
 |   |   |   \---validation
-|   |   |           tax-class.schema.ts
+|   |   |           product-variant.schema.ts
+|   |   |           product.schema.ts
 |   |   |           
-|   |   \---tax-rates
-|   |       |   index.ts
-|   |       |   
+|   |   +---purchases
+|   |   |   +---columns
+|   |   |   |       goods-receipt-columns.tsx
+|   |   |   |       purchase-invoice-columns.tsx
+|   |   |   |       purchase-order-columns.tsx
+|   |   |   |       purchase-payment-columns.tsx
+|   |   |   |       purchase-return-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       PurchaseOrderMiniTable.tsx
+|   |   |   |       PurchaseStatusBadge.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       purchase-table-configs.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       usePurchaseMutations.ts
+|   |   |   |       usePurchaseQueries.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       GoodsReceiptListPage.tsx
+|   |   |   |       PurchaseInvoiceListPage.tsx
+|   |   |   |       PurchaseOrderListPage.tsx
+|   |   |   |       PurchasePaymentListPage.tsx
+|   |   |   |       PurchaseReturnListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       purchase.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           purchase.ts
+|   |   |           
+|   |   +---returns
+|   |   |   +---columns
+|   |   |   |       return-columns.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       return-export-columns.ts
+|   |   |   |       return-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useProcessReturn.ts
+|   |   |   |       useReturn.ts
+|   |   |   |       useReturns.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       ReturnDetailsPage.tsx
+|   |   |   |       ReturnListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       return.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           return.ts
+|   |   |           
+|   |   +---roles
+|   |   |   |   index.ts
+|   |   |   |   
+|   |   |   +---columns
+|   |   |   |       role-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       RoleActions.tsx
+|   |   |   |       RoleFilters.tsx
+|   |   |   |       RoleForm.tsx
+|   |   |   |       RolePermissions.tsx
+|   |   |   |       RoleStatusBadge.tsx
+|   |   |   |       RoleToolbar.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       role-export-columns.ts
+|   |   |   |       role-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useCreateRole.ts
+|   |   |   |       useDeleteRole.ts
+|   |   |   |       useRole.ts
+|   |   |   |       useRolePermissions.ts
+|   |   |   |       useRoles.ts
+|   |   |   |       useUpdateRole.ts
+|   |   |   |       useUpdateRolePermissions.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       CreateRolePage.tsx
+|   |   |   |       EditRolePage.tsx
+|   |   |   |       RoleDetailsPage.tsx
+|   |   |   |       RoleListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       role.service.ts
+|   |   |   |       
+|   |   |   +---types
+|   |   |   |       role.ts
+|   |   |   |       
+|   |   |   \---validation
+|   |   |           role.schema.ts
+|   |   |           
+|   |   +---shipments
+|   |   |   +---columns
+|   |   |   |       shipment-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       ShipmentForm.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       shipment-export-columns.ts
+|   |   |   |       shipment-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useShipmentMutations.ts
+|   |   |   |       useShipments.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       CreateShipmentPage.tsx
+|   |   |   |       ShipmentListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       shipment.service.ts
+|   |   |   |       
+|   |   |   +---types
+|   |   |   |       shipment.ts
+|   |   |   |       
+|   |   |   \---validation
+|   |   |           shipment.schema.ts
+|   |   |           
+|   |   +---shipping
+|   |   |   +---columns
+|   |   |   |       shipping-method-columns.tsx
+|   |   |   |       shipping-method-export-columns.tsx
+|   |   |   |       shipping-rate-columns.tsx
+|   |   |   |       shipping-rate-export-columns.tsx
+|   |   |   |       shipping-zone-columns.tsx
+|   |   |   |       shipping-zone-export-columns.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       method-filters.ts
+|   |   |   |       rate-filters.ts
+|   |   |   |       shipping-method-table-config.ts
+|   |   |   |       shipping-rate-table-config.ts
+|   |   |   |       shipping-zone-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useShippingMutations.ts
+|   |   |   |       useShippingQueries.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       ShippingMethodListPage.tsx
+|   |   |   |       ShippingRateListPage.tsx
+|   |   |   |       ShippingZoneListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       shipping.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           shipping.ts
+|   |   |           
+|   |   +---suppliers
+|   |   |   +---columns
+|   |   |   |       supplier-columns.tsx
+|   |   |   |       supplier-export-columns.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       supplier-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useSupplierMutations.ts
+|   |   |   |       useSupplierQueries.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       SupplierDetailsPage.tsx
+|   |   |   |       SupplierFormPage.tsx
+|   |   |   |       SupplierListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       supplier.service.ts
+|   |   |   |       
+|   |   |   \---types
+|   |   |           supplier.ts
+|   |   |           
+|   |   +---tax
+|   |   |   |   index.ts
+|   |   |   |   
+|   |   |   +---tax-classes
+|   |   |   |   |   index.ts
+|   |   |   |   |   
+|   |   |   |   +---columns
+|   |   |   |   |       tax-class-columns.tsx
+|   |   |   |   |       
+|   |   |   |   +---components
+|   |   |   |   |       TaxClassForm.tsx
+|   |   |   |   |       
+|   |   |   |   +---config
+|   |   |   |   |       filters.ts
+|   |   |   |   |       tax-class-table-config.ts
+|   |   |   |   |       
+|   |   |   |   +---hooks
+|   |   |   |   |       useTaxClass.ts
+|   |   |   |   |       useTaxClasses.ts
+|   |   |   |   |       useTaxClassMutations.ts
+|   |   |   |   |       
+|   |   |   |   +---pages
+|   |   |   |   |       TaxClassDetailsPage.tsx
+|   |   |   |   |       TaxClassFormPage.tsx
+|   |   |   |   |       TaxClassListPage.tsx
+|   |   |   |   |       
+|   |   |   |   +---services
+|   |   |   |   |       tax-class.service.ts
+|   |   |   |   |       
+|   |   |   |   +---types
+|   |   |   |   |       tax-class.ts
+|   |   |   |   |       
+|   |   |   |   \---validation
+|   |   |   |           tax-class.schema.ts
+|   |   |   |           
+|   |   |   \---tax-rates
+|   |   |       |   index.ts
+|   |   |       |   
+|   |   |       +---columns
+|   |   |       |       tax-rate-columns.tsx
+|   |   |       |       
+|   |   |       +---components
+|   |   |       |       TaxRateForm.tsx
+|   |   |       |       
+|   |   |       +---config
+|   |   |       |       filters.ts
+|   |   |       |       tax-rate-table-config.ts
+|   |   |       |       
+|   |   |       +---hooks
+|   |   |       |       useTaxRate.ts
+|   |   |       |       useTaxRateMutations.ts
+|   |   |       |       useTaxRates.ts
+|   |   |       |       
+|   |   |       +---pages
+|   |   |       |       TaxRateDetailsPage.tsx
+|   |   |       |       TaxRateFormPage.tsx
+|   |   |       |       TaxRateListPage.tsx
+|   |   |       |       
+|   |   |       +---services
+|   |   |       |       tax-rate.service.ts
+|   |   |       |       
+|   |   |       +---types
+|   |   |       |       tax-rate.ts
+|   |   |       |       
+|   |   |       \---validation
+|   |   |               tax-rate.schema.ts
+|   |   |               
+|   |   +---units
+|   |   |   +---columns
+|   |   |   |       unit-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       UnitActions.tsx
+|   |   |   |       UnitForm.tsx
+|   |   |   |       UnitStatusBadge.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       unit-export-columns.ts
+|   |   |   |       unit-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useCreateUnit.ts
+|   |   |   |       useDeleteUnit.ts
+|   |   |   |       useUnit.ts
+|   |   |   |       useUnits.ts
+|   |   |   |       useUpdateUnit.ts
+|   |   |   |       useUpdateUnitStatus.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       CreateUnitPage.tsx
+|   |   |   |       EditUnitPage.tsx
+|   |   |   |       UnitDetailsPage.tsx
+|   |   |   |       UnitListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       unit.service.ts
+|   |   |   |       
+|   |   |   +---types
+|   |   |   |       unit.ts
+|   |   |   |       
+|   |   |   \---validation
+|   |   |           unit.schema.ts
+|   |   |           
+|   |   +---users
+|   |   |   |   index.ts
+|   |   |   |   
+|   |   |   +---columns
+|   |   |   |       user-columns.tsx
+|   |   |   |       
+|   |   |   +---components
+|   |   |   |       UserActions.tsx
+|   |   |   |       UserFilters.tsx
+|   |   |   |       UserForm.tsx
+|   |   |   |       UserStatusBadge.tsx
+|   |   |   |       UserToolbar.tsx
+|   |   |   |       
+|   |   |   +---config
+|   |   |   |       filters.ts
+|   |   |   |       user-export-columns.ts
+|   |   |   |       user-table-config.ts
+|   |   |   |       
+|   |   |   +---hooks
+|   |   |   |       useCreateUser.ts
+|   |   |   |       useDeleteUser.ts
+|   |   |   |       useUpdateUser.ts
+|   |   |   |       useUpdateUserStatus.ts
+|   |   |   |       useUser.ts
+|   |   |   |       useUsers.ts
+|   |   |   |       
+|   |   |   +---pages
+|   |   |   |       CreateUserPage.tsx
+|   |   |   |       EditUserPage.tsx
+|   |   |   |       UserDetailsPage.tsx
+|   |   |   |       UserListPage.tsx
+|   |   |   |       
+|   |   |   +---services
+|   |   |   |       user.service.ts
+|   |   |   |       
+|   |   |   +---types
+|   |   |   |       user.ts
+|   |   |   |       
+|   |   |   \---validation
+|   |   |           user.schema.ts
+|   |   |           
+|   |   \---wishlists
 |   |       +---columns
-|   |       |       tax-rate-columns.tsx
-|   |       |       
-|   |       +---components
-|   |       |       TaxRateForm.tsx
+|   |       |       wishlist-columns.tsx
 |   |       |       
 |   |       +---config
 |   |       |       filters.ts
-|   |       |       tax-rate-table-config.ts
+|   |       |       wishlist-export-columns.ts
+|   |       |       wishlist-table-config.ts
 |   |       |       
 |   |       +---hooks
-|   |       |       useTaxRate.ts
-|   |       |       useTaxRateMutations.ts
-|   |       |       useTaxRates.ts
+|   |       |       useWishlists.ts
 |   |       |       
 |   |       +---pages
-|   |       |       TaxRateDetailsPage.tsx
-|   |       |       TaxRateFormPage.tsx
-|   |       |       TaxRateListPage.tsx
+|   |       |       WishlistListPage.tsx
 |   |       |       
 |   |       +---services
-|   |       |       tax-rate.service.ts
+|   |       |       wishlist.service.ts
 |   |       |       
-|   |       +---types
-|   |       |       tax-rate.ts
-|   |       |       
-|   |       \---validation
-|   |               tax-rate.schema.ts
+|   |       \---types
+|   |               wishlist.ts
 |   |               
-|   +---units
-|   |   +---columns
-|   |   |       unit-columns.tsx
-|   |   |       
-|   |   +---components
-|   |   |       UnitActions.tsx
-|   |   |       UnitForm.tsx
-|   |   |       UnitStatusBadge.tsx
-|   |   |       
-|   |   +---config
-|   |   |       filters.ts
-|   |   |       unit-export-columns.ts
-|   |   |       unit-table-config.ts
-|   |   |       
-|   |   +---hooks
-|   |   |       useCreateUnit.ts
-|   |   |       useDeleteUnit.ts
-|   |   |       useUnit.ts
-|   |   |       useUnits.ts
-|   |   |       useUpdateUnit.ts
-|   |   |       useUpdateUnitStatus.ts
-|   |   |       
-|   |   +---pages
-|   |   |       CreateUnitPage.tsx
-|   |   |       EditUnitPage.tsx
-|   |   |       UnitDetailsPage.tsx
-|   |   |       UnitListPage.tsx
-|   |   |       
-|   |   +---services
-|   |   |       unit.service.ts
-|   |   |       
-|   |   +---types
-|   |   |       unit.ts
-|   |   |       
-|   |   \---validation
-|   |           unit.schema.ts
-|   |           
-|   \---users
-|       |   index.ts
-|       |   
-|       +---columns
-|       |       user-columns.tsx
-|       |       
+|   \---auth
 |       +---components
-|       |       UserActions.tsx
-|       |       UserFilters.tsx
-|       |       UserForm.tsx
-|       |       UserStatusBadge.tsx
-|       |       UserToolbar.tsx
-|       |       
-|       +---config
-|       |       filters.ts
-|       |       user-export-columns.ts
-|       |       user-table-config.ts
+|       |       LoginForm.tsx
 |       |       
 |       +---hooks
-|       |       useCreateUser.ts
-|       |       useDeleteUser.ts
-|       |       useUpdateUser.ts
-|       |       useUpdateUserStatus.ts
-|       |       useUser.ts
-|       |       useUsers.ts
+|       |       useLogin.ts
 |       |       
 |       +---pages
-|       |       CreateUserPage.tsx
-|       |       EditUserPage.tsx
-|       |       UserDetailsPage.tsx
-|       |       UserListPage.tsx
+|       |       ForgotPasswordPage.tsx
+|       |       LoginPage.tsx
+|       |       ResetPasswordPage.tsx
 |       |       
 |       +---services
-|       |       user.service.ts
+|       |       auth.service.ts
 |       |       
 |       +---types
-|       |       user.ts
+|       |       auth.ts
 |       |       
 |       \---validation
-|               user.schema.ts
+|               login.schema.ts
 |               
 +---hooks
 +---layouts
